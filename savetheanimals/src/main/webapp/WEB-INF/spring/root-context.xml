@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+   http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd"
+   xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring">
+
+	<!-- DB연결을 위한 API(HikariCP) Connection Pool 
+		DB가 매번 커넥션하고 끊고하는 일이 자원소모가 심하기 떄문에 
+		메모리에 커넥션을 만들어놓고, 연결되어 있는 커넥션을 재활용하는 방식이
+		커넥션 풀(Connetion Pool)
+	-->
 	
-	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- 히카리 CP 빈 등록 -->
+	<!-- bean : 객체를 만드는 태그 -->
+	<!-- mysql 라이브러리 5버전 이상에는url뒤에 다른 설정을 해줘야 한다. -->
+	<!-- 							히카리 CP라이브러리에 담겨있는 클래스 내용 
+									DB에 연결하는 정보 4가지 넣기-->
+	<!-- mysql 드라이버로 변경 -->
+	<!-- mysql 5버전 이상일 때 ?useSSL ~ 붙여주기 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/mysql?useSSL=false&amp;serverTimezone=UTC"/>
+		<property name="username" value="root"/>
+		<property name="password" value="12345"/>
+	</bean>	
+	
 		
-</beans>
+	<!-- 히카리 CP 설정 -->
+	<!-- 커넥션 풀을 만드는 역할 ↓ -->
+	<!--						 생성자가 호출되어서 히카리 config를 써먹을 수 있도록 -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" 
+		destroy-method="close">
+		<constructor-arg ref="hikariConfig"/>
+		</bean>
+		
+	<!--  BoardMapper(interface)의 구현 클래스 생성
+		SqlSessionFactoryBean(SQL문을 실행하는 API)
+	 -->
+	 <bean class = "org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name= "dataSource" ref = "dataSource"/>
+			     
+	 </bean>
+	 
+	 <!-- 어떤 mapper가 일을 하느냐?? scan : Mapper interface들을 메모리에 올리는 것 -->
+	 <!-- myBatis로 DB를 이용하려면 mapper 패키지안에서 맵퍼 표시해야함 -->
+	 <mybatis-spring:scan base-package="kr.animal.mapper"/>
+</beans>	 
+	
+	   
