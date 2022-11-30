@@ -32,37 +32,7 @@
 </head>
 
 <body>
-	<!-- 유실동물 공고 페이지 -->
-	<nav
-		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-		id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index"><span
-				class="flaticon-pawprint-1 mr-2"></span>Save the Animals</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#ftco-nav" aria-controls="ftco-nav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="fa fa-bars"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-
-					<li class="nav-item"><a href="index" class="nav-link">Home</a></li>
-					<li class="nav-item active"><a href="ad"
-						class="nav-link">유실동물 공고</a></li>
-					<li class="nav-item"><a href="register" class="nav-link">유실동물
-							등록</a></li>
-					<li class="nav-item"><a href="commu" class="nav-link">커뮤니티</a></li>
-					<li class="nav-item"><a href="about" class="nav-link">반려
-							생활 길잡이</a></li>
-					<li class="nav-item"><a href="login" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="join" class="nav-link">회원가입</a></li>
-				</ul>
-			</div>
-
-		</div>
-
-	</nav>
+ <%@includefile="header.jsp"%>
 	<!-- END nav -->
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('resources/images/bg_2.jpg');"
@@ -76,7 +46,7 @@
 								class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i
 							class="ion-ios-arrow-forward"></i></span>
 					</p>
-					<h1 class="mb-0 bread">유실동물 공고</h1>
+					<h1 class="mb-0 bread">공고 보기</h1>
 				</div>
 			</div>
 		</div>
@@ -87,22 +57,24 @@
 
 	<div class="container">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
-			<li class="nav-item" style="font-weight: bolder; font-size: 1.5em;">
-				<a class="nav-link active" id="guide-tab" data-toggle="tab"
+			<li class="nav-item col-md-4 justify-content-center"
+				style="font-weight: bolder; font-size: 1.4em;"><a
+				class="nav-link active" id="guide-tab" data-toggle="tab"
 				href="#guide" role="tab" aria-controls="guide" aria-selected="true"><img
-					src="resources/images/guide.gif" style="width: 2em; height: 2em;">습득시
-					안내</a>
-			</li>
-			<li class="nav-item" style="font-weight: bolder; font-size: 1.5em;">
-				<a class="nav-link" id="dog-tab" data-toggle="tab" href="#dog"
+					src="resources/images/guide.gif" style="width: 2em; height: 2em;">
+					안내</a></li>
+			<li class="nav-item col-md-4"
+				style="font-weight: bolder; font-size: 1.4em;"><a
+				class="nav-link" id="dog-tab" data-toggle="tab" href="#dog"
 				role="tab" aria-controls="dog" aria-selected="false"><img
-					src="resources/images/dog.gif" style="width: 2em; height: 2em;"> 강아지</a>
-			</li>
-			<li class="nav-item" style="font-weight: bolder; font-size: 1.5em;">
-				<a class="nav-link" id="cat-tab" data-toggle="tab" href="#cat"
+					src="resources/images/dog.gif"
+					style="width: 2em; height: 2em; align: center;"> 강아지</a></li>
+			<li class="nav-item col-md-4"
+				style="font-weight: bolder; font-size: 1.4em;"><a
+				class="nav-link" id="cat-tab" data-toggle="tab" href="#cat"
 				role="tab" aria-controls="cat" aria-selected="false"><img
-					src="resources/images/cat.gif" style="width: 2em; height: 2em;"> 고양이</a>
-			</li>
+					src="resources/images/cat.gif" style="width: 2em; height: 2em;">
+					고양이</a></li>
 		</ul>
 
 
@@ -113,26 +85,21 @@
 
 				<div class="form-inline">
 					<img class="card-img-center" src="resources/images/dog01.gif"
-						alt="Card image" style="width: 45%; height: 0.5%;"> <img
-						class="card-img-center" src="resources/images/cat01.gif" alt="Card image"
-						style="width: 45%; height: 0.5%;">
-					<div class="card-body text-center">
-
+						alt="Card image" style="width: 20vw;; height: 20vh;"> <img
+						class="card-img-center" src="resources/images/cat01.gif"
+						alt="Card image" style="width: 18vw; height: 20vh;">
+					
 						<h3 style="font-weight: bolder;">유실 동물 발견시 신고하세요!</h3>
 
-
+                          <div class="card-body text-center">
 						<ul style="list-style-type: none;">
 							<li>
-								<h5 class="notice" style="font-weight: bolder;">유실/유기동물 발견시
-									관할 시ㆍ군ㆍ구청과 해당 유기동물 보호시설에 신고해야 합니다.</h5>
+								<h5 class="notice">유실/유기동물 발견시 관할 시ㆍ군ㆍ구청과 해당 유기동물 보호시설에
+									신고해야 합니다.</h5>
 							</li>
+							
 							<li>
-								<h5 class="notice" style="font-weight: bolder;">마음대로 잡아서
-									팔거나 죽이면 2년 이하의 징역 또는 2천만원 이하의 벌금을 내게 됩니다.</h5>
-							</li>
-							<li>
-								<h5 class="notice" style="font-weight: bolder;">Save the
-									Animal에서는 개인 보호중인 동물도 등록 가능합니다.</h5>
+								<h5 class="notice">Save the Animal에서는 개인 보호중인 동물도 등록 가능합니다.</h5>
 							</li>
 
 						</ul>
@@ -150,8 +117,8 @@
 								type="hidden" name="style" value="webzine"> <input
 								type="hidden" name="code" value="dog">
 							<ul>
-								<li class="form-inline"><select class="custom-select mb-3"
-									name="ski">
+								<li class="form-inline col-md-12 justify-content-center"><select
+									class="custom-select mb-3" name="ani_kind">
 										<option value="">----- 전체-----</option>
 										<option value="">-전체견종-</option>
 										<option value="">-------------------------------</option>
@@ -261,16 +228,18 @@
 										<option value="L">실종신고</option>
 										<option value="K">구조신고</option>
 										<option value="S">목격신고</option>
-								</select> &nbsp&nbsp <input type="submit" value="검색하기"
-									class="btn btn-success">&nbsp&nbsp <input type="reset"
-									value="다시" class="btn btn-success">&nbsp&nbsp
+								</select> &nbsp&nbsp&nbsp&nbsp <input type="submit" value="검색"
+									class="btn btn-success">&nbsp&nbsp&nbsp&nbsp <input
+									type="reset" value="다시" class="btn btn-success">
+
+								
 							</ul>
-							<div class="col-md-6 mx-auto text-center">
+							<div class="col-md-8 mx-auto text-center">
 								<div class="form-group" onclick="this.form.reset">
 									<input type="file" id="files" class="form-control filesImgs"
 										name="image_file" accept=".jpg, .jpeg, .png" multiple
-										style="padding-left: 25%; font-size: 14px;" required>
-									<label class="label" for="uploadimages">
+										style="padding-left: 25%; font-size: 1em;" required> <label
+										class="label" for="uploadimages">
 										<div id="uploadimages border border-primary">
 											<div class="list"></div>
 										</div>
@@ -332,14 +301,14 @@
 				<br>
 				<fieldset>
 
-					<div class="search-form1">
+					<div class="search-form">
 						<form name="SearchForm" method="get" action="">
 							<input type="hidden" name="listType" value=""> <input
 								type="hidden" name="style" value="webzine"> <input
 								type="hidden" name="code" value="cat">
 							<ul>
-								<li class="form-inline"><select class="custom-select mb-3"
-									name="ski">
+								<li class="form-inline col-md-12 justify-content-center"><select
+									class="custom-select mb-3" name="ani_kind">
 										<option value="">-----전체-----</option>
 										<option value="">----------------</option>
 										<option value="54">기타묘종＋</option>
@@ -434,7 +403,7 @@
 										<option value="91">하이랜더＋</option>
 										<option value="92">하이랜드 쇼트헤어＋</option>
 										<option value="44">히말라얀＋</option>
-								</select> &nbsp&nbsp &nbsp&nbsp <script type="text/javascript"
+								</select> &nbsp&nbsp <script type="text/javascript"
 										src="./js/addr_top.js"></script> <select
 									class="custom-select mb-3" name="sci"
 									onchange="change(this.selectedIndex);">
@@ -456,24 +425,25 @@
 										<option value="경상남도">경상남도</option>
 										<option value="세종특별자치시">세종특별자치시</option>
 										<option value="제주특별자치도">제주특별자치도</option>
-								</select> &nbsp&nbsp &nbsp&nbsp <select class="custom-select mb-3"
-									name="sco">
+								</select> &nbsp&nbsp <select class="custom-select mb-3" name="sco">
 										<option value="">전체</option>
 								</select> &nbsp&nbsp <select class="custom-select mb-3" name="sgu">
 										<option value="">전체(구분)</option>
 										<option value="L">실종신고</option>
 										<option value="K">구조신고</option>
 										<option value="S">목격신고</option>
-								</select> &nbsp&nbsp <input type="submit" value="검색하기"
-									class="btn btn-success">&nbsp&nbsp <input type="reset"
-									value="다시" class="btn btn-success">&nbsp&nbsp
+								</select> &nbsp&nbsp&nbsp&nbsp <input type="submit" value="검색"
+									class="btn btn-success">&nbsp&nbsp&nbsp&nbsp <input
+									type="reset" value="다시" class="btn btn-success">
+
+								
 							</ul>
-							<div class="col-md-6 mx-auto text-center">
+							<div class="col-md-8 mx-auto text-center">
 								<div class="form-group" onclick="this.form.reset">
 									<input type="file" id="files" class="form-control filesImgs"
 										name="image_file" accept=".jpg, .jpeg, .png" multiple
-										style="padding-left: 25%; font-size: 14px;" required>
-									<label class="label" for="uploadimages">
+										style="padding-left: 25%; font-size: 1em;" required> <label
+										class="label" for="uploadimages">
 										<div id="uploadimages border border-primary">
 											<div class="list"></div>
 										</div>
@@ -536,7 +506,8 @@
 				<div class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_1.jpg');"> </a>
+							style="background-image: url('resources/images/image_1.jpg');">
+						</a>
 						<div class="text p-4">
 							<div class="meta mb-2">
 								<div>
@@ -560,7 +531,8 @@
 				<div class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_2.jpg');"> </a>
+							style="background-image: url('resources/images/image_2.jpg');">
+						</a>
 						<div class="text p-4">
 							<div class="meta mb-2">
 								<div>
@@ -584,7 +556,8 @@
 				<div class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_3.jpg');"> </a>
+							style="background-image: url('resources/images/image_3.jpg');">
+						</a>
 						<div class="text p-4">
 							<div class="meta mb-2">
 								<div>
@@ -609,7 +582,8 @@
 				<div class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_4.jpg');"> </a>
+							style="background-image: url('resources/images/image_4.jpg');">
+						</a>
 						<div class="text p-4">
 							<div class="meta mb-2">
 								<div>
@@ -633,7 +607,8 @@
 				<div class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_5.jpg');"> </a>
+							style="background-image: url('resources/images/image_5.jpg');">
+						</a>
 						<div class="text p-4">
 							<div class="meta mb-2">
 								<div>
@@ -657,7 +632,8 @@
 				<div class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry align-self-stretch">
 						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_6.jpg');"> </a>
+							style="background-image: url('resources/images/image_6.jpg');">
+						</a>
 						<div class="text p-4">
 							<div class="meta mb-2">
 								<div>
@@ -682,7 +658,7 @@
 			<div class="row mt-5">
 				<div class="col text-center">
 					<div class="block-27">
-						<ul>
+						<ul class="pagination justify-content-center" id="pagination">
 							<li><a href="#">&lt;</a></li>
 							<li class="active"><span>1</span></li>
 							<li><a href="#">2</a></li>
@@ -692,6 +668,24 @@
 							<li><a href="#">&gt;</a></li>
 						</ul>
 					</div>
+					<script>
+						$('selector')
+								.pagination(
+										{
+											items : 20,
+											itemOnPage : 6,
+											currentPage : 1,
+											cssStyle : '',
+											prevText : '<span aria-hidden="true">&laquo;</span>',
+											nextText : '<span aria-hidden="true">&raquo;</span>',
+											onInit : function() {
+												// fire first page loading
+											},
+											onPageClick : function(page, evt) {
+												// some code
+											}
+										});
+					</script>
 				</div>
 			</div>
 		</div>
@@ -725,11 +719,14 @@
 	</section>
 
 	<!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-        stroke="#F96D00" />
-    </svg></div>
+	<div id="ftco-loader" class="show fullscreen">
+		<svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+    </svg>
+	</div>
 
 	<script src="resources/js/jquery.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>

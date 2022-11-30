@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<c:set var="cpath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,14 +8,14 @@
 <title>Save the Animals</title>
 <meta charset="utf-8">
 <meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <link
-	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
-	rel="stylesheet">
+   href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+   rel="stylesheet">
 
 <link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="resources/css/animate.css">
 
@@ -32,35 +31,11 @@
 <link rel="stylesheet" href="resources/css/style.css">
 </head>
 <body>
-	<!-- 로그인  페이지 -->
-	</div>
-	<nav
-		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-		id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index"><span
-				class="flaticon-pawprint-1 mr-2"></span>Save the Animals</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#ftco-nav" aria-controls="ftco-nav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="fa fa-bars"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="index" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="ad" class="nav-link">유실동물 공고</a></li>
-					<li class="nav-item"><a href="register" class="nav-link">유실동물 등록</a></li>
-					<li class="nav-item"><a href="commu" class="nav-link">커뮤니티</a></li>
-					<li class="nav-item"><a href="about" class="nav-link">반려 생활 길잡이</a></li>
-					<li class="nav-item active"><a href="login" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="join" class="nav-link">회원가입</a></li>
-				</ul>
-			</div>
-
-		</div>
-
-	</nav>
-	<!-- END nav -->
+   <!-- 로그인  페이지 -->
+     <%@includefile="header.jsp"%>
+    
+   </nav>
+   <!-- END nav -->
   <section class="hero-wrap hero-wrap-2" style="background-image: url('resources/images/bg_2.jpg');"
     data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
@@ -90,18 +65,15 @@
             <div class="row no-gutters">
               <div class="col-md-7" style="margin:auto;">
                 <div class="contact-wrap w-100 p-md-5 p-4">
-                  <h3 class="mb-4 text-center mb-5">정보</h3>
                   <form method="POST" id="contactForm" name="contactForm" class="contactForm">
                     <div class="row">
                       <div class="col-md-12 text-center">
                         <div class="form-group">
-                          <label class="label" for="mem_id">아이디</label>
-                          <input type="text" class="form-control text-center" name="mem_id" id="mem_id" placeholder="ID">
+                          <input type="text" class="form-control text-center" name="mem_id" id="mem_id" placeholder="아이디">
                         </div>
                       </div>
                       <div class="col-md-12 text-center">
                         <div class="form-group">
-                          <label class="label" for="mem_pw">비밀번호</label>
                           <input type="email" class="form-control text-center" name="mem_pw" id="mem_pw" placeholder="비밀번호">
                         </div>
                       </div>
@@ -127,61 +99,60 @@
       </div>
     </div>
   </section>
-	<section>
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-5 mb-2">
-						<h2 class="footer-heading">Save the Animals</h2>
-						<p>A country's greatness and morality can be judged by its
-							attitude toward animals.</p>
+   <section>
+      <footer class="footer">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-6 col-lg-5 mb-2">
+                  <h2 class="footer-heading">Save the Animals</h2>
+                  <p>A country's greatness and morality can be judged by its
+                     attitude toward animals.</p>
 
-					</div>
+               </div>
 
-					<div class="col-md-6 col-lg-7 pl-lg-3 mb-2">
-						<h2 class="footer-heading">Quick Links</h2>
-						<ul class="list-unstyled">
-							<li><a href="index" class="py-2 d-block">Home</a></li>
-							<li><a href="ad" class="py-2 d-block">유실동물 공고</a></li>
-							<li><a href="register" class="py-2 d-block">유실동물 등록</a></li>
-							<li><a href="commu" class="py-2 d-block">커뮤니티</a></li>
-							<li><a href="about" class="py-2 d-block">반려 생활 길잡이</a></li>
-						</ul>
-					</div>
+               <div class="col-md-6 col-lg-7 pl-lg-3 mb-2">
+                  <h2 class="footer-heading">Quick Links</h2>
+                  <ul class="list-unstyled">
+                     <li><a href="index" class="py-2 d-block">Home</a></li>
+                     <li><a href="ad" class="py-2 d-block">유실동물 공고</a></li>
+                     <li><a href="register" class="py-2 d-block">유실동물 등록</a></li>
+                     <li><a href="commu" class="py-2 d-block">커뮤니티</a></li>
+                     <li><a href="about" class="py-2 d-block">반려 생활 길잡이</a></li>
+                  </ul>
+               </div>
 
-				</div>
-			</div>
-		</footer>
-	</section>
+            </div>
+         </div>
+      </footer>
+   </section>
 
-	<!-- loader -->
-	<div id="ftco-loader" class="show fullscreen">
-		<svg class="circular" width="48px" height="48px">
+   <!-- loader -->
+   <div id="ftco-loader" class="show fullscreen">
+      <svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke="#eeeeee" />
+            stroke-width="4" stroke="#eeeeee" />
       <circle class="path" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+            stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
     </svg>
-	</div>
+   </div>
 
-	<script src="resources/js/jquery.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/popper.min.js"></script>
-	<script src="resources/js/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.easing.1.3.js"></script>
-	<script src="resources/js/jquery.waypoints.min.js"></script>
-	<script src="resources/js/jquery.stellar.min.js"></script>
-	<script src="resources/js/jquery.animateNumber.min.js"></script>
-	<script src="resources/js/bootstrap-datepicker.js"></script>
-	<script src="resources/js/jquery.timepicker.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="resources/js/google-map.js"></script>
-	<script src="resources/js/main.js"></script>
+   <script src="resources/js/jquery.min.js"></script>
+   <script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+   <script src="resources/js/popper.min.js"></script>
+   <script src="resources/js/bootstrap.min.js"></script>
+   <script src="resources/js/jquery.easing.1.3.js"></script>
+   <script src="resources/js/jquery.waypoints.min.js"></script>
+   <script src="resources/js/jquery.stellar.min.js"></script>
+   <script src="resources/js/jquery.animateNumber.min.js"></script>
+   <script src="resources/js/bootstrap-datepicker.js"></script>
+   <script src="resources/js/jquery.timepicker.min.js"></script>
+   <script src="resources/js/owl.carousel.min.js"></script>
+   <script src="resources/js/jquery.magnific-popup.min.js"></script>
+   <script src="resources/js/scrollax.min.js"></script>
+   <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+   <script src="resources/js/google-map.js"></script>
+   <script src="resources/js/main.js"></script>
 
 </body>
 
-</html>

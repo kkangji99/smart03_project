@@ -33,32 +33,7 @@
 
 <body>
 	<!-- 반려생활길잡이 페이지 -->
-	<nav
-		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
-		id="ftco-navbar">
-		<div class="container">
-			<a class="navbar-brand" href="index"><span
-				class="flaticon-pawprint-1 mr-2"></span>Save the Animals</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#ftco-nav" aria-controls="ftco-nav"
-				aria-expanded="false" aria-label="Toggle navigation">
-				<span class="fa fa-bars"></span> Menu
-			</button>
-			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a href="index" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="ad" class="nav-link">유실동물 공고</a></li>
-					<li class="nav-item"><a href="register" class="nav-link">유실동물 등록</a></li>
-					<li class="nav-item"><a href="commu" class="nav-link">커뮤니티</a></li>
-					<li class="nav-item active"><a href="about" class="nav-link">반려 생활 길잡이</a></li>
-					<li class="nav-item"><a href="login" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="join" class="nav-link">회원가입</a></li>
-				</ul>
-			</div>
-
-		</div>
-
-	</nav>
+	 <%@includefile="header.jsp"%>
 	<!-- END nav -->
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('resources/images/bg_2.jpg');"
