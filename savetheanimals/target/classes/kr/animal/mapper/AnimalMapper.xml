@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 여러가지 mapper들이 있을 수 있기 때문에 namespace에 어떤 mapper인지 설정
+  	내가 사용할 mapper의 경로를 namespace에 지정
+   -->
+<mapper namespace="kr.animal.mapper.AnimalMapper">
+ 
+   <insert id="memberInsert" parameterType="kr.animal.entity.Member">
+     insert into member(mem_id,mem_name,mem_phone,mem_email,mem_pw) values(#{mem_id},#{mem_name},#{mem_phone},#{mem_email},#{mem_pw})
+  </insert>
+    
+  <select id="memberLogin" parameterType="kr.animal.entity.Member"
+      resultType="kr.animal.entity.Member">
+      select * from member where mem_id=#{mem_id} and mem_pw = #{mem_pw}
+  </select>
+  
+</mapper>
