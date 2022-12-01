@@ -66,7 +66,7 @@
 							<p>Far far away, behind the word mountains, far from the
 								countries Vokalia and Consonantia, there live the blind texts.
 								Separated they live in Bookmarksgrove right.</p>
-							<a href="ad"
+							<a href="${cpath}/ad.do"
 								class="btn-custom d-flex align-items-center justify-content-center">
 								<span class="fa fa-chevron-right"></span><i class="sr-only">Read
 									more</i>
@@ -85,7 +85,7 @@
 							<p>Far far away, behind the word mountains, far from the
 								countries Vokalia and Consonantia, there live the blind texts.
 								Separated they live in Bookmarksgrove right.</p>
-							<a href="register"
+							<a href="${cpath}/register.do"
 								class="btn-custom d-flex align-items-center justify-content-center">
 								<span class="fa fa-chevron-right"></span><i class="sr-only">Read
 									more</i>
@@ -104,7 +104,7 @@
 							<p>Far far away, behind the word mountains, far from the
 								countries Vokalia and Consonantia, there live the blind texts.
 								Separated they live in Bookmarksgrove right.</p>
-							<a href="commu"
+							<a href="${cpath}/commu.do"
 								class="btn-custom d-flex align-items-center justify-content-center">
 								<span class="fa fa-chevron-right"></span><i class="sr-only">Read
 									more</i>
