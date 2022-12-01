@@ -1,6 +1,10 @@
+<%@page import="kr.animal.entity.Animal"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,25 +14,20 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+<link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
 	rel="stylesheet">
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/animate.css">
-
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
-
-
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
-
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
 </head>
 
 <body>
@@ -105,6 +104,30 @@
 						</ul>
 					</div>
 				</div>
+				
+				
+				
+			<div class="row d-flex">	
+			
+			<table class="table table-hover">
+    		<tr>
+    			<td>번호</td>
+    			<td>축종</td>
+    			<td>품종</td>
+    		</tr>
+    		<c:forEach items="${list}" var="vo">
+    			<tr>
+	    			<td>${vo.ani_num}</td>
+	    			<td>${vo.ani_livestock}</td>
+	    			<td>${vo.ani_kind}</td>
+    			</tr>
+    		</c:forEach>
+    		
+    	</table>
+			
+				
+			</div>
+				
 			</div>
 
 			<div class="tab-pane fade" id="dog" role="tabpanel"
@@ -294,6 +317,28 @@
 						</form>
 					</div>
 				</fieldset>
+				
+				
+			<div class="row d-flex">	
+			
+			<table class="table table-hover">
+    		<tr>
+    			<td>번호</td>
+    			<td>축종</td>
+    			<td>품종</td>
+    		</tr>
+    		<c:forEach items="${list}" var="vo">
+    			<tr>
+	    			<td>${vo.ani_num}</td>
+	    			<td>${vo.ani_livestock}</td>
+	    			<td>${vo.ani_kind}</td>
+    			</tr>
+    		</c:forEach>
+    		
+    	</table>
+			
+				
+			</div>
 			</div>
 
 			<div class="tab-pane fade" id="cat" role="tabpanel"
@@ -492,6 +537,26 @@
 			</div>
 			</fieldset>
 
+			<div class="row d-flex">	
+			
+			<table class="table table-hover">
+    		<tr>
+    			<td>번호</td>
+    			<td>축종</td>
+    			<td>품종</td>
+    		</tr>
+    		<c:forEach items="${list}" var="vo">
+    			<tr>
+	    			<td>${vo.ani_num}</td>
+	    			<td>${vo.ani_livestock}</td>
+	    			<td>${vo.ani_kind}</td>
+    			</tr>
+    		</c:forEach>
+    		
+    	</table>
+			
+				
+			</div>
 		</div>
 
 	</div>
@@ -502,159 +567,6 @@
 
 	<section class="ftco-section bg-light">
 		<div class="container">
-			<div class="row d-flex">
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_1.jpg');">
-						</a>
-						<div class="text p-4">
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_2.jpg');">
-						</a>
-						<div class="text p-4">
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_3.jpg');">
-						</a>
-						<div class="text p-4">
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_4.jpg');">
-						</a>
-						<div class="text p-4">
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_5.jpg');">
-						</a>
-						<div class="text p-4">
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex ftco-animate">
-					<div class="blog-entry align-self-stretch">
-						<a href="ad_content" class="block-20 rounded"
-							style="background-image: url('resources/images/image_6.jpg');">
-						</a>
-						<div class="text p-4">
-							<div class="meta mb-2">
-								<div>
-									<a href="#">April 07, 2020</a>
-								</div>
-								<div>
-									<a href="#">Admin</a>
-								</div>
-								<div>
-									<a href="#" class="meta-chat"><span class="fa fa-comment"></span>
-										3</a>
-								</div>
-							</div>
-							<h3 class="heading">
-								<a href="#">Even the all-powerful Pointing has no control
-									about the blind texts</a>
-							</h3>
-						</div>
-					</div>
-				</div>
-			</div>
 			<div class="row mt-5">
 				<div class="col text-center">
 					<div class="block-27">

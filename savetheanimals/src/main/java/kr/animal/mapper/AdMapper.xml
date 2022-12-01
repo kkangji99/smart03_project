@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 여러가지 mapper들이 있을 수 있기 때문에 namespace에 어떤 mapper인지 설정
+  	내가 사용할 mapper의 경로를 namespace에 지정
+   -->
+<mapper namespace="kr.animal.mapper.AdMapper">
+ 
+  <select id="allaniselect" resultType="kr.animal.entity.Animal">
+      select * from animal
+  </select>
+  
+</mapper>
