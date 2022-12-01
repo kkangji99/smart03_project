@@ -32,7 +32,7 @@
 </head>
 
 <body>
-	<!-- 유실동물 공고 페이지 -->
+	<!-- 헤더 메뉴 -->
 	<nav
 		class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
 		id="ftco-navbar">
@@ -45,21 +45,37 @@
 				<span class="fa fa-bars"></span> Menu
 			</button>
 			<div class="collapse navbar-collapse" id="ftco-nav">
-				<ul class="navbar-nav ml-auto">
+				<c:choose>
+					<c:when test="${empty mem_id}">
+						<ul class="navbar-nav ml-auto">
 
-					<li class="nav-item"><a href="ad" class="nav-link">공고 보기</a></li>
-					<li class="nav-item"><a href="register" class="nav-link">등록 하기
-							</a></li>
-					<li class="nav-item"><a href="about" class="nav-link">반려
-							생활 길잡이</a></li>
-					<li class="nav-item"><a href="commu" class="nav-link">커뮤니티</a></li>
-					<li class="nav-item"><a href="login" class="nav-link">로그인</a></li>
-					<li class="nav-item"><a href="join" class="nav-link">회원가입</a></li>
-				</ul>
+							<li class="nav-item"><a href="ad" class="nav-link">공고 보기</a></li>
+							<li class="nav-item"><a href="register" class="nav-link">등록
+									하기 </a></li>
+							<li class="nav-item"><a href="about" class="nav-link">반려
+									생활 길잡이</a></li>
+							<li class="nav-item"><a href="commu" class="nav-link">커뮤니티</a></li>
+							<li class="nav-item"><a href="login" class="nav-link">로그인</a></li>
+							<li class="nav-item"><a href="join" class="nav-link">회원가입</a></li>
+						</ul>
+					</c:when>
+					<c:otherwise>
+						<ul class="navbar-nav ml-auto">
+
+							<li class="nav-item"><a href="ad" class="nav-link">공고 보기</a></li>
+							<li class="nav-item"><a href="register" class="nav-link">등록
+									하기 </a></li>
+							<li class="nav-item"><a href="about" class="nav-link">반려
+									생활 길잡이</a></li>
+							<li class="nav-item"><a href="commu" class="nav-link">커뮤니티</a></li>
+							<li class="nav-item"><a href="mypage" class="nav-link">마이페이지</a></li>
+						</ul>
+					</c:otherwise>
+				</c:choose>
 			</div>
 
 		</div>
 
 	</nav>
-	</body>
-	</html>
+</body>
+</html>

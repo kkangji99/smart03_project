@@ -80,10 +80,7 @@
 								<div class="tab-content">
 									<div id="home" class="container tab-pane active">
 										<br>
-										<h3 style="font-weight: bolder;">
-											<span class="flaticon-pawprint-1 mr-2"></span> 고려사항 <span
-												class="flaticon-pawprint-1 mr-2"></span>
-										</h3>
+										
 										<div class="card-deck">
 											<div class="card">
 												<img class="card-img-top" src="resources/images/dcimg.png"
@@ -132,10 +129,7 @@
 
 									<div id="menu1" class="container tab-pane fade">
 										<br>
-										<h3 style="font-weight: bolder;">
-											<span class="flaticon-pawprint-1 mr-2"></span> 사료 급여 방법 <span
-												class="flaticon-pawprint-1 mr-2"></span>
-										</h3>
+										
 										<h5>개</h5>
 										<div class="adand_txt">
 											<p>사료는 갑자기 바꾸지 말고 데려오기 전부터 먹던 사료를 당분간(10일 이상) 주도록 합니다.
@@ -154,10 +148,7 @@
 
 									<div id="menu2" class="container tab-pane fade">
 										<br>
-										<h3 style="font-weight: bolder;">
-											<span class="flaticon-pawprint-1 mr-2"></span> 예방접종과 건강검진 <span
-												class="flaticon-pawprint-1 mr-2"></span>
-										</h3>
+										
 										<div class="adand_txt">
 											<p>
 												개는 예방접종을 통해 치명적인 질병을 예방할 수 있습니다. 코로나 장염, 파보 장염을 비롯해 홍역, 간염,
@@ -334,10 +325,7 @@
 									</div>
 									<div id="menu3" class="container tab-pane fade">
 										<br>
-										<h3 style="font-weight: bolder;">
-											<span class="flaticon-pawprint-1 mr-2"></span> 외출시 필수사항 <span
-												class="flaticon-pawprint-1 mr-2"></span>
-										</h3>
+										
 										<h5>인식표</h5>
 										<div class="adand_txt">
 											<p>
@@ -375,30 +363,7 @@
 			</div>
 	</section>
 	<section>
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-5 mb-2">
-						<h2 class="footer-heading">Save the Animals</h2>
-						<p>A country's greatness and morality can be judged by its
-							attitude toward animals.</p>
-
-					</div>
-
-					<div class="col-md-6 col-lg-7 pl-lg-3 mb-2">
-						<h2 class="footer-heading">Quick Links</h2>
-						<ul class="list-unstyled">
-							<li><a href="index" class="py-2 d-block">Home</a></li>
-							<li><a href="ad" class="py-2 d-block">유실동물 공고</a></li>
-							<li><a href="register" class="py-2 d-block">유실동물 등록</a></li>
-							<li><a href="commu" class="py-2 d-block">커뮤니티</a></li>
-							<li><a href="about" class="py-2 d-block">반려 생활 길잡이</a></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-		</footer>
+	<%@includefile="footer.jsp"%>
 	</section>
 
 	<!-- loader -->

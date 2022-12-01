@@ -220,30 +220,7 @@
 	</section>
 
 	<section>
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-5 mb-2">
-						<h2 class="footer-heading">Save the Animals</h2>
-						<p>A country's greatness and morality can be judged by its
-							attitude toward animals.</p>
-
-					</div>
-
-					<div class="col-md-6 col-lg-7 pl-lg-3 mb-2">
-						<h2 class="footer-heading">Quick Links</h2>
-						<ul class="list-unstyled">
-							<li><a href="index" class="py-2 d-block">Home</a></li>
-							<li><a href="ad" class="py-2 d-block">유실동물 공고</a></li>
-							<li><a href="register" class="py-2 d-block">유실동물 등록</a></li>
-							<li><a href="commu" class="py-2 d-block">커뮤니티</a></li>
-							<li><a href="about" class="py-2 d-block">반려 생활 길잡이</a></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-		</footer>
+<%@includefile="footer.jsp"%>
 	</section>
 
 	<!-- loader -->
