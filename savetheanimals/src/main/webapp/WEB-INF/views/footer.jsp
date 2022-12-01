@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,11 +47,11 @@
 					<div class="col-md-6 col-lg-7 pl-lg-3 mb-2">
 						<h2 class="footer-heading">Quick Links</h2>
 						<ul class="list-unstyled">
-							<li><a href="index" class="py-2 d-block">Home</a></li>
-							<li><a href="ad" class="py-2 d-block">공고 보기</a></li>
-							<li><a href="register" class="py-2 d-block">등록 하기</a></li>
-							<li><a href="about" class="py-2 d-block">반려 생활 길잡이</a></li>
-							<li><a href="commu" class="py-2 d-block">커뮤니티</a></li>
+							<li><a href="${cpath}/index.do" class="py-2 d-block">Home</a></li>
+							<li><a href="${cpath}/ad.do" class="py-2 d-block">공고 보기</a></li>
+							<li><a href="${cpath}/register.do" class="py-2 d-block">등록 하기</a></li>
+							<li><a href="${cpath}/about.do" class="py-2 d-block">반려 생활 길잡이</a></li>
+							<li><a href="${cpath}/commu.do" class="py-2 d-block">커뮤니티</a></li>
 						</ul>
 					</div>
 

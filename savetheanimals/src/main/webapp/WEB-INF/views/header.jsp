@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,26 +50,26 @@
 					<c:when test="${empty mem_id}">
 						<ul class="navbar-nav ml-auto">
 
-							<li class="nav-item"><a href="ad" class="nav-link">공고 보기</a></li>
-							<li class="nav-item"><a href="register" class="nav-link">등록
+							<li class="nav-item"><a href="${cpath}/ad.do" class="nav-link">공고 보기</a></li>
+							<li class="nav-item"><a href="${cpath}/register.do" class="nav-link">등록
 									하기 </a></li>
-							<li class="nav-item"><a href="about" class="nav-link">반려
+							<li class="nav-item"><a href="${cpath}/about.do" class="nav-link">반려
 									생활 길잡이</a></li>
-							<li class="nav-item"><a href="commu" class="nav-link">커뮤니티</a></li>
-							<li class="nav-item"><a href="login" class="nav-link">로그인</a></li>
-							<li class="nav-item"><a href="join" class="nav-link">회원가입</a></li>
+							<li class="nav-item"><a href="${cpath}/commu.do" class="nav-link">커뮤니티</a></li>
+							<li class="nav-item"><a href="${cpath}/login.do" class="nav-link">로그인</a></li>
+							<li class="nav-item"><a href="${cpath}/join.do" class="nav-link">회원가입</a></li>
 						</ul>
 					</c:when>
 					<c:otherwise>
 						<ul class="navbar-nav ml-auto">
 
-							<li class="nav-item"><a href="ad" class="nav-link">공고 보기</a></li>
-							<li class="nav-item"><a href="register" class="nav-link">등록
+							<li class="nav-item"><a href="${cpath}/ad.do" class="nav-link">공고 보기</a></li>
+							<li class="nav-item"><a href="${cpath}/register.do" class="nav-link">등록
 									하기 </a></li>
-							<li class="nav-item"><a href="about" class="nav-link">반려
+							<li class="nav-item"><a href="${cpath}/about.do" class="nav-link">반려
 									생활 길잡이</a></li>
-							<li class="nav-item"><a href="commu" class="nav-link">커뮤니티</a></li>
-							<li class="nav-item"><a href="mypage" class="nav-link">마이페이지</a></li>
+							<li class="nav-item"><a href="${cpath}/commu.do" class="nav-link">커뮤니티</a></li>
+							<li class="nav-item"><a href="${cpath}/mypage.do" class="nav-link">마이페이지</a></li>
 						</ul>
 					</c:otherwise>
 				</c:choose>
