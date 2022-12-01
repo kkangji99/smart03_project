@@ -81,23 +81,34 @@ public class HomeController {
 
 	 // 로그인
 	@GetMapping("/login.do")
-	public String login(Member mvo , HttpServletRequest request) {      
-		Member loginMember = mapper.memberLogin(mvo);
-		
-		if(loginMember != null) {
-			// 1. 세션 객체 생성
-			HttpSession session = request.getSession() ;
-			
-			//2. 세션에 값 저장(회원 정보 데이터를 객체 바인딩)
-			session.setAttribute("loginMember", loginMember);
-		}
+	public String login() {    
+//		System.out.println("로그인 페이지");
 		
 	      return "login";
 	}
 	
+	@PostMapping("/login_submit.do")
+	public String login_submit(Member member,HttpServletRequest request) {    
+//		System.out.print("로그인 시도");
+		
+		Member loginMember = mapper.memberLogin(member);
+		if(loginMember != null) {
+			
+			HttpSession session = request.getSession() ;
+			session.setAttribute("loginMember", loginMember);
+			
+//			System.out.print("로그인성공" +loginMember.getMem_id());
+			
+		}
+
+		return "index";
+	}
+	
+	
 	 // 로그아웃
 	@PostMapping("/logout.do")
-	public String logout() {      
+	public String logout(HttpSession session) {      
+		session.removeAttribute("loginMember");
 
 	      return "index";
 	}
@@ -108,6 +119,17 @@ public class HomeController {
 
 	      return "join";
 	   }
+	@PostMapping("/join_submit.do")
+	public String join_submit(Member member,HttpServletRequest request) {    
+//		System.out.println("회원가입 시도");
+		
+		mapper.memberJoin(member);
+//		System.out.println("회원 체크");
+//		System.out.println("회원가입 정보"+joinMember.getMem_id());
+
+		return "index";
+	}
+	
 	
 	// 마이페이지
 	@GetMapping("/mypage.do")

@@ -49,7 +49,7 @@
             <div class="row no-gutters">
               <div class="col-md-12">
                 <div class="contact-wrap w-100 p-md-5 p-4">
-                  <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                  <form method="POST" id="contactForm" name="contactForm" action="${cpath}/join_submit.do" class="contactForm">
                     <div class="row">
                       <div class="col-md-12">
                         <div class="form-group">
@@ -63,17 +63,17 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <input type="email" class="form-control text-center" name="email" id="email" placeholder="이메일">
+                          <input type="email" class="form-control text-center" name="mem_email" id="mem_email" placeholder="이메일">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <input type="text" class="form-control text-center" name="subject" id="subject" placeholder="전화번호">
+                          <input type="text" class="form-control text-center" name="mem_phone" id="mem_phone" placeholder="전화번호">
                         </div>
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <input type="password" class="form-control text-center" name="password" id="password" placeholder="비밀번호">
+                          <input type="password" class="form-control text-center" name="mem_pw" id="mem_pw" placeholder="비밀번호">
                         </div>
                       </div>
                       <div class="col-md-12">

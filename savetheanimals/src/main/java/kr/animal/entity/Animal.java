@@ -170,55 +170,6 @@ public class Animal {
 		this.ani_cate_code = ani_cate_code;
 	}
 	
-	
-	
-	// 3. 생성자 메소드
-	
-	// 전체 생성자
-	public Animal(int ani_num, String ani_livestock, String ani_kind, String ani_color, String ani_gender,
-			String ani_age, String ani_neutered, String ani_uniqueness, String ani_occur_address, String ani_datetime,
-			String ani_center_name, String ani_protect_address, String ani_phone, int ani_mem_num,
-			String ani_cate_code) {
-		super();
-		this.ani_num = ani_num;
-		this.ani_livestock = ani_livestock;
-		this.ani_kind = ani_kind;
-		this.ani_color = ani_color;
-		this.ani_gender = ani_gender;
-		this.ani_age = ani_age;
-		this.ani_neutered = ani_neutered;
-		this.ani_uniqueness = ani_uniqueness;
-		this.ani_occur_address = ani_occur_address;
-		this.ani_datetime = ani_datetime;
-		this.ani_center_name = ani_center_name;
-		this.ani_protect_address = ani_protect_address;
-		this.ani_phone = ani_phone;
-		this.ani_mem_num = ani_mem_num;
-		this.ani_cate_code = ani_cate_code;
-	}
-
-	
-	//공고 등록/조회용 생성자
-	public Animal(String ani_livestock, String ani_kind, String ani_color, String ani_gender, String ani_age,
-			String ani_neutered, String ani_uniqueness, String ani_occur_address, String ani_datetime,
-			String ani_center_name, String ani_protect_address, String ani_phone, int ani_mem_num,
-			String ani_cate_code) {
-		super();
-		this.ani_livestock = ani_livestock;
-		this.ani_kind = ani_kind;
-		this.ani_color = ani_color;
-		this.ani_gender = ani_gender;
-		this.ani_age = ani_age;
-		this.ani_neutered = ani_neutered;
-		this.ani_uniqueness = ani_uniqueness;
-		this.ani_occur_address = ani_occur_address;
-		this.ani_datetime = ani_datetime;
-		this.ani_center_name = ani_center_name;
-		this.ani_protect_address = ani_protect_address;
-		this.ani_phone = ani_phone;
-		this.ani_mem_num = ani_mem_num;
-		this.ani_cate_code = ani_cate_code;
-	}
 
 	//4. ToString
 	@Override
@@ -230,8 +181,5 @@ public class Animal {
 				+ ani_protect_address + ", ani_phone=" + ani_phone + ", ani_mem_num=" + ani_mem_num + ", ani_cate_code="
 				+ ani_cate_code + "]";
 	}
-	
-	
-	
 	
 }

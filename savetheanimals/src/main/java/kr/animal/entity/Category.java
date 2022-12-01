@@ -50,18 +50,6 @@ public class Category {
 		this.cate_parents = cate_parents;
 	}
 
-	
-	
-	// 3. 생성자 메소드
-	
-	// 전체 생성자
-	public Category(String cate_code, int cate_tier, String cate_name, String cate_parents) {
-		super();
-		this.cate_code = cate_code;
-		this.cate_tier = cate_tier;
-		this.cate_name = cate_name;
-		this.cate_parents = cate_parents;
-	}
 
 	//4. ToString
 	@Override

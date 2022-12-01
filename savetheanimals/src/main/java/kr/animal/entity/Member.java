@@ -11,88 +11,56 @@ public class Member {
 	private String mem_pw;
 	
 	// 2. 멤버변수(=프로퍼티(property))
-	public int getMemNum() {
+	public int getMem_num() {
 		return mem_num;
 	}
 
-	public void setMemNum(int memNum) {
-		this.mem_num = memNum;
+	public void setMem_num(int mem_num) {
+		this.mem_num = mem_num;
 	}
 
-	public String getMemId() {
+	public String getMem_id() {
 		return mem_id;
 	}
 
-	public void setMemId(String memId) {
-		this.mem_id = memId;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
 	}
 
-	public String getMemName() {
+	public String getMem_name() {
 		return mem_name;
 	}
 
-	public void setMemName(String memName) {
-		this.mem_name = memName;
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
 	}
 
-	public String getMemPhone() {
+	public String getMem_phone() {
 		return mem_phone;
 	}
 
-	public void setMemPhone(String memPhone) {
-		this.mem_phone = memPhone;
+	public void setMem_phone(String mem_phone) {
+		this.mem_phone = mem_phone;
 	}
 
-	public String getMemEmail() {
+	public String getMem_email() {
 		return mem_email;
 	}
 
-	public void setMemEmail(String memEmail) {
-		this.mem_email = memEmail;
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
 	}
 
-	public String getMemPw() {
+	public String getMem_pw() {
 		return mem_pw;
 	}
 
-	public void setMemPw(String memPw) {
-		this.mem_pw = memPw;
-	}
-	
-	
-	// 3. 생성자 메소드
-	
-	// 전체 생성자
-	public Member(int mem_num, String mem_id, String mem_name, String mem_phone, String mem_email, String mem_pw) {
-		super();
-		this.mem_num = mem_num;
-		this.mem_id = mem_id;
-		this.mem_name = mem_name;
-		this.mem_phone = mem_phone;
-		this.mem_email = mem_email;
-		this.mem_pw = mem_pw;
-	}
-
-	// 회원가입용 생성자
-	public Member(String mem_id, String mem_name, String mem_phone, String mem_email, String mem_pw) {
-		super();
-		this.mem_id = mem_id;
-		this.mem_name = mem_name;
-		this.mem_phone = mem_phone;
-		this.mem_email = mem_email;
-		this.mem_pw = mem_pw;
-	}
-
-
-	// 로그인용 생성자
-	public Member(String mem_id, String mem_pw) {
-		super();
-		this.mem_id = mem_id;
+	public void setMem_pw(String mem_pw) {
 		this.mem_pw = mem_pw;
 	}
 	
-	
-	//4. ToString
+
+	//3. ToString
 	@Override
 	public String toString() {
 		return "Member [mem_num=" + mem_num + ", mem_id=" + mem_id + ", mem_name=" + mem_name + ", mem_phone="

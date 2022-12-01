@@ -50,28 +50,6 @@ public class Animal_Img {
 	}
 
 
-	
-	// 3. 생성자 메소드
-	
-	// 전체 생성자
-	public Animal_Img(int aimg_num, String aimg_path, String aimg_name, int aimg_ani_num) {
-		super();
-		this.aimg_num = aimg_num;
-		this.aimg_path = aimg_path;
-		this.aimg_name = aimg_name;
-		this.aimg_ani_num = aimg_ani_num;
-	}
-
-	
-	//이미지 등록/조회용 생성자
-	public Animal_Img(String aimg_path, String aimg_name, int aimg_ani_num) {
-		super();
-		this.aimg_path = aimg_path;
-		this.aimg_name = aimg_name;
-		this.aimg_ani_num = aimg_ani_num;
-	}
-
-
 	//4. ToString
 	@Override
 	public String toString() {

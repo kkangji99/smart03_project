@@ -48,8 +48,10 @@ public interface AnimalMapper {
 	//DB에 있는 조회수를 가져와서 갱신시켜줘야 되니까
 	// 게시글 내용 불러오는 mapper 메소드 일 시켜서 반환*/
 
-
-	public Member memberLogin(Member mvo);
-
+	// 로그인
+	public Member memberLogin(Member member);
+	
+	//회원가입
+	public void memberJoin(Member member);
 	
 }

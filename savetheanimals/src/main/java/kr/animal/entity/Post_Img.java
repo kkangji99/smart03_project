@@ -35,28 +35,6 @@ public class Post_Img {
 		this.pimg_post_num = pimg_post_num;
 	}
 
-	
-	
-	// 3. 생성자 메소드
-	
-	// 전체 생성자
-	public Post_Img(int pimg_num, String pimg_path, String pimg_name, int pimg_post_num) {
-		super();
-		this.pimg_num = pimg_num;
-		this.pimg_path = pimg_path;
-		this.pimg_name = pimg_name;
-		this.pimg_post_num = pimg_post_num;
-	}
-
-
-	
-	//이미지 등록/조회용 생성자
-	public Post_Img(String pimg_path, String pimg_name, int pimg_post_num) {
-		super();
-		this.pimg_path = pimg_path;
-		this.pimg_name = pimg_name;
-		this.pimg_post_num = pimg_post_num;
-	}
 
 
 	//4. ToString

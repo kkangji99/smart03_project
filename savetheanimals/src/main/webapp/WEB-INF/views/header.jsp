@@ -47,7 +47,7 @@
 			</button>
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<c:choose>
-					<c:when test="${empty mem_id}">
+					<c:when test="${empty loginMember}">
 						<ul class="navbar-nav ml-auto">
 
 							<li class="nav-item"><a href="${cpath}/ad.do" class="nav-link">공고 보기</a></li>

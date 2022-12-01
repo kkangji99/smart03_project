@@ -42,29 +42,6 @@ public class Post {
 		this.post_cate_code = post_cate_code;
 	}
 
-
-	
-	// 3. 생성자 메소드
-	
-	// 전체 생성자
-	public Post(int post_num, String post_title, String post_contents, int post_mem_num, String post_cate_code) {
-		super();
-		this.post_num = post_num;
-		this.post_title = post_title;
-		this.post_contents = post_contents;
-		this.post_mem_num = post_mem_num;
-		this.post_cate_code = post_cate_code;
-	}
-
-	
-	//게시글 등록/조회용 생성자
-	public Post(String post_title, String post_contents, int post_mem_num, String post_cate_code) {
-		super();
-		this.post_title = post_title;
-		this.post_contents = post_contents;
-		this.post_mem_num = post_mem_num;
-		this.post_cate_code = post_cate_code;
-	}
 	
 	//4. ToString
 	@Override

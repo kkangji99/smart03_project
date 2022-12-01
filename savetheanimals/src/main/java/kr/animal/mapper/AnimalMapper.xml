@@ -7,7 +7,7 @@
    -->
 <mapper namespace="kr.animal.mapper.AnimalMapper">
  
-   <insert id="memberInsert" parameterType="kr.animal.entity.Member">
+   <insert id="memberJoin" parameterType="kr.animal.entity.Member">
      insert into member(mem_id,mem_name,mem_phone,mem_email,mem_pw) values(#{mem_id},#{mem_name},#{mem_phone},#{mem_email},#{mem_pw})
   </insert>
     

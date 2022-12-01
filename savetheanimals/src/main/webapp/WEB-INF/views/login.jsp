@@ -65,7 +65,7 @@
             <div class="row no-gutters">
               <div class="col-md-7" style="margin:auto;">
                 <div class="contact-wrap w-100 p-md-5 p-4">
-                  <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                  <form method="post" id="contactForm" name="contactForm" action="${cpath}/login_submit.do" class="contactForm">
                     <div class="row">
                       <div class="col-md-12 text-center">
                         <div class="form-group">
@@ -74,7 +74,7 @@
                       </div>
                       <div class="col-md-12 text-center">
                         <div class="form-group">
-                          <input type="email" class="form-control text-center" name="mem_pw" id="mem_pw" placeholder="비밀번호">
+                          <input type="password" class="form-control text-center" name="mem_pw" id="mem_pw" placeholder="비밀번호">
                         </div>
                       </div>
                       <ul>
