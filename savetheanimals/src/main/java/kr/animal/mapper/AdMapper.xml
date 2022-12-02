@@ -8,7 +8,7 @@
 <mapper namespace="kr.animal.mapper.AdMapper">
  
   <select id="allaniselect" resultType="kr.animal.entity.Animal">
-      select * from animal
+      select * from animal where ani_num between 300 and 310
   </select>
-  
+ 
 </mapper>

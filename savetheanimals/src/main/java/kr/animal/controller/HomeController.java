@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sun.org.apache.regexp.internal.recompile;
 
 import kr.animal.entity.Animal;
+import kr.animal.entity.Animal_Img;
 import kr.animal.entity.Member;
 import kr.animal.mapper.AdMapper;
 import kr.animal.mapper.AnimalMapper;
+import kr.animal.mapper.Animal_imgMapper;
 
 @Controller
 public class HomeController {
@@ -32,6 +34,8 @@ public class HomeController {
 	private AnimalMapper mapper;
 	@Autowired
 	private AdMapper admapper;
+	@Autowired
+	private Animal_imgMapper imgmapper;
 
 	// 메인페이지
 	@GetMapping("/index.do")
@@ -44,7 +48,10 @@ public class HomeController {
 	public String ad(Model model) {
 
 		List<Animal> list = admapper.allaniselect();
+		List<Animal_Img> list_img = imgmapper.aniimgselect();
+		
 		model.addAttribute("list", list);
+		model.addAttribute("list_img", list_img);
 		return "ad";
 	}
 

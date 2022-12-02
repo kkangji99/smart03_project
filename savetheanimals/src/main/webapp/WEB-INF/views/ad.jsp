@@ -70,7 +70,7 @@
 			<li class="nav-item col-md-4" style="font-weight: bolder; font-size: 1.4em;">
 				<a class="nav-link" id="cat-tab" data-toggle="tab" href="#cat" role="tab" aria-controls="cat" aria-selected="false">
 					<img src="resources/images/cat.gif" style="width: 2em; height: 2em;">
-						고양이
+					고양이
 				</a>
 			</li>
 		</ul>
@@ -95,21 +95,23 @@
 				</div>			
 				
 				<div class="row d-flex">	
-					<!-- 전체 데이터 불러오기 -->
-					<table class="table table-hover">
-			    		<tr>
-			    			<td>번호</td>
-			    			<td>축종</td>
-			    			<td>품종</td>
-			    		</tr>
-			    		<c:forEach items="${list}" var="vo">
-			    			<tr>
-				    			<td>${vo.ani_num}</td>
-				    			<td>${vo.ani_livestock}</td>
-				    			<td>${vo.ani_kind}</td>
-			    			</tr>
-			    		</c:forEach>
-		    		</table>
+					
+		    		<c:forEach items="${list}" var="vo" varStatus="status">
+			    		<div class="col-md-4 d-flex ftco-animate">
+							<div class="blog-entry align-self-stretch">
+								<a href="commu_content" class="block-20 rounded"
+									style="background-image: url('${list_img[status.index].aimg_path}');"> </a>
+								<div class="text p-4">
+									<div class="meta mb-2">
+										<div style="font-size: 15px;">${vo.ani_kind}</div>
+										<div>${vo.ani_datetime}</div>
+									</div>
+									<h3 class="heading">${vo.ani_occur_address}</h3>
+								</div>
+							</div>
+						</div>
+		    		</c:forEach>
+		    		
 		    		
 				</div>
 			</div>
@@ -290,21 +292,32 @@
 				
 				<div class="row d-flex">	
 					
-					<table class="table table-hover">
-		    		<tr>
-		    			<td>번호</td>
-		    			<td>축종</td>
-		    			<td>품종</td>
-		    		</tr>
-		    		<c:forEach items="${list}" var="vo">
-		    			<tr>
-			    			<td>${vo.ani_num}</td>
-			    			<td>${vo.ani_livestock}</td>
-			    			<td>${vo.ani_kind}</td>
-		    			</tr>
+		    		<c:forEach items="${list}" var="vo" varStatus="status">
+			    		<div class="col-md-4 d-flex ftco-animate">
+							<div class="blog-entry align-self-stretch">
+								<a href="commu_content" class="block-20 rounded"
+									style="background-image: url('${list_img[status.index].aimg_path}');"> </a>
+								<div class="text p-4">
+									<div class="meta mb-2">
+										<div>
+											<span>${vo.ani_livestock}</span>
+										</div>
+										<div>
+											<span>${vo.ani_kind}</span>
+										</div>
+										<div>
+											<span>${vo.ani_datetime}</span>
+										</div>
+									</div>
+									<h3 class="heading">
+										<span>${vo.ani_occur_address}</span>
+										<span>${vo.ani_uniqueness}</span>
+									</h3>
+								</div>
+							</div>
+						</div>
 		    		</c:forEach>
 		    		
-		    		</table>
 		    		
 				</div>
 			</div>
@@ -496,22 +509,6 @@
 				</fieldset>
 			</div>
 			
-			<div class="row d-flex">	
-				<table class="table table-hover">
-		   			<tr>
-		    			<td>번호</td>
-		    			<td>축종</td>
-		    			<td>품종</td>
-		    		</tr>
-		    		<c:forEach items="${list}" var="vo">
-		    		<tr>
-			    		<td>${vo.ani_num}</td>
-			    		<td>${vo.ani_livestock}</td>
-			    		<td>${vo.ani_kind}</td>
-		    		</tr>
-		    		</c:forEach>
-		    	</table>
-			</div>
 		</div>
 
 	</div>
