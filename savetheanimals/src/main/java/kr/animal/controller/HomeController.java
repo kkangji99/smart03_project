@@ -80,7 +80,6 @@ public class HomeController {
 		return "ad_content";
 	}
 	
-	
 	@GetMapping("/ad_info.do")
 	public String ad_info(Animal ani, Model model) {
 
@@ -90,10 +89,22 @@ public class HomeController {
 		return "ad_content";
 	}
 	 
-
 	// 커뮤니티 상세 페이지
 	@GetMapping("/commu_content.do")
 	public String commu_content() {
+
+		return "commu_content";
+	}
+	
+	@GetMapping("/commu_info.do")
+	public String commu_info(Post post, Model model) {
+		Post postinfo = commumapper.selectpost(post);
+		List<Comment> allcomm = commumapper.allcomselect(post);
+		List<Member> memid = commumapper.memselect(post);
+		
+		model.addAttribute("postinfo", postinfo);
+		model.addAttribute("allcomm", allcomm);
+		model.addAttribute("memid", memid);
 
 		return "commu_content";
 	}

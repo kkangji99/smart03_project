@@ -51,7 +51,7 @@
 				<c:forEach items="${post}" var="vo" varStatus="status">
 		    		<div class="col-md-4 d-flex justify-content-center ftco-animate">
 						<div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
-							<a href="${cpath}/commu_content.do" class="block-20 rounded"
+							<a href="${cpath}/commu_info.do?post_num=${vo.post_num}" class="block-20 rounded"
 								style="background-image: url('resources/images/image_6.jpg'); "> 
 							</a>
 							<div class="text p-4">

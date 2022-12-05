@@ -46,22 +46,39 @@
 		<div class="container">
 			<div class="row justify-text-center">
 				<div class="col-lg-12 ftco-animate">
-					<p>
-						<img id="ani_img" src="resources/images/image_1.jpg" alt="" class="img-fluid">
-					</p>
-					<h2 class="mb-3 text-center"></h2>
-					<div class="container">
-						<table class="table table-hover">
-							<tr>
-								<th>제목</th>
-							</tr>
-							<tr>
-								<th>내용</th>
-							</tr>
-
-						</table>
-					</div>
-
+					<!-- 커뮤니티 내용 -->
+					<c:choose>
+						<c:when test="${empty postinfo}">
+						<div class="container-table" style="margin-top:15px;">
+		                  <table class="table table-hover" >
+		                     <tr><th>데이터 불러오기 실패!!!!!!!!!!! </th></tr>
+		                  </table>
+		               	</div>
+						</c:when>
+						<c:otherwise>
+						<div class="conainer-images">
+		                  <div id="myImages" style="max-width: 80%; max-height: 60%; margin: 0 auto" data-ride="carousel">
+		                    <div style="text-align:center">
+		                       	<img src="resources/images/image_6.jpg" class="img-fluid" style="display:inline-block;width:400px; ">
+		          			</div>
+		                  </div>
+		                </div>
+						<div class="container-table" style="margin-top:15px;">
+		                  <table class="table table-hover table-bordered">
+		                     <tr>
+		                     	<th>제목</th>
+		                     	<td>${postinfo.post_title}</td>
+		                     </tr>
+		                     <tr>
+		                     	<th>내용</th>
+		                     	<td>${postinfo.post_contents}</td>
+		                     </tr>
+		                  </table>
+		               	</div>
+						</c:otherwise>
+					</c:choose>
+					
+					<!-- 댓글 -->
 					<div class="container">
 						<table class="table table-hover">
 							<thead>
@@ -69,15 +86,25 @@
 									<th>댓글번호</th>
 									<th>내용</th>
 									<th>날짜 /시간</th>
-									<th>게시글번호</th>
-									<th>회원번호</th>
-
+									<th>회원 아이디</th>
 								</tr>
 							</thead>
 							<tbody>
+							<% int i=1;
+							%>
+							<c:forEach items="${allcomm}" var="com" varStatus="status">
+					    		<tr>
+									<td><%=i %></td>
+									<td>${com.comm_contents}</td>
+									<td>${com.comm_datetime}</td>
+									<td>${memid[status.index].mem_id}</td>
+									<%i++; %>
+								</tr>
+				    		</c:forEach>
 							</tbody>
 						</table>
 					</div>
+					
 				</div>
 			</div>
 		</div>

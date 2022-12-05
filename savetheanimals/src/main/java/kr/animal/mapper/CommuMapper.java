@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import kr.animal.entity.Animal;
 import kr.animal.entity.Comment;
 import kr.animal.entity.Post;
+import kr.animal.entity.Member;
 import kr.animal.entity.Post_Img;
 
 // 우리가 알고있는 DAO와 같은 일을 하는 것을 알려주는 주석
@@ -18,5 +19,7 @@ import kr.animal.entity.Post_Img;
 public interface CommuMapper {
 	
 	public List<Post> allpostselect();
-	
+	public Post selectpost(Post post);
+	public List<Comment> allcomselect(Post post);
+	public List<Member> memselect(Post post);
 }

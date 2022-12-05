@@ -11,4 +11,19 @@
       select * from post
   </select>
   
+  <select id="selectpost" parameterType="kr.animal.entity.Post"
+      resultType="kr.animal.entity.Post">
+      select * from post where post_num=#{post_num}
+  </select>
+  
+  <select id="allcomselect" parameterType="kr.animal.entity.Post"
+      resultType="kr.animal.entity.Comment">
+      select * from comment join post on comment.comm_post_num = post.post_num where post_num=#{post_num}
+  </select>
+  
+  <select id="memselect" parameterType="kr.animal.entity.Post"
+      resultType="kr.animal.entity.Member">
+      select * from member, comment,post where post.post_num = comment.comm_post_num and member.mem_num = comment.comm_mem_num and post_num=#{post_num}
+  </select>
+  
 </mapper>

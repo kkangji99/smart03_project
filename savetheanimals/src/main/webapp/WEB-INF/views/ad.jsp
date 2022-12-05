@@ -338,13 +338,13 @@
 					</div>
 				</fieldset>
 				
-				<div class="row d-flex">	
-					
+				<div class="row d-flex">
 		    		<c:forEach items="${list_dog}" var="vo" varStatus="status">
 			    		<div class="col-md-4 d-flex justify-content-center ftco-animate">
 							<div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
-								<a href="commu_content" class="block-20 rounded"
-									style="background-image: url('${vo.aimg_path}');"> </a>
+								<a href="${cpath}/ad_info.do?ani_num=${vo.ani_num}" class="block-20 rounded"
+									style="background-image: url('${vo.aimg_path}'); "> 
+								</a>
 								<div class="text p-4">
 									<div class="meta mb-2">
 										<div style="font-size: 15px;">${vo.ani_kind}</div>
@@ -550,8 +550,9 @@
 		    		<c:forEach items="${list_cat}" var="vo" varStatus="status">
 			    		<div class="col-md-4 d-flex justify-content-center ftco-animate">
 							<div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
-								<a href="commu_content" class="block-20 rounded"
-									style="background-image: url('${vo.aimg_path}');"> </a>
+								<a href="${cpath}/ad_info.do?ani_num=${vo.ani_num}" class="block-20 rounded"
+									style="background-image: url('${vo.aimg_path}'); "> 
+								</a>
 								<div class="text p-4">
 									<div class="meta mb-2">
 										<div style="font-size: 15px;">${vo.ani_kind}</div>
