@@ -20,11 +20,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sun.org.apache.regexp.internal.recompile;
 
 import kr.animal.entity.Animal;
-import kr.animal.entity.Animal_Img;
 import kr.animal.entity.Member;
+import kr.animal.entity.Post;
+import kr.animal.entity.Comment;
 import kr.animal.mapper.AdMapper;
 import kr.animal.mapper.AnimalMapper;
-import kr.animal.mapper.Animal_imgMapper;
+import kr.animal.mapper.CommuMapper;
 
 @Controller
 public class HomeController {
@@ -35,7 +36,7 @@ public class HomeController {
 	@Autowired
 	private AdMapper admapper;
 	@Autowired
-	private Animal_imgMapper imgmapper;
+	private CommuMapper commumapper;
 
 	// 메인페이지
 	@GetMapping("/index.do")
@@ -48,10 +49,12 @@ public class HomeController {
 	public String ad(Model model) {
 
 		List<Animal> list = admapper.allaniselect();
-		List<Animal_Img> list_img = imgmapper.aniimgselect();
+		List<Animal> list_dog = admapper.doganiselect();
+		List<Animal> list_cat = admapper.cataniselect();
 		
 		model.addAttribute("list", list);
-		model.addAttribute("list_img", list_img);
+		model.addAttribute("list_dog", list_dog);
+		model.addAttribute("list_cat", list_cat);
 		return "ad";
 	}
 
@@ -64,10 +67,11 @@ public class HomeController {
 
 	// 커뮤니티 페이지
 	@GetMapping("/commu.do")
-	public String commu() {
-
+	public String commu(Model model) {
+		List<Post> post = commumapper.allpostselect();
+		model.addAttribute("post", post);
 		return "commu";
-	}
+	}	
 
 	// 유실동물 공고 상세 페이지
 	@GetMapping("/ad_content.do")
@@ -75,6 +79,17 @@ public class HomeController {
 
 		return "ad_content";
 	}
+	
+	
+	@GetMapping("/ad_info.do")
+	public String ad_info(Animal ani, Model model) {
+
+		Animal AniInfo = admapper.selectani(ani);
+		model.addAttribute("AniInfo", AniInfo);
+
+		return "ad_content";
+	}
+	 
 
 	// 커뮤니티 상세 페이지
 	@GetMapping("/commu_content.do")
@@ -110,10 +125,13 @@ public class HomeController {
 
 //			System.out.print("로그인성공" +loginMember.getMem_id());
 
+		}else {
+			return "login";
 		}
 
 		return "index";
 	}
+
 
 	// 로그아웃
 	@PostMapping("/logout.do")

@@ -17,10 +17,14 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="resources/css/animate.css">
 
@@ -34,105 +38,124 @@
 
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<style type="text/css">
+section {
+	/* background-image: linear-gradient(to bottom, #ffffff, #f9fbfe, #f0f8fd, #e5f5f8, #ddf2f0,
+		#d4f0ea, #cdeee1, #c9ecd6, #bcebd0, #aeeaca, #9fe9c4, #8fe8bf); */
+}
+</style>
 </head>
 <body>
 	<!-- 마이페이지 페이지 -->
 	<%@includefile="header.jsp"%>
 	<!-- END nav -->
-  <section class="hero-wrap hero-wrap-2" style="background-image: url('resources/images/image_4.jpg');"
-    data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end">
-        <div class="col-md-9 ftco-animate pb-5">
-          <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home <i
-                  class="ion-ios-arrow-forward"></i></a></span> <span>My Page <i
-                class="ion-ios-arrow-forward"></i></span>
-          </p>
-          <h1 class="mb-0 bread">My Page</h1>
-        </div>
-      </div>
-    </div>
-  </section>
+	<section class="hero-wrap hero-wrap-2"
+		style="background-image: url('resources/images/image_4.jpg');"
+		data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-end">
+				<div class="col-md-9 ftco-animate pb-5">
+					<p class="breadcrumbs mb-2">
+						<span class="mr-2"><a href="index">Home <i
+								class="ion-ios-arrow-forward"></i></a></span> <span>My Page <i
+							class="ion-ios-arrow-forward"></i></span>
+					</p>
+					<h1 class="mb-0 bread">My Page</h1>
+				</div>
+			</div>
+		</div>
+	</section>
 
-  <section class="ftco-section bg-light">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 text-center mb-5">
-          <h2 class="heading-section">My Page</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-12">
-          <div class="wrapper">
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">My Page</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-8">
+					<div class="wrapper">
 
-            <div class="row">
-              <div class="col-md-12">
-                <div class="contact-wrap w-100 p-md-5 p-4">
-                  <div class="row col-md-12 justify-content-center">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="contact-wrap w-100 p-md-5 p-4">
+									<form method="POST" id="myPage" name="myPage" class="myPage">
+										<div class="row">
+											<div class="col-md-12 pb-2">
+												<div class="form-group">
+													<input type="text" class="form-control text-center"
+														name="mem_name" id="mem_name" placeholder="아이디">
+												</div>
+											</div>
+											<div class="col-md-6 pb-2">
+												<div class="form-group">
+													<input type="text" class="form-control text-center"
+														name="mem_id" id="mem_id" placeholder="이름">
+												</div>
+											</div>
+											<div class="col-md-6 pb-2">
+												<div class="form-group">
+													<input type="email" class="form-control text-center"
+														name="email" id="email" placeholder="이메일">
+												</div>
+											</div>
+											<div class="col-md-6 pb-2">
+												<div class="form-group">
+													<input type="text" class="form-control text-center"
+														name="subject" id="subject" placeholder="전화번호">
+												</div>
+											</div>
+											<div class="col-md-6 pb-2">
+												<div class="form-group">
+													<input type="password" class="form-control text-center"
+														name="password" id="password" placeholder="비밀번호">
+												</div>
+											</div>
+											<div class="row col-md-12 p-md-2 justify-content-center">
+												<div class="form-group">
+													<input type="submit" value="확인" class="btn btn-primary">
+													<div class="submitting"></div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
 
-                    <div class="row col-md-12 p-md-4">
-                      <div class="col-md-3" style="text-align: center;">
-                        아이디 :
-                      </div>
-                      <div class="col-md-3">
-                        아이디 수정 안됨......
-                      </div>
-                      <!-- </div> -->
-                      <!-- <div class=" row col-md-6"> -->
-                      <div class="col-md-3" style="text-align: center;">
-                        이름 :
-                      </div>
-                      <div class="col-md-3">
-                        <input type="text" style="border-radius: 5px;">
-                      </div>
-                    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                    <div class="row col-md-12 p-md-4">
-                      <div class="col-md-3" style="text-align: center;">
-                        전화번호 :
-                      </div>
-                      <div class="col-md-3">
-                        <input type="text" style="border-radius: 5px;">
-                      </div>
-                      <!-- </div> -->
-                      <!-- <div class=" row col-md-6"> -->
-                      <div class="col-md-3" style="text-align: center;">
-                        이메일 :
-                      </div>
-                      <div class="col-md-3">
-                        <input type="text" style="border-radius: 5px;">
-                      </div>
-                    </div>
-
-                    <div class="row col-md-6">
-                      <div class="col-md-6" style="text-align: center;">
-                        비밀번호 :
-                      </div>
-                      <div class="col-md-6">
-                        <input type="text" style="border-radius: 5px;">
-                      </div>
-                    </div>
-
-                    <div class="row col-md-12 p-md-4 p-4 justify-content-center">
-                      <button type="button" id="edit" class="btn btn-primary">수정</button>
-                      <!-- <button type="button" id="edit" class="btn btn-primary ml-3">수정</button> -->
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-  </section>
- 
 	<section>
-<%@includefile="footer.jsp"%>
+		<footer class="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-5 mb-2">
+						<h2 class="footer-heading">Save the Animals</h2>
+						<p>A country's greatness and morality can be judged by its
+							attitude toward animals.</p>
+
+					</div>
+
+					<div class="col-md-6 col-lg-7 pl-lg-3 mb-2">
+						<h2 class="footer-heading">Quick Links</h2>
+						<ul class="list-unstyled">
+							<li><a href="index" class="py-2 d-block">Home</a></li>
+							<li><a href="ad" class="py-2 d-block">유실동물 공고</a></li>
+							<li><a href="register" class="py-2 d-block">유실동물 등록</a></li>
+							<li><a href="commu" class="py-2 d-block">커뮤니티</a></li>
+							<li><a href="about" class="py-2 d-block">반려 생활 길잡이</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</footer>
 	</section>
 
 	<!-- loader -->

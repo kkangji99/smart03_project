@@ -8,6 +8,7 @@ public class Post {
 	private String post_contents;
 	private int post_mem_num;
 	private String post_cate_code;
+	private String pimg_path;
 
 	
 	// 2. 멤버변수(=프로퍼티(property))
@@ -40,6 +41,12 @@ public class Post {
 	}
 	public void setPost_cate_code(String post_cate_code) {
 		this.post_cate_code = post_cate_code;
+	}
+	public String getPimg_path() {
+		return pimg_path;
+	}
+	public void setPimg_path(String pimg_path) {
+		this.pimg_path = pimg_path;
 	}
 
 	

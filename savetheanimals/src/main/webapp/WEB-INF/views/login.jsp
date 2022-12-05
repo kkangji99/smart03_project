@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,78 +30,115 @@
 
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<script>
+
+</script>
 </head>
 <body>
    <!-- 로그인  페이지 -->
-     <%@includefile="header.jsp"%>
-    
-   </nav>
+   <%@includefile="header.jsp"%>
+
+  
    <!-- END nav -->
-  <section class="hero-wrap hero-wrap-2" style="background-image: url('resources/images/bg_2.jpg');"
-    data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end">
-        <div class="col-md-9 ftco-animate pb-5">
-          <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index">Home <i
-                  class="ion-ios-arrow-forward"></i></a></span> <span>contact <i class="ion-ios-arrow-forward"></i></span>
-          </p>
-          <h1 class="mb-0 bread">로그인</h1>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ftco-section bg-light">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 text-center mb-5">
-          <h2 class="heading-section">로그인</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-md-12">
-          <div class="wrapper">
-
-            <div class="row no-gutters">
-              <div class="col-md-7" style="margin:auto;">
-                <div class="contact-wrap w-100 p-md-5 p-4">
-                  <form method="post" id="contactForm" name="contactForm" action="${cpath}/login_submit.do" class="contactForm">
-                    <div class="row">
-                      <div class="col-md-12 text-center">
-                        <div class="form-group">
-                          <input type="text" class="form-control text-center" name="mem_id" id="mem_id" placeholder="아이디">
-                        </div>
-                      </div>
-                      <div class="col-md-12 text-center">
-                        <div class="form-group">
-                          <input type="password" class="form-control text-center" name="mem_pw" id="mem_pw" placeholder="비밀번호">
-                        </div>
-                      </div>
-                      <ul>
-                        <li class="form-inline">
-                      
-                      </div>
-                      <div class="col-md-12 text-center">
-                        <div class="form-group">
-                          <input type="submit" value="확인" class="btn btn-primary">
-                          <div class="submitting"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            
-              </div>
+   <section class="hero-wrap hero-wrap-2"
+      style="background-image: url('resources/images/bg_2.jpg');"
+      data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+         <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+               <p class="breadcrumbs mb-2">
+                  <span class="mr-2"><a href="index">Home <i
+                        class="ion-ios-arrow-forward"></i></a></span> <span>contact <i
+                     class="ion-ios-arrow-forward"></i></span>
+               </p>
+               <h1 class="mb-0 bread">로그인</h1>
             </div>
-          </div>
-        </div>
+         </div>
       </div>
-    </div>
-  </section>
+   </section>
+
+   <section class="ftco-section bg-light">
+      <div class="container">
+         <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-5">
+               <h2 class="heading-section">로그인</h2>
+            </div>
+         </div>
+         <div class="row justify-content-center">
+            <div class="col-md-12">
+               <div class="wrapper">
+
+                  <div class="row no-gutters">
+                     <div class="col-md-7" style="margin: auto;">
+                        <div class="contact-wrap w-100 p-md-5 p-4">
+                           <form method="post" id="contactForm" name="contactForm"
+                              action="${cpath}/login_submit.do" class="contactForm">
+                              <div class="row">
+                                 <div class="col-md-12 text-center">
+                                    <div class="form-group">
+                                       <input type="text" class="form-control text-center"
+                                          name="mem_id" id="mem_id" placeholder="아이디">
+                                    </div>
+                                 </div>
+                                 <div class="col-md-12 text-center">
+                                    <div class="form-group">
+                                       <input type="password" class="form-control text-center"
+                                          name="mem_pw" id="mem_pw" placeholder="비밀번호">
+                                    </div>
+                                 </div>
+                              
+                              <div class="col-md-12 text-center">
+                                 <div class="form-group">
+                                    <button type="submit" class="btn btn-primary"
+                                       data-toggle="modal" data-target="#myModal">확인</button>
+                                          <div class="modal fade" id="myModal">
+                                             <div class="modal-dialog modal-dialog-centered" data-backdrop="static" data-keyboard="false" >
+                                    <c:choose>
+                                       <c:when test="${empty loginMember}">
+                                                <div class="modal-content">
+                                                   <div class="modal-header">
+                                                      <h5 class="modal-title">로그인 실패</h5>
+                                                      <button type="button" class="close"
+                                                         data-dismiss="modal">x</button>
+                                                   </div>
+                                                   <div class="modal-body">다시 시도해주세요.</div>
+                                                   <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary"
+                                                         data-dismiss="modal">닫기</button>
+                                                   </div>
+                                                </div>
+                                            
+                                       </c:when>
+                                       <c:when test="${not empty loginMember}">
+                                                <div class="modal-content">
+                                                   <div class="modal-header">
+                                                      <h5 class="modal-title">로그인이 되었습니다.</h5>
+                                                   </div>
+                                                   <div class="modal-body">환영합니다</div>
+                                                   <a href="${cpath}/index.do"></a>
+
+                                                </div>
+                                     
+                                       </c:when>
+                                    </c:choose>
+                                       </div>
+                                          </div>
+                                 </div>
+                              </div>
+                        </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+</div>
+      </div>
+   </section>
+   
    <section>
- <%@includefile="footer.jsp"%>
+      <%@includefile="footer.jsp"%>
    </section>
 
    <!-- loader -->
@@ -132,4 +170,4 @@
    <script src="resources/js/main.js"></script>
 
 </body>
-
+</html>

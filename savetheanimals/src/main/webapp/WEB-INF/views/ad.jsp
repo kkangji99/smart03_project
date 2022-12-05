@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="cpath" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,7 +28,10 @@
 <link rel="stylesheet" href="resources/css/style.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
+
+<link rel="stylesheet" href="resources/js/pagination.js">
 </head>
 
 <body>
@@ -97,21 +101,65 @@
 				<div class="row d-flex">	
 					
 		    		<c:forEach items="${list}" var="vo" varStatus="status">
-			    		<div class="col-md-4 d-flex ftco-animate">
-							<div class="blog-entry align-self-stretch">
-								<a href="commu_content" class="block-20 rounded"
-									style="background-image: url('${list_img[status.index].aimg_path}');"> </a>
+			    		<div class="col-md-4 d-flex justify-content-center ftco-animate">
+							<div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
+								<a href="${cpath}/ad_info.do?ani_num=${vo.ani_num}" class="block-20 rounded"
+									style="background-image: url('${vo.aimg_path}'); "> 
+								</a>
 								<div class="text p-4">
 									<div class="meta mb-2">
 										<div style="font-size: 15px;">${vo.ani_kind}</div>
-										<div>${vo.ani_datetime}</div>
+										<div style="font-size: 15px;">${(vo.ani_datetime).substring(0,10)}</div>
 									</div>
 									<h3 class="heading">${vo.ani_occur_address}</h3>
 								</div>
 							</div>
 						</div>
+
 		    		</c:forEach>
-		    		
+		    		<script type="text/javascript">
+						$(function paging(totalData, currentPage) {
+							const dataPerPage = 10
+							const pageCount = 5
+						
+							const totalPage = Math.ceil(totalData / dataPerPage)
+							const pageGroup = Math.ceil(currentPage / pageCount)
+							
+							let last = pageGroup * pageCount
+							
+							if (last > totalPage)
+								last = totalPage
+							let first = last - (pageCount - 1)
+						
+							const next = last
+							const prev = first - 1
+						
+							if (totalPage < 1) {
+								first = last
+							}
+							const pages = $("#pages")
+							pages.empty()
+							if (first > 5) {
+								pages.append("<li>" +"<a onclick=\"GetTarget(" + (prev) +
+										"):\" style='margin-left: 2px'›prev</a></li>")
+							}
+							for (let j = first; j <= last;j++){
+								if (currentPage ==(j)) {
+									pages.append("<li>"+"<a onclick=\"GetTarget("+(j)+
+											");\" style='margin-left: 2px'›"+(j)+"</a></li>")
+								}
+								else if (j > 0) {
+									pages.append("<li>"+"<a onclick=\"GetTarget("+(j)+
+											");\" style='margin-left: 2px'›"+(j)+"</a></li>")
+								}
+							}
+							
+							if(next>5 && next<totalPage) {
+								pages.append("<li>"+"<a onclick=\"GetTarget("+(next)+
+										");\" style='margin-left: 2px'›next</a></li>")
+							}
+						})	
+					</script>
 		    		
 				</div>
 			</div>
@@ -292,32 +340,21 @@
 				
 				<div class="row d-flex">	
 					
-		    		<c:forEach items="${list}" var="vo" varStatus="status">
-			    		<div class="col-md-4 d-flex ftco-animate">
-							<div class="blog-entry align-self-stretch">
+		    		<c:forEach items="${list_dog}" var="vo" varStatus="status">
+			    		<div class="col-md-4 d-flex justify-content-center ftco-animate">
+							<div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
 								<a href="commu_content" class="block-20 rounded"
-									style="background-image: url('${list_img[status.index].aimg_path}');"> </a>
+									style="background-image: url('${vo.aimg_path}');"> </a>
 								<div class="text p-4">
 									<div class="meta mb-2">
-										<div>
-											<span>${vo.ani_livestock}</span>
-										</div>
-										<div>
-											<span>${vo.ani_kind}</span>
-										</div>
-										<div>
-											<span>${vo.ani_datetime}</span>
-										</div>
+										<div style="font-size: 15px;">${vo.ani_kind}</div>
+										<div style="font-size: 15px;">${(vo.ani_datetime).substring(0,10)}</div>
 									</div>
-									<h3 class="heading">
-										<span>${vo.ani_occur_address}</span>
-										<span>${vo.ani_uniqueness}</span>
-									</h3>
+									<h3 class="heading">${vo.ani_occur_address}</h3>
 								</div>
 							</div>
 						</div>
 		    		</c:forEach>
-		    		
 		    		
 				</div>
 			</div>
@@ -507,47 +544,79 @@
 						</form>
 					</div>
 				</fieldset>
+				
+				<div class="row d-flex">	
+					
+		    		<c:forEach items="${list_cat}" var="vo" varStatus="status">
+			    		<div class="col-md-4 d-flex justify-content-center ftco-animate">
+							<div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
+								<a href="commu_content" class="block-20 rounded"
+									style="background-image: url('${vo.aimg_path}');"> </a>
+								<div class="text p-4">
+									<div class="meta mb-2">
+										<div style="font-size: 15px;">${vo.ani_kind}</div>
+										<div style="font-size: 15px;">${(vo.ani_datetime).substring(0,10)}</div>
+									</div>
+									<h3 class="heading">${vo.ani_occur_address}</h3>
+								</div>
+							</div>
+						</div>
+		    		</c:forEach>
+		    		
+				</div>
 			</div>
 			
 		</div>
 
 	</div>
 
+
 	<section class="ftco-section bg-light">
 		<div class="container">
-			<div class="row mt-5">
-				<div class="col text-center">
-					<div class="block-27">
-						<ul class="pagination justify-content-center" id="pagination">
-							<li><a href="#">&lt;</a></li>
-							<li class="active"><span>1</span></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&gt;</a></li>
-						</ul>
-					</div>
-					<script>
-						$('selector')
-							.pagination(
-									{
-										items : 20,
-										itemOnPage : 6,
-										currentPage : 1,
-										cssStyle : '',
-										prevText : '<span aria-hidden="true">&laquo;</span>',
-										nextText : '<span aria-hidden="true">&raquo;</span>',
-										onInit : function() {
-											// fire first page loading
-										},
-										onPageClick : function(page, evt) {
-											// some code
-										}
-									});
-					</script>
-				</div>
+			<div class="block-27">
+				<!-- <ul class="pagination justify-content-center" id="pages">
+				</ul> -->
+				<div id="datacontainer"></div>
+				<div id="pagination"></div>
 			</div>
+			 
+			<script>
+			$(function () {
+		        let container = $('#pagination');
+		        container.pagination({
+		            dataSource: [
+		                {name: "hello1"},
+		                {name: "hello2"},
+		                {name: "hello3"},
+		                {name: "hello4"},
+		                {name: "hello5"},
+		                {name: "hello6"},
+		                {name: "hello7"},
+		                {name: "hello8"},
+		                {name: "hello9"},
+		                {name: "hello10"},
+		                {name: "hello11"},
+		                {name: "hello12"},
+		                {name: "hello13"},
+		                {name: "hello14"},
+		                {name: "hello15"},
+		                {name: "hello16"},
+		                {name: "hello17"},
+		            ],
+		            callback: function (data, pagination) {
+		                var dataHtml = '<ul>';
+
+		                $.each(data, function (index, item) {
+		                    dataHtml += '<li>' + item.name + '</li>';
+		                });
+
+		                dataHtml += '</ul>';
+
+		                $("#datacontainer").html(dataHtml);
+		            }
+		        })
+		    })
+			</script>
 		</div>
 	</section>
 

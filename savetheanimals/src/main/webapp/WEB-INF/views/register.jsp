@@ -99,7 +99,7 @@ input[type=file]::file-selector-button {
 
 <body>
 	<!-- 유실동물 등록 페이지 -->
-<%@includefile="header.jsp"%>
+	<%@includefile="header.jsp"%>
 	<!-- END nav -->
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('resources/images/image_4.jpg');"
@@ -137,29 +137,43 @@ input[type=file]::file-selector-button {
 									<form method="POST" id="contactForm" class="needs-validation"
 										novalidate>
 										<div class="row col-md-12">
-											<div class="row col-md-6">
-												<div class="col-md-6">
-													<!-- <div class="w3-panel w3-pale-green w3-round-xxlarge w3-border"> -->
-													<div class="form-group">
-														<select class="custom-select" name="colors"
-															id="colors" required>
-															<option>털색</option>
-															<option value="white">흰색</option>
-															<option value="black">검정</option>
-															<option value="brown">갈색</option>
-															<option value="gray">회색</option>
-															<option value="mix">혼합</option>
-														</select>
-														<div class="valid-feedback"></div>
-														<div class="invalid-feedback">털색 선택</div>
+											<div class="col-md-6">
+												<div>
+													<div class="col-md-12">
+														<div class="form-group">
+															<select class="custom-select" name="colors" id="colors"
+																required>
+																<option>털색</option>
+																<option value="white">흰색</option>
+																<option value="black">검정</option>
+																<option value="brown">갈색</option>
+																<option value="gray">회색</option>
+																<option value="mix">혼합</option>
+															</select>
+															<div class="valid-feedback"></div>
+															<div class="invalid-feedback">털색 선택</div>
+														</div>
 													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<input type="text" class="form-control" name="number"
-															id="number" placeholder="연락처" required>
-														<div class="valid-feedback"></div>
-														<div class="invalid-feedback">연락처 입력</div>
+													<div class="col-md-12">
+														<div class="form-group">
+															<input type="text" class="form-control" name="number"
+																id="number" placeholder="연락처" required>
+															<div class="valid-feedback"></div>
+															<div class="invalid-feedback">연락처 입력</div>
+														</div>
+													</div>
+													<div class="col-md-12 mb-3">
+														<div class="form-group">
+															<div class="custom-checkbox"
+																style="display: flex; justify-content: space-evenly;">
+																목격<input type="checkbox" id="notice" name="situation"
+																	onclick="oneSituation(this)"> 보호<input
+																	type="checkbox" id="shelter" name="neutered"
+																	onclick="oneSituation(this)"> 유실<input
+																	type="checkbox" id="lost" name="neutered"
+																	onclick="oneSituation(this)">
+															</div>
+														</div>
 													</div>
 												</div>
 												<div class="col-md-12 mb-3">
@@ -181,77 +195,53 @@ input[type=file]::file-selector-button {
 													</div>
 												</div>
 											</div>
-											<div class="col-md-6 mt-.5 mx-auto text-center">
+											<div class="col-md-6 text-center">
 												<div class="form-group">
 													<div id="uploadimages border border-primary">
-														<div class="list"></div>
+														
+															
+														
 													</div>
 													<input type="file" id="files" placeholder="이미지 선택"
 														class="form-control filesImgs required" name="image_file"
 														accept=".jpg, .jpeg, .png" multiple
 														style="padding-left: 25%; font-size: 14px;" required>
-													<!-- <input type="button" id="clear" class="form-control p-0" value="clear"> -->
 													<div class="valid-feedback"></div>
 													<div class="invalid-feedback">이미지 선택</div>
 												</div>
-												<script>
-                                            $(function () {
-                                              var imagesPreview = function (input, placeToInsertImagePreview) {
-                                                if (input.files) {
-                                                  var filesAmount = input.files.length
-                                                  if (filesAmount > 11) {
-                                                    alert("ONLY 10 FILES")
-                                                    imagesPreview.stopPropagation()
-                                                    imagesPreview.preventDefault()
-                                                  }
-                                                  for (i = 0; i < 10; i++) {
-                                                    var reader = new FileReader()
-                                                    reader.onload = function (event) {
-                                                      $($.parseHTML('<img>'))
-                                                        .attr('src', event.target.result)
-                                                        .appendTo(placeToInsertImagePreview)
-                                                    }
-                                                    reader.readAsDataURL(input.files[i])
-                                                  }
-                                                }
-                                              }
-                  
-                                              $('#files').on('change', function () {
-                                                imagesPreview(this, 'div.list')
-                                              })
-                                            })
-                                          </script>
-											</div>
 
-											<div class="col-md-6 mb-3">
-												<div class="form-group">
-													<select class="custom-select" id="age">
-														<option selected>나이</option>
-														<option value="5">0~5</option>
-														<option value="10">5~10</option>
-														<option value="15">10~15</option>
-														<option value="20">15~20</option>
-													</select>
+											</div>
+											<div class="col-md-6">
+
+												<div class="col-md-12 mb-3">
+													<div class="form-group">
+														<select class="custom-select" id="age">
+															<option selected>나이</option>
+															<option value="5">0~5</option>
+															<option value="10">5~10</option>
+															<option value="15">10~15</option>
+															<option value="20">15~20</option>
+														</select>
+													</div>
 												</div>
 											</div>
 
 											<div class="col-md-6 mb-3">
 												<div class="form-group">
-													<input type="text" class="form-control" name="shelter"
-														id="shelter" placeholder="보호 장소">
+													<input type="text" class="form-control" name="shelterPlace"
+														id="shelterPlace" placeholder="보호 장소">
 												</div>
 											</div>
 											<div class="col-md-4 mb-3">
 												<div class="form-group">
 													<div class="custom-checkbox"
 														style="display: flex; justify-content: space-evenly;">
-														<!-- <label class="label" for="gender" style=""></label> -->
-														<b>성별</b><input type="checkbox" id="male" name="gender"
-															onclick="oneGender(this)">암컷 <input
+														<b>성별</b> 암컷<input type="checkbox" id="male" name="gender"
+															onclick="oneGender(this)"> 수컷<input
 															type="checkbox" id="female" name="gender"
-															onclick="oneGender(this)">수컷 <input
+															onclick="oneGender(this)"> 미상 <input
 															type="checkbox" id="unknown" name="gender"
-															onclick="oneGender(this)">미상
+															onclick="oneGender(this)">
 													</div>
 												</div>
 											</div>
@@ -259,12 +249,11 @@ input[type=file]::file-selector-button {
 												<div class="form-group">
 													<div class="custom-checkbox"
 														style="display: flex; justify-content: space-evenly;">
-														<b>축종</b><input type="checkbox" id="dog" name="type"
-															onclick="oneType(this)">강아지 <input
+														<b>축종</b> 강아지 <input type="checkbox" id="dog" name="type"
+															onclick="oneType(this)"> 고양이<input
 															type="checkbox" id="cat" name="type"
-															onclick="oneType(this)">고양이 <input
-															type="checkbox" id="unknown" name="type"
-															onclick="oneType(this)">미상
+															onclick="oneType(this)"> 미상<input type="checkbox"
+															id="unknown" name="type" onclick="oneType(this)">
 													</div>
 												</div>
 											</div>
@@ -272,16 +261,16 @@ input[type=file]::file-selector-button {
 												<div class="form-group">
 													<div class="custom-checkbox"
 														style="display: flex; justify-content: space-evenly;">
-														<!-- <label class="label" for="subject"></label> -->
-														<b>중성화여부</b><input type="checkbox" id="neutered"
-															name="neutered" onclick="oneNeutered(this)">여 <input
+														<b>중성화여부</b> 예<input type="checkbox" id="neutered"
+															name="neutered" onclick="oneNeutered(this)"> 아니요<input
 															type="checkbox" id="notneutered" name="neutered"
-															onclick="oneNeutered(this)">부 <input
+															onclick="oneNeutered(this)"> 미상<input
 															type="checkbox" id="unknown" name="neutered"
-															onclick="oneNeutered(this)">미상
+															onclick="oneNeutered(this)">
 													</div>
 												</div>
 											</div>
+
 											<div class="col-md-12 mb-3">
 												<div class="form-group">
 													<textarea name="message" class="form-control" id="message"
@@ -302,100 +291,7 @@ input[type=file]::file-selector-button {
 								</div>
 							</div>
 						</div>
-						<div class="modal fade" id="myModal">
-							<div class="modal-dialog modal-dialog-centered modal-xl">
-								<div class="modal-content">
-									<!-- Modal Header -->
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">×</button>
-									</div>
-									<!-- Modal body -->
-									<div class="modal-body">
-										<h2 class="modal-title" style="text-align: center;">등록
-											되었습니다!</h2>
-										<section class="ftco-section bg-light">
-											<div class="container">
-												<div class="row d-flex">
-													<div class="col-md-4 d-flex ftco-animate">
-														<div class="blog-entry align-self-stretch">
-															<a href="blog_content" class="block-20 rounded"
-																style="background-image: url('resources/images/image_1.jpg');">
-															</a>
-															<div class="text p-4">
-																<div class="meta mb-2">
-																	<div>
-																		<a href="#">April 07, 2020</a>
-																	</div>
-																	\
-																	<div>
-																		<a href="#" class="meta-chat"><span
-																			class="fa fa-comment"></span> 3</a>
-																	</div>
-																</div>
-																<h3 class="heading">
-																	<a href="#">Even the all-powerful Pointing has no
-																		control about the blind texts</a>
-																</h3>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-4 d-flex ftco-animate">
-														<div class="blog-entry align-self-stretch">
-															<a href="blog_content" class="block-20 rounded"
-																style="background-image: url('resources/images/image_2.jpg');">
-															</a>
-															<div class="text p-4">
-																<div class="meta mb-2">
-																	<div>
-																		<a href="#">April 07, 2020</a>
-																	</div>
-																	<div>
-																		<a href="#" class="meta-chat"><span
-																			class="fa fa-comment"></span> 3</a>
-																	</div>
-																</div>
-																<h3 class="heading">
-																	<a href="#">Even the all-powerful Pointing has no
-																		control about the blind texts</a>
-																</h3>
-															</div>
-														</div>
-													</div>
-													<div class="col-md-4 d-flex ftco-animate">
-														<div class="blog-entry align-self-stretch">
-															<a href="blog_content" class="block-20 rounded"
-																style="background-image: url('resources/images/image_3.jpg');">
-															</a>
-															<div class="text p-4">
-																<div class="meta mb-2">
-																	<div>
-																		<a href="#">April 07, 2020</a>
-																	</div>
-																	<div>
-																		<a href="#" class="meta-chat"><span
-																			class="fa fa-comment"></span> 3</a>
-																	</div>
-																</div>
-																<h3 class="heading">
-																	<a href="#">Even the all-powerful Pointing has no
-																		control about the blind texts</a>
-																</h3>
-															</div>
-														</div>
-													</div>
-
-												</div>
-
-											</div>
-										</section>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-secondary"
-											data-dismiss="modal">Close</button>
-									</div>
-								</div>
-							</div>
-						</div>
+						
 						<!-- </div> -->
 					</div>
 				</div>
@@ -403,7 +299,7 @@ input[type=file]::file-selector-button {
 		</div>
 		</div>
 	</section>
-<%@includefile="footer.jsp"%>
+	<%@includefile="footer.jsp"%>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">

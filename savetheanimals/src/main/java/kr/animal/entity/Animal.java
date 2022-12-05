@@ -18,6 +18,7 @@ public class Animal {
 	private String ani_phone;
 	private int ani_mem_num;
 	private String ani_cate_code;
+	private String aimg_path;
 
 	
 	// 2. 멤버변수(=프로퍼티(property))
@@ -168,6 +169,15 @@ public class Animal {
 
 	public void setAni_cate_code(String ani_cate_code) {
 		this.ani_cate_code = ani_cate_code;
+	}
+	
+	public String getAimg_path() {
+		return aimg_path;
+	}
+
+
+	public void setAimg_path(String aimg_path) {
+		this.aimg_path = aimg_path;
 	}
 	
 

@@ -5,10 +5,10 @@
   <!-- 여러가지 mapper들이 있을 수 있기 때문에 namespace에 어떤 mapper인지 설정
   	내가 사용할 mapper의 경로를 namespace에 지정
    -->
-<mapper namespace="kr.animal.mapper.Animal_imgMapper">
+<mapper namespace="kr.animal.mapper.CommuMapper">
  
-  <select id="aniimgselect" resultType="kr.animal.entity.Animal_Img">
-      select * from animal_img where aimg_num between 300 and 310
+  <select id="allpostselect" resultType="kr.animal.entity.Post">
+      select * from post
   </select>
- 
+  
 </mapper>

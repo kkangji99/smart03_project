@@ -7,7 +7,6 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.animal.entity.Animal;
-import kr.animal.entity.Member;
 
 // 우리가 알고있는 DAO와 같은 일을 하는 것을 알려주는 주석
 //@Repository
@@ -16,5 +15,9 @@ import kr.animal.entity.Member;
 public interface AdMapper {
 	
 	public List<Animal> allaniselect();
+	public List<Animal> doganiselect();
+	public List<Animal> cataniselect();
+	
+	public Animal selectani(Animal ani);
 
 }

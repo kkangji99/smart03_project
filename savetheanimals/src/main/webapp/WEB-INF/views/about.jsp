@@ -29,11 +29,17 @@
 
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<style type="text/css">
+.card-header {
+	background-image: linear-gradient(to bottom, #ecf8f0, #e8f9ee, #e4fbec, #e0fce9, #dcfde7,
+		#d7fde5, #d2fde2, #cdfde0, #c5fcdd, #befbda, #b6f9d7, #adf8d5);
+}
+</style>
 </head>
 
 <body>
 	<!-- 반려생활길잡이 페이지 -->
-	 <%@includefile="header.jsp"%>
+	<%@includefile="header.jsp"%>
 	<!-- END nav -->
 	<section class="hero-wrap hero-wrap-2"
 		style="background-image: url('resources/images/bg_2.jpg');"
@@ -42,11 +48,6 @@
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-end">
 				<div class="col-md-9 ftco-animate pb-5">
-					<p class="breadcrumbs mb-2">
-						<span class="mr-2"><a href="index">Home <i
-								class="ion-ios-arrow-forward"></i></a></span> <span>About us <i
-							class="ion-ios-arrow-forward"></i></span>
-					</p>
 					<h1 class="mb-0 bread">반려 생활 길잡이</h1>
 				</div>
 			</div>
@@ -80,7 +81,7 @@
 								<div class="tab-content">
 									<div id="home" class="container tab-pane active">
 										<br>
-										
+
 										<div class="card-deck">
 											<div class="card">
 												<img class="card-img-top" src="resources/images/dcimg.png"
@@ -129,7 +130,7 @@
 
 									<div id="menu1" class="container tab-pane fade">
 										<br>
-										
+
 										<h5>개</h5>
 										<div class="adand_txt">
 											<p>사료는 갑자기 바꾸지 말고 데려오기 전부터 먹던 사료를 당분간(10일 이상) 주도록 합니다.
@@ -153,156 +154,187 @@
 											<p>
 												개는 예방접종을 통해 치명적인 질병을 예방할 수 있습니다. 코로나 장염, 파보 장염을 비롯해 홍역, 간염,
 												인플루엔자, 켄넬코프 등 다양한 전염병이 있습니다. 이에 대한 예방책으로 생후 6 주령부터 종합예방접종과
-												코로나 예방접종을 시작으로 2~3주 간격으로 예방접종을 진행​해야 합니다.<br>
-												<br> 고양이의 첫 백신 접종 시기는 생후 8주가 가장 좋으며, 이후 3~5주 사이에 추가 접종을
-												해야 합니다. 고양이 독감, 고양이 범백혈구 감소증 바이러스(FPV), 고양이 백혈병 바이러스(FeLV),
-												칼리시 바이러스 등에 대한 예방접종을 해야 합니다.<br>
-												<br> <span class="color_01">[개 예방접종 표]</span>
+												코로나 예방접종을 시작으로 2~3주 간격으로 예방접종을 진행​해야 합니다.<br> <br>
+												고양이의 첫 백신 접종 시기는 생후 8주가 가장 좋으며, 이후 3~5주 사이에 추가 접종을 해야 합니다.
+												고양이 독감, 고양이 범백혈구 감소증 바이러스(FPV), 고양이 백혈병 바이러스(FeLV), 칼리시 바이러스
+												등에 대한 예방접종을 해야 합니다.<br> <br>
 											</p>
-											<table class="table table-hover" border="2;">
-												<thead style="text-align: center;">
-													<tr>
-														<th>종류</th>
-														<th>주기</th>
-														<th>병명</th>
-												</thead>
+											<div id="accordion">
+												<div class="card">
+													<div class="card-header " id="aboutdog">
+														<h3>
+															<button class="btn"
+																data-toggle="collapse" data-target="#dog"
+																aria-expanded="true" aria-controls="collapseOne">개
+																예방접종 표</button>
+														</h3>
+													</div>
+
+													<div id="dog" class="collapse" aria-labelledby=""
+														aboutdog"" data-parent="#accordion">
+														<div class="card-body">
+															<table class="table table-hover" border="2;">
+																<thead style="text-align: center;">
+																	<tr>
+																		<th>종류</th>
+																		<th>주기</th>
+																		<th>병명</th>
+																</thead>
 
 
-												<tbody>
-													<tr>
-														<th class="th_top" scope="row" rowspan="3">혼합예방주사<br>(DHPPL)
-														</th>
-														<td class="td_top cell_left"><strong>(기초접종)</strong>
-															생후 6~8주에 1차 접종</td>
-														<td class="td_top t_end cell_left" rowspan="3">-
-															Canine Distemper(홍역)<br> - Hepatitis(간염)<br> -
-															Parvovirus(파보장염)<br> - Parainfluenza(파라인플루엔자)<br>
-															- Leptospira(렙토스피라) 혼합주사임
-														</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(추가접종)</strong> 1차 접종 후
-															2~4주 간격으로 2~4회</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(보강접종)</strong> 추가접종 후
-															매년 1회 주사</td>
-													</tr>
-													<tr>
-														<th scope="row" rowspan="3">코로나바이러스성 장염<br>(Coronavirus)
-														</th>
-														<td class="cell_left"><strong>(기초접종)</strong> 생후
-															6~8주에 1차 접종</td>
-														<td class="t_end" rowspan="3">-</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(추가접종)</strong> 1차 접종 후
-															2~4주 간격으로 1~2회</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(보강접종)</strong> 추가접종 후
-															매년 1회 주사</td>
-													</tr>
-													<tr>
-														<th scope="row" rowspan="3">기관·기관지염<br>(Kennel
-															Cough)
-														</th>
-														<td class="cell_left"><strong>(기초접종)</strong> 생후
-															6~8주에 1차 접종</td>
-														<td class="t_end" rowspan="3">-</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(추가접종)</strong> 1차 접종 후
-															2~4주 간격으로 1~2회</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(보강접종)</strong> 추가접종 후
-															매년 1회 주사</td>
-													</tr>
-													<tr>
-														<th scope="row" rowspan="2">광견병</th>
-														<td class="cell_left"><strong>(기초접종)</strong> 생후 3개월
-															이상 1회 접종</td>
-														<td class="t_end" rowspan="2">-</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(보강접종)</strong> 6~12개월
-															간격으로 주사</td>
-													</tr>
-												</tbody>
-											</table>
-											<span class="color_01"></span> <br> <span
-												class="color_01">[고양이 예방접종 표]</span>
-											<table class="table table-hover" border="2;">
+																<tbody>
+																	<tr>
+																		<th class="th_top" scope="row" rowspan="3">혼합예방주사<br>(DHPPL)
+																		</th>
+																		<td class="td_top cell_left"><strong>(기초접종)</strong>
+																			생후 6~8주에 1차 접종</td>
+																		<td class="td_top t_end cell_left" rowspan="3">-
+																			Canine Distemper(홍역)<br> - Hepatitis(간염)<br>
+																			- Parvovirus(파보장염)<br> - Parainfluenza(파라인플루엔자)<br>
+																			- Leptospira(렙토스피라) 혼합주사임
+																		</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(추가접종)</strong> 1차
+																			접종 후 2~4주 간격으로 2~4회</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(보강접종)</strong>
+																			추가접종 후 매년 1회 주사</td>
+																	</tr>
+																	<tr>
+																		<th scope="row" rowspan="3">코로나바이러스성 장염<br>(Coronavirus)
+																		</th>
+																		<td class="cell_left"><strong>(기초접종)</strong> 생후
+																			6~8주에 1차 접종</td>
+																		<td class="t_end" rowspan="3"></td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(추가접종)</strong> 1차
+																			접종 후 2~4주 간격으로 1~2회</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(보강접종)</strong>
+																			추가접종 후 매년 1회 주사</td>
+																	</tr>
+																	<tr>
+																		<th scope="row" rowspan="3">기관·기관지염<br>(Kennel
+																			Cough)
+																		</th>
+																		<td class="cell_left"><strong>(기초접종)</strong> 생후
+																			6~8주에 1차 접종</td>
+																		<td class="t_end" rowspan="3"></td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(추가접종)</strong> 1차
+																			접종 후 2~4주 간격으로 1~2회</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(보강접종)</strong>
+																			추가접종 후 매년 1회 주사</td>
+																	</tr>
+																	<tr>
+																		<th scope="row" rowspan="2">광견병</th>
+																		<td class="cell_left"><strong>(기초접종)</strong> 생후
+																			3개월 이상 1회 접종</td>
+																		<td class="t_end" rowspan="2"></td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(보강접종)</strong>
+																			6~12개월 간격으로 주사</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+												<div class="card">
+													<div class="card-header" id="aboutcat">
+														<h5 class="mb-0">
+															<button class="btn collapsed"
+																data-toggle="collapse" data-target="#cat"
+																aria-expanded="false" aria-controls="collapseTwo">
+																고양이 예방접종 표</button>
+														</h5>
+													</div>
+													<div id="cat" class="collapse" aria-labelledby="aboutcat"
+														data-parent="#accordion">
+														<div class="card-body">
+															<table class="table table-hover" border="2;">
 
-												<thead style="text-align: center;">
-													<tr>
-														<th>종류</th>
-														<th>주기</th>
-														<th>병명</th>
-												</thead>
-												<tbody>
-													<tr>
-														<th class="th_top" scope="row" rowspan="3">혼합예방주사<br>(CVRP)
-														</th>
-														<td class="td_top cell_left"><strong>(기초접종)</strong>
-															생후 6~8주에 1차 접종</td>
-														<td class="td_top t_end cell_left" rowspan="3">-
-															Calicivius(칼리시바이러스 감염증)<br> - Rhinotrachritis(전염성
-															비기관지염)<br> - Panleukemia(범백혈구 감소증) 혼합주사임
-														</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(추가접종)</strong> 1차 접종 후
-															2~4주 간격으로 2~3회</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(보강접종)</strong> 추가접종 후
-															매년 1회 주사</td>
-													</tr>
-													<tr>
-														<th scope="row" rowspan="3">고양이 백혈병<br>(Feline
-															Leukemia)
-														</th>
-														<td class="cell_left"><strong>(기초접종</strong>) 생후
-															9~11주에 1차 접종</td>
-														<td class="t_end" rowspan="3">-</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(추가접종)</strong> 1차 접종 후
-															2~4주 간격으로 1~2회</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(보강접종)</strong> 추가접종 후
-															매년 1회 주사</td>
-													</tr>
-													<tr>
-														<th scope="row" rowspan="3">전염성 복막염<br>(FIP)
-														</th>
-														<td class="cell_left"><strong>(기초접종)</strong> 생후
-															16~18주에 1차 접종</td>
-														<td class="t_end" rowspan="3">-</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(추가접종)</strong> 1차 접종 후
-															2~3주 간격으로 1회</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(보강접종)</strong> 추가접종 후
-															매년 1회 주사</td>
-													</tr>
-													<tr>
-														<th scope="row" rowspan="2">광견병</th>
-														<td class="cell_left"><strong>(기초접종)</strong> 생후 3개월
-															이상 1회 접종</td>
-														<td class="t_end" rowspan="2">-</td>
-													</tr>
-													<tr>
-														<td class="cell_left"><strong>(보강접종)</strong> 1년 간격으로
-															주사</td>
-													</tr>
-												</tbody>
-											</table>
+																<thead style="text-align: center;">
+																	<tr>
+																		<th>종류</th>
+																		<th>주기</th>
+																		<th>병명</th>
+																</thead>
+																<tbody>
+																	<tr>
+																		<th class="th_top" scope="row" rowspan="3">혼합예방주사<br>(CVRP)
+																		</th>
+																		<td class="td_top cell_left"><strong>(기초접종)</strong>
+																			생후 6~8주에 1차 접종</td>
+																		<td class="td_top t_end cell_left" rowspan="3">-
+																			Calicivius(칼리시바이러스 감염증)<br> -
+																			Rhinotrachritis(전염성 비기관지염)<br> -
+																			Panleukemia(범백혈구 감소증) 혼합주사임
+																		</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(추가접종)</strong> 1차
+																			접종 후 2~4주 간격으로 2~3회</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(보강접종)</strong>
+																			추가접종 후 매년 1회 주사</td>
+																	</tr>
+																	<tr>
+																		<th scope="row" rowspan="3">고양이 백혈병<br>(Feline
+																			Leukemia)
+																		</th>
+																		<td class="cell_left"><strong>(기초접종</strong>) 생후
+																			9~11주에 1차 접종</td>
+																		<td class="t_end" rowspan="3">-</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(추가접종)</strong> 1차
+																			접종 후 2~4주 간격으로 1~2회</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(보강접종)</strong>
+																			추가접종 후 매년 1회 주사</td>
+																	</tr>
+																	<tr>
+																		<th scope="row" rowspan="3">전염성 복막염<br>(FIP)
+																		</th>
+																		<td class="cell_left"><strong>(기초접종)</strong> 생후
+																			16~18주에 1차 접종</td>
+																		<td class="t_end" rowspan="3">-</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(추가접종)</strong> 1차
+																			접종 후 2~3주 간격으로 1회</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(보강접종)</strong>
+																			추가접종 후 매년 1회 주사</td>
+																	</tr>
+																	<tr>
+																		<th scope="row" rowspan="2">광견병</th>
+																		<td class="cell_left"><strong>(기초접종)</strong> 생후
+																			3개월 이상 1회 접종</td>
+																		<td class="t_end" rowspan="2">-</td>
+																	</tr>
+																	<tr>
+																		<td class="cell_left"><strong>(보강접종)</strong> 1년
+																			간격으로 주사</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
 											<span class="color_01"></span>
 											<p></p>
 										</div>
@@ -312,30 +344,27 @@
 												생후 6~8주 사이에는 예방접종을 시작하고 예방접종이 끝난 뒤에는 질환이 생겼을 때 검사와 치료를
 												진행합니다. 개와 고양이는 보통 7 세령 부터 건강검진을 시작합니다. 7세는 사람으로 치면 40세 정도의
 												중·장년기이므로 생애 첫 건강검진을 실시하는 게 좋습니다.<br> 이때부터는 최소 일 년에 한 번
-												건강검진을 하는 것을 추천합니다.<br>
-												<br> 개, 고양이의 1년은 사람의 5년과 같습니다. 일 년에 한 번도 검진을 자주 하는 것이
-												아니므로 일 년에 한번은 꼭 하는 것이 좋고, 노령성 질병을 가지고 있다면 6개월 간격으로 검진하는 것을
-												추천합니다.<br>
-												<br> 고양이는 4세부터 신장질환, 갑상선 이상 등 질병에 걸릴 확률이 높아지는 것으로 나타났고
-												개는 7세 이상일 경우에 심장질환, 신장질환, 부신피질 기능 항진증, 유선종양, 자궁 축농증, 백내장 발생이
-												급격히 늘 수 있습니다. 사람과 마찬가지로 예방이 중요하기 때문에 질병을 조기에 발견할 수 있도록 정기적인
-												건강검진이 필요합니다.
+												건강검진을 하는 것을 추천합니다.<br> <br> 개, 고양이의 1년은 사람의 5년과
+												같습니다. 일 년에 한 번도 검진을 자주 하는 것이 아니므로 일 년에 한번은 꼭 하는 것이 좋고, 노령성
+												질병을 가지고 있다면 6개월 간격으로 검진하는 것을 추천합니다.<br> <br> 고양이는
+												4세부터 신장질환, 갑상선 이상 등 질병에 걸릴 확률이 높아지는 것으로 나타났고 개는 7세 이상일 경우에
+												심장질환, 신장질환, 부신피질 기능 항진증, 유선종양, 자궁 축농증, 백내장 발생이 급격히 늘 수 있습니다.
+												사람과 마찬가지로 예방이 중요하기 때문에 질병을 조기에 발견할 수 있도록 정기적인 건강검진이 필요합니다.
 											</p>
 										</div>
 									</div>
 									<div id="menu3" class="container tab-pane fade">
 										<br>
-										
+
 										<h5>인식표</h5>
 										<div class="adand_txt">
 											<p>
 												평소 인식표를 착용하는 습관을 들여 줍시다. 잠깐의 실수로 반려동물이 집을 나가버렸을 때, 반려인의 정보가
 												담긴 인식표는 상당한 도움이 됩니다.<br> → 외출 시 인식표 미부착의 경우 1차 위반 5만원,
-												2차 10만원, 3차 20만원의 과태료가 부과됩니다.<br>
-												<br> <strong>어떤 인식표를 착용해야 할까요?</strong><br> ①가벼워야
-												한다. ②동물이 불편함을 느껴선 안된다. ③털이 걸리거나 피부에 무리가 가서는 안된다.<br>
-												<br> <strong>인식표에 들어가야 할 내용은?</strong><br> ①보호자의
-												이름 ②동물등록번호 ③전화번호
+												2차 10만원, 3차 20만원의 과태료가 부과됩니다.<br> <br> <strong>어떤
+													인식표를 착용해야 할까요?</strong><br> ①가벼워야 한다. ②동물이 불편함을 느껴선 안된다. ③털이
+												걸리거나 피부에 무리가 가서는 안된다.<br> <br> <strong>인식표에
+													들어가야 할 내용은?</strong><br> ①보호자의 이름 ②동물등록번호 ③전화번호
 											</p>
 										</div>
 										<h5>배변봉투</h5>
@@ -363,7 +392,7 @@
 			</div>
 	</section>
 	<section>
-	<%@includefile="footer.jsp"%>
+		<%@includefile="footer.jsp"%>
 	</section>
 
 	<!-- loader -->
