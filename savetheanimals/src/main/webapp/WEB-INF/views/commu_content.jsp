@@ -23,7 +23,17 @@
 <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
-
+<style type="text/css">
+	table {
+	   text-align: center;
+	   table-layout: fixed;
+	   width: 100%;
+	}
+	
+	th, td {
+	   overflow: hidden;
+	}
+</style>
 </head>
 
 <body>
@@ -79,23 +89,23 @@
 					</c:choose>
 					
 					<!-- 댓글 -->
-					<div class="container">
-						<table class="table table-hover">
-							<thead>
+					<div class="container table-fixed">
+	                  <table class="table table-hover">
+	                     <thead class="thead-light">
 								<tr>
-									<th>댓글번호</th>
-									<th>내용</th>
-									<th>날짜 /시간</th>
-									<th>회원 아이디</th>
-								</tr>
+									<th scope="col" style="width: 8%">댓글번호</th>
+		                            <th scope="col" style="width: 72%">내용</th>
+		                            <th scope="col" style="width: 10%">날짜 /시간</th>
+		                            <th scope="col" style="width: 10%">회원 아이디</th>
+		                        </tr>
 							</thead>
 							<tbody>
 							<% int i=1;
 							%>
 							<c:forEach items="${allcomm}" var="com" varStatus="status">
 					    		<tr>
-									<td><%=i %></td>
-									<td>${com.comm_contents}</td>
+									<th scope="row"><%=i %></th>
+									<td style="overflow-wrap: break-word;">${com.comm_contents}</td>
 									<td>${com.comm_datetime}</td>
 									<td>${memid[status.index].mem_id}</td>
 									<%i++; %>
@@ -108,6 +118,35 @@
 				</div>
 			</div>
 		</div>
+		<c:choose>
+			<c:when test="${empty loginMember}">
+			</c:when>
+			<c:otherwise>
+				<div class="container">
+			        <h5>댓글 입력</h5>
+			           <form action="${cpath}/com_submit.do" method="post">
+			           	 <input type="hidden" name="comm_mem_num" value="${loginMember.mem_num}">
+			           	 <input type="hidden" name="comm_post_num" value="${postinfo.post_num}">
+			           	 <input type="hidden" name="post_num" value="${postinfo.post_num}">
+			             <div class="row">
+			               <div class="col-md-12">
+			                 <div class="form-group">
+			                   <textarea style="font-size: 0.95em; width:100%;" name="comm_contents" id="comm_contents" required
+			                   placeholder="댓글입력" ></textarea>
+			                 </div>
+			               </div>
+			               <div class="col-md-12">
+			                 <div class="form-group">
+			                   <input type="submit" value="확인" class="btn btn-primary">
+			                   <div class="submitting"></div>
+			                 </div>
+			               </div>
+			              </div>
+			           </form>
+			        </div>
+			</c:otherwise>
+		</c:choose>
+
 	</section>
 
 	<section>

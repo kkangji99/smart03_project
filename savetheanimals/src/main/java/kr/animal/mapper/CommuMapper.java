@@ -22,4 +22,6 @@ public interface CommuMapper {
 	public Post selectpost(Post post);
 	public List<Comment> allcomselect(Post post);
 	public List<Member> memselect(Post post);
+	public void comsubmit(Comment com);
+	
 }

@@ -70,6 +70,7 @@
 									생활 길잡이</a></li>
 							<li class="nav-item"><a href="${cpath}/commu.do" class="nav-link">커뮤니티</a></li>
 							<li class="nav-item"><a href="${cpath}/mypage.do" class="nav-link">마이페이지</a></li>
+							<li class="nav-item"><a href="${cpath}/index.do" class="nav-link">로그아웃</a></li>
 						</ul>
 					</c:otherwise>
 				</c:choose>

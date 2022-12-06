@@ -26,4 +26,8 @@
       select * from member, comment,post where post.post_num = comment.comm_post_num and member.mem_num = comment.comm_mem_num and post_num=#{post_num}
   </select>
   
+  <insert id="comsubmit" parameterType="kr.animal.entity.Comment">
+     insert into comment(comm_contents,comm_datetime,comm_mem_num,comm_post_num) values(#{comm_contents},now(),#{comm_mem_num},#{comm_post_num})
+  </insert>
+  
 </mapper>

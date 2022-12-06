@@ -97,7 +97,7 @@ public class HomeController {
 	}
 	
 	@GetMapping("/commu_info.do")
-	public String commu_info(Post post, Model model) {
+	public String commu_info(Post post, Model model, HttpServletRequest request) {
 		Post postinfo = commumapper.selectpost(post);
 		List<Comment> allcomm = commumapper.allcomselect(post);
 		List<Member> memid = commumapper.memselect(post);
@@ -106,6 +106,35 @@ public class HomeController {
 		model.addAttribute("allcomm", allcomm);
 		model.addAttribute("memid", memid);
 
+		if (postinfo != null) {
+
+			HttpSession session = request.getSession();
+			session.setAttribute("postinfo", postinfo);
+		}
+		
+		return "commu_content";
+	}
+	
+	@PostMapping("/com_submit.do")
+	public String com_submit(Comment com, HttpServletRequest request, Post post, Model model) {
+		
+		commumapper.comsubmit(com);
+
+		Post postinfo = commumapper.selectpost(post);
+		List<Comment> allcomm = commumapper.allcomselect(post);
+		List<Member> memid = commumapper.memselect(post);
+		
+		model.addAttribute("postinfo", postinfo);
+		model.addAttribute("allcomm", allcomm);
+		model.addAttribute("memid", memid);
+
+		if (postinfo != null) {
+
+			HttpSession session = request.getSession();
+			session.setAttribute("postinfo", postinfo);
+		}
+		
+		
 		return "commu_content";
 	}
 
