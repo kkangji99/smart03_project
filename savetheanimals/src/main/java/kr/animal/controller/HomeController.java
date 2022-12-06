@@ -206,6 +206,7 @@ public class HomeController {
 		return "mypage";
 	}
 	
+	//글쓰기 페이지
 	@GetMapping("/commu_write.do")
 	public String commu_write() {
 

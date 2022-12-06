@@ -57,39 +57,45 @@ section {
 					<h2 class="heading-section">글쓰기</h2>
 				</div>
 			</div>
+			
 			<div class="row justify-content-center">
-				<div class="col-md-12">
+				<div class="col-md-12 ftco-animate fadeInUp ftco-animated ">
 					<div class="wrapper">
-
-						<div class="row">
+						<div class="row d-flex">
 							<div class="col-md-12">
 								<div class="contact-wrap w-100 p-md-5 p-4">
-									<form method="POST" id="myPage" name="myPage" class="myPage">
+									<form method="POST" id="commu_write" name="commu_write" class="commu_write">
 										<div class="row">
 											<div class="col-md-12 pb-2">
 												<div class="form-group">
-													제목<input type="text" class="form-control text-center"
-														name="" id="" placeholder="">
+													<input type="text" class="form-control text-center"
+														name="" id="" placeholder="제목을 입력해주세요.">
 												</div>
 											</div>
-										<div class="col-md-12 pb-4">
+											
+											
+										<div class="col-md-12 pb-2">
 												<div class="form-group">
-													제목<input type="text" class="form-control text-center"
-														name="" id="" placeholder="">
+													<input type="text" class="form-control text-center"
+														name="" id="" placeholder="내용을 입력해주세요.">
 												</div>
 											</div>
-											<div class="col-md-12 pb-2">
-												<div class="form-group">
-													제목<input type="text" class="form-control text-center"
-														name="" id="" placeholder="">
+											
+											<div class="col-md-6 pb-2">
+											<div class="form-group">
+												<input type="file" id="files" placeholder="이미지 선택"
+														class="form-control filesImgs" name="image_file"
+														accept=".jpg, .jpeg, .png" multiple
+														style="padding-left: 40%; font-size: 1em;">
 												</div>
 											</div>
 										
 										
 											<div class="row col-md-12 p-md-2 justify-content-center">
 												<div class="form-group">
-													<input type="submit" value="확인" class="btn btn-primary">
-													<div class="submitting"></div>
+													<button type="submit" value="등록" class="btn btn-primary"><a href="${cpath}/commu.do">등록</a></button>
+													<button type="submit" value="취소" class="btn btn-secondary"><a href="${cpath}/commu.do">취소</a></button>
+												
 												</div>
 											</div>
 										</div>
