@@ -7,43 +7,30 @@
 <head>
 <title>Save the Animals</title>
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
-	rel="stylesheet">
-
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
+<link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="resources/css/animate.css">
-
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
-
-
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
-
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+
 <style type="text/css">
 section {
 	/* background-image: linear-gradient(to bottom, #ffffff, #f9fbfe, #f0f8fd, #e5f5f8, #ddf2f0,
 		#d4f0ea, #cdeee1, #c9ecd6, #bcebd0, #aeeaca, #9fe9c4, #8fe8bf); */
 }
 </style>
+
 </head>
 <body>
 	<!-- 마이페이지 페이지 -->
@@ -56,11 +43,6 @@ section {
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-end">
 				<div class="col-md-9 ftco-animate pb-5">
-					<p class="breadcrumbs mb-2">
-						<span class="mr-2"><a href="index">Home <i
-								class="ion-ios-arrow-forward"></i></a></span> <span>My Page <i
-							class="ion-ios-arrow-forward"></i></span>
-					</p>
 					<h1 class="mb-0 bread">My Page</h1>
 				</div>
 			</div>

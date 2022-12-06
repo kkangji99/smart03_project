@@ -43,10 +43,20 @@
 			</div>
 		</div>
 	</section>
-	<br>
-
+	
 	<section class="ftco-section bg-light">
 		<div class="container">
+		
+		<c:choose>
+			<c:when test="${empty loginMember}">
+			</c:when>
+			<c:otherwise>
+				<div class="col-md-12" style="width:1090px; text-align:right; margin-bottom:15px;">
+					<button type="submit" class="btn btn-primary" style="width:100px; font-size:15px">글쓰기</button>
+				</div>
+			</c:otherwise>
+		</c:choose>
+		
 			<div class="row d-flex">
 				<c:forEach items="${post}" var="vo" varStatus="status">
 		    		<div class="col-md-4 d-flex justify-content-center ftco-animate">

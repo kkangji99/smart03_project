@@ -115,6 +115,7 @@ public class HomeController {
 		return "commu_content";
 	}
 	
+	// 커뮤니티 댓글 등록
 	@PostMapping("/com_submit.do")
 	public String com_submit(Comment com, HttpServletRequest request, Post post, Model model) {
 		
@@ -172,12 +173,11 @@ public class HomeController {
 		return "index";
 	}
 
-
 	// 로그아웃
-	@PostMapping("/logout.do")
-	public String logout(HttpSession session) {
+	@GetMapping("/logout.do")
+	public String Logout(HttpSession session)
+	{
 		session.removeAttribute("loginMember");
-
 		return "index";
 	}
 
