@@ -52,7 +52,11 @@
 			</c:when>
 			<c:otherwise>
 				<div class="col-md-12" style="width:1090px; text-align:right; margin-bottom:15px;">
-					<button type="submit" class="btn btn-primary" style="width:100px; font-size:15px">글쓰기</button>
+	<button type="submit" class="btn btn-primary" style="width:100px; font-size:15px">
+	    <a href="${cpath}/commu_write.do">글쓰기</a></button>
+					     
+					
+					
 				</div>
 			</c:otherwise>
 		</c:choose>

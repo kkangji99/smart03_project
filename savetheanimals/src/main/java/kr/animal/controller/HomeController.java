@@ -205,5 +205,14 @@ public class HomeController {
 
 		return "mypage";
 	}
+	
+	@GetMapping("/commu_write.do")
+	public String commu_write() {
+
+		return "commu_write";
+	}
+	
+	
+
 
 }
