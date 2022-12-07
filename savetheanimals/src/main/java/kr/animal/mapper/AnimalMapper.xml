@@ -25,4 +25,31 @@
       select * from member where mem_num=#{mem_num}
   </select>
   
+   <select id="searchDog" parameterType="kr.animal.entity.Animal"
+     resultType="kr.animal.entity.Animal"> 
+     select * from animal 
+     join animal_img 
+    on animal.ani_num = animal_img.aimg_ani_num 
+     where ani_kind like concat('%',#{ani_kind},'%') 
+     and ani_occur_address like concat('%', #{ani_occur_address} ,'%') 
+     and ani_occur_address like concat('%', #{ani_occur_address_sub} ,'%') 
+     and ani_cate_code like concat('%', #{ani_cate_code} ,'%') 
+     and ani_livestock = "개" 
+     and ani_num between 290 and 320
+ </select>
+ 
+  <select id="searchCat" parameterType="kr.animal.entity.Animal"
+     resultType="kr.animal.entity.Animal"> 
+     select * from animal 
+     join animal_img 
+    on animal.ani_num = animal_img.aimg_ani_num 
+     where ani_kind like concat('%',#{ani_kind},'%') 
+     and ani_occur_address like concat('%', #{ani_occur_address} ,'%') 
+     and ani_occur_address like concat('%', #{ani_occur_address_sub} ,'%') 
+     and ani_cate_code like concat('%', #{ani_cate_code} ,'%') 
+     and ani_livestock = "고양이" 
+     and ani_num between 290 and 320
+     
+ </select>
+  
 </mapper>

@@ -171,8 +171,6 @@ public class HomeController {
 		
 		return "commu_content";
 	}
-
-	
 	
 	// 유실동물 공고 상세 페이지
 	@GetMapping("/ad_content.do")
@@ -189,6 +187,38 @@ public class HomeController {
 
 		return "ad_content";
 	}
+	
+   @GetMapping("/searchDog.do")
+   public String searchDog(Model model, Animal animal) {
+      System.out.println("검색 시작");
+      
+      // all
+      List<Animal> list = admapper.allaniselect();
+      
+      //search list
+      List<Animal> searchDog =  mapper.searchDog(animal);
+      
+      System.out.println("개 검색 갯수"+searchDog.size());
+      
+      model.addAttribute("list", list);
+      model.addAttribute("searchDog", searchDog);
+      return "ad";
+   }
+   
+   @GetMapping("/searchCat.do")
+   public String searchCat(Model model, Animal animal) {
+      System.out.println("검색 시작");
+      
+      List<Animal> list = admapper.allaniselect();
+      
+      List<Animal> searchCat =  mapper.searchCat(animal);
+      
+      
+      System.out.println("고양이 검색 갯수"+searchCat.size());
+      model.addAttribute("list", list);
+      model.addAttribute("searchCat", searchCat);   
+      return "ad";
+   }
 	
 
 	// 반려생활길잡이
