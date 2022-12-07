@@ -48,7 +48,7 @@
   
   <select id="mempostselect" parameterType="kr.animal.entity.Post"
       resultType="kr.animal.entity.Member">
-      select * from member,post where post_num=#{post_num}
+      select * from member,post where post.post_mem_num = member.mem_num and post_num=#{post_num}
   </select>
   
 </mapper>

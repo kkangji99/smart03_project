@@ -10,6 +10,7 @@ public class Post {
 	private String post_cate_code;
 	private String pimg_path;
 	private String post_datetime;
+	private String mem_id;
 
 	
 	// 2. 멤버변수(=프로퍼티(property))
@@ -56,6 +57,14 @@ public class Post {
 		this.post_datetime = post_datetime;
 	}
 
+
+	public String getMem_id() {
+		return mem_id;
+	}
+
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
 	
 	//4. ToString
 	@Override

@@ -67,11 +67,9 @@ public class HomeController {
 	
 	// 커뮤니티 페이지
 	@GetMapping("/commu.do")
-	public String commu(Model model, Post post) {
-		List<Post> post1 = commumapper.allpostselect();
-		List<Member> memid = commumapper.mempostselect(post);
-		model.addAttribute("post", post1);
-		model.addAttribute("memid", memid);
+	public String commu(Model model) {
+		List<Post> post = commumapper.allpostselect();
+		model.addAttribute("post", post);
 		
 		return "commu";
 	}	

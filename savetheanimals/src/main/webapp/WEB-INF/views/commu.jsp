@@ -73,7 +73,7 @@
 								<td style="text-align: center;">${vo.post_cate_code}</td>
 								<td style="text-align: center;"><a href="${cpath}/commu_info.do?post_num=${vo.post_num}" >${vo.post_title}</a></td>
 								<td style="text-align: center;">${vo.post_datetime}</td>
-								<td style="text-align: center;">${memid[status.index].mem_id}</td>
+								<td style="text-align: center;">${vo.mem_id}</td>
 								<%i++; %>
 								
 								<td>
