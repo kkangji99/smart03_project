@@ -9,6 +9,7 @@ public class Post {
 	private int post_mem_num;
 	private String post_cate_code;
 	private String pimg_path;
+	private String post_datetime;
 
 	
 	// 2. 멤버변수(=프로퍼티(property))
@@ -47,6 +48,12 @@ public class Post {
 	}
 	public void setPimg_path(String pimg_path) {
 		this.pimg_path = pimg_path;
+	}
+	public String getPost_datetime() {
+		return post_datetime;
+	}
+	public void setPost_datetime(String post_datetime) {
+		this.post_datetime = post_datetime;
 	}
 
 	

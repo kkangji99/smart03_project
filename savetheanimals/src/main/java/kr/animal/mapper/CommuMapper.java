@@ -23,5 +23,10 @@ public interface CommuMapper {
 	public List<Comment> allcomselect(Post post);
 	public List<Member> memselect(Post post);
 	public void comsubmit(Comment com);
+	public void comdelete(Comment com);
+	public void postinsert(Post Post);
+	public void postdelete(Post post);
+	public void postcomdelete(Post post);
+	public List<Member> mempostselect(Post post);
 	
 }

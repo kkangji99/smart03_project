@@ -6024,6 +6024,10 @@ a.close.disabled {
   height: 100%;
   overflow: hidden;
   outline: 0;
+  /* z-index: 1; */
+  /* overflow: auto; */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 .modal-dialog {
@@ -6079,13 +6083,15 @@ a.close.disabled {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  width: 30%;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
   outline: 0;
+  margin: 15% auto; 
+  padding: 20px;
 }
 
 .modal-backdrop {

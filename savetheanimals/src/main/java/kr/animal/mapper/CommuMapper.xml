@@ -23,11 +23,32 @@
   
   <select id="memselect" parameterType="kr.animal.entity.Post"
       resultType="kr.animal.entity.Member">
-      select * from member, comment,post where post.post_num = comment.comm_post_num and member.mem_num = comment.comm_mem_num and post_num=#{post_num}
+      select * from member,comment,post where post.post_num = comment.comm_post_num and member.mem_num = comment.comm_mem_num and post_num=#{post_num}
   </select>
   
   <insert id="comsubmit" parameterType="kr.animal.entity.Comment">
      insert into comment(comm_contents,comm_datetime,comm_mem_num,comm_post_num) values(#{comm_contents},now(),#{comm_mem_num},#{comm_post_num})
   </insert>
+  
+  <insert id="postinsert" parameterType="kr.animal.entity.Post">
+     insert into post(post_title,post_contents,post_mem_num,post_cate_code,post_datetime) values(#{post_title},#{post_contents},#{post_mem_num},#{post_cate_code},now())
+  </insert>
+  
+  <delete id="comdelete" parameterType="kr.animal.entity.Comment">
+      delete from comment where comm_num=#{comm_num}
+  </delete>
+  
+  <delete id="postdelete" parameterType="kr.animal.entity.Post">
+      delete from post where post_num=#{post_num}
+  </delete>
+  
+  <delete id="postcomdelete" parameterType="kr.animal.entity.Post">
+      delete from comment where comm_post_num=#{post_num}
+  </delete>
+  
+  <select id="mempostselect" parameterType="kr.animal.entity.Post"
+      resultType="kr.animal.entity.Member">
+      select * from member,post where post_num=#{post_num}
+  </select>
   
 </mapper>

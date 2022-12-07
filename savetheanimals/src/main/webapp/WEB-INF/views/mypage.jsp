@@ -50,67 +50,65 @@ section {
 	</section>
 
 	<section class="ftco-section bg-light">
+	<c:choose>
+	<c:when test="${empty loginMember}">
+	</c:when>
+	<c:otherwise>
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">My Page</h2>
+				<h2 class="heading-section">${loginMember.mem_id}님 의 My Page 입니다.</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-8">
-					<div class="wrapper">
-
-						<div class="row">
-							<div class="col-md-12">
-								<div class="contact-wrap w-100 p-md-5 p-4">
-									<form method="POST" id="myPage" name="myPage" class="myPage">
-										<div class="row">
-											<div class="col-md-12 pb-2">
-												<div class="form-group">
-													<input type="text" class="form-control text-center"
-														name="mem_name" id="mem_name" placeholder="아이디">
-												</div>
-											</div>
-											<div class="col-md-6 pb-2">
-												<div class="form-group">
-													<input type="text" class="form-control text-center"
-														name="mem_id" id="mem_id" placeholder="이름">
-												</div>
-											</div>
-											<div class="col-md-6 pb-2">
-												<div class="form-group">
-													<input type="email" class="form-control text-center"
-														name="email" id="email" placeholder="이메일">
-												</div>
-											</div>
-											<div class="col-md-6 pb-2">
-												<div class="form-group">
-													<input type="text" class="form-control text-center"
-														name="subject" id="subject" placeholder="전화번호">
-												</div>
-											</div>
-											<div class="col-md-6 pb-2">
-												<div class="form-group">
-													<input type="password" class="form-control text-center"
-														name="password" id="password" placeholder="비밀번호">
-												</div>
-											</div>
-											<div class="row col-md-12 p-md-2 justify-content-center">
-												<div class="form-group">
-													<input type="submit" value="확인" class="btn btn-primary">
-													<div class="submitting"></div>
-												</div>
-											</div>
-										</div>
-									</form>
+					<div class="contact-wrap w-80 p-md-5 p-4">
+			           <form action="${cpath}/mypage_update.do" method="post">
+								<div class="col-md-12 pb-2">
+									<div class="form-group">
+										<input type="hidden" name="mem_num" id="mem_num" value="${loginMember.mem_num}">
+										아이디<input disabled type="text" class="form-control text-center"
+											name="mem_id" id="mem_id" placeholder="${loginMember.mem_id}">
+									</div>
 								</div>
-							</div>
-						</div>
-
+								<div class="col-md-12 pb-2">
+									<div class="form-group">
+										이름<input type="text" class="form-control text-center"
+											name="mem_name" id="mem_name" placeholder="${loginMember.mem_name}">
+									</div>
+								</div>
+								<div class="col-md-12 pb-2">
+									<div class="form-group">
+										이메일<input type="email" class="form-control text-center"
+											name="mem_email" id="mem_email" placeholder="${loginMember.mem_email}">
+									</div>
+								</div>
+								<div class="col-md-12 pb-2">
+									<div class="form-group">
+										전화번호<input type="text" class="form-control text-center"
+											name="mem_phone" id="mem_phone" placeholder="${loginMember.mem_phone}">
+									</div>
+								</div>
+								<div class="col-md-12 pb-2">
+									<div class="form-group">
+										비밀번호<input type="password" class="form-control text-center"
+											name="mem_pw" id="mem_pw" placeholder="${loginMember.mem_pw}">
+									</div>
+								</div>
+								<div class="row col-md-12 p-md-2 justify-content-center">
+									<div class="form-group">
+										<input type="submit" value="수정" class="btn btn-primary" style="font-size:15px;">
+										<input type="reset" value="취소" class="btn btn-primary" style="font-size:15px;">
+									</div>
+								</div>
+						</form>
 					</div>
+						
 				</div>
 			</div>
 		</div>
+		</c:otherwise>
+		</c:choose>
 	</section>
 
 	<section>

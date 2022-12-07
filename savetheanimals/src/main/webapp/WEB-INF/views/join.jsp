@@ -34,14 +34,21 @@
    <!-- 회원가입 페이지 -->
    <%@includefile="header.jsp"%>
     
+  <section class="hero-wrap hero-wrap-2"
+      style="background-image: url('resources/images/bg_2.jpg');"
+      data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+         <div class="row no-gutters slider-text align-items-end">
+            <div class="col-md-9 ftco-animate pb-5">
+               <h1 class="mb-0 bread">회원가입</h1>
+            </div>
+         </div>
+      </div>
+   </section>
 
   <section class="ftco-section bg-light text-center">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-6 text-center mb-5">
-          <h2 class="heading-section">회원가입</h2>
-        </div>
-      </div>
       <div class="row justify-content-center">
         <div class="col-md-7" style="margin: auto;">
           <div class="wrapper">

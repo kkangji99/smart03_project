@@ -16,4 +16,13 @@
       select * from member where mem_id=#{mem_id} and mem_pw = #{mem_pw}
   </select>
   
+  <update id="memberUpdate" parameterType="kr.animal.entity.Member">
+      update member set mem_name=#{mem_name}, mem_phone=#{mem_phone}, mem_email=#{mem_email}, mem_pw=#{mem_pw} where mem_num=#{mem_num}
+  </update>
+  
+  <select id="memberUpLogin" parameterType="kr.animal.entity.Member"
+      resultType="kr.animal.entity.Member">
+      select * from member where mem_num=#{mem_num}
+  </select>
+  
 </mapper>

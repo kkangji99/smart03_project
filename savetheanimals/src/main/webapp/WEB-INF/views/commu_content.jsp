@@ -94,14 +94,14 @@
 	                     <thead class="thead-light">
 								<tr>
 									<th scope="col" style="width: 8%">댓글번호</th>
-		                            <th scope="col" style="width: 72%">내용</th>
+		                            <th scope="col" style="width: 62%">내용</th>
 		                            <th scope="col" style="width: 10%">날짜 /시간</th>
 		                            <th scope="col" style="width: 10%">회원 아이디</th>
+		                            <th scope="col" style="width: 10%"></th>
 		                        </tr>
 							</thead>
 							<tbody>
-							<% int i=1;
-							%>
+							<% int i=1;%>
 							<c:forEach items="${allcomm}" var="com" varStatus="status">
 					    		<tr>
 									<th scope="row"><%=i %></th>
@@ -109,6 +109,19 @@
 									<td>${com.comm_datetime}</td>
 									<td>${memid[status.index].mem_id}</td>
 									<%i++; %>
+									
+									<td>
+		                              <c:if test="${memid[status.index].mem_num == loginMember.mem_num}">
+		                              	<form action="${cpath}/com_delete.do" method="post">
+			           	 					<input type="hidden" name="comm_mem_num" value="${loginMember.mem_num}">
+			           	 					<input type="hidden" name="comm_post_num" value="${postinfo.post_num}">
+			           	 					<input type="hidden" name="post_num" value="${postinfo.post_num}">
+		                              		<input type="hidden" name="comm_num" value="${com.comm_num}">
+											<input type="submit" value="삭제" class="btn btn-secondary" style="width:65px; height:32px; font-size:12px;">
+										</form>
+		                              </c:if>
+		                            </td>
+		                             
 								</tr>
 				    		</c:forEach>
 							</tbody>
@@ -118,34 +131,30 @@
 				</div>
 			</div>
 		</div>
-		<c:choose>
-			<c:when test="${empty loginMember}">
-			</c:when>
-			<c:otherwise>
-				<div class="container">
-			        <h5>댓글 입력</h5>
-			           <form action="${cpath}/com_submit.do" method="post">
-			           	 <input type="hidden" name="comm_mem_num" value="${loginMember.mem_num}">
-			           	 <input type="hidden" name="comm_post_num" value="${postinfo.post_num}">
-			           	 <input type="hidden" name="post_num" value="${postinfo.post_num}">
-			             <div class="row">
-			               <div class="col-md-12">
-			                 <div class="form-group">
-			                   <textarea style="font-size: 0.95em; width:100%;" name="comm_contents" id="comm_contents" required
-			                   placeholder="댓글입력" ></textarea>
-			                 </div>
-			               </div>
-			               <div class="col-md-12">
-			                 <div class="form-group">
-			                   <input type="submit" value="확인" class="btn btn-primary">
-			                   <div class="submitting"></div>
-			                 </div>
-			               </div>
-			              </div>
-			           </form>
-			        </div>
-			</c:otherwise>
-		</c:choose>
+		<c:if test="${not empty loginMember}">
+		  <div class="container">
+	        <h5>댓글 입력</h5>
+	           <form action="${cpath}/com_submit.do" method="post">
+	           	 <input type="hidden" name="comm_mem_num" value="${loginMember.mem_num}">
+	           	 <input type="hidden" name="comm_post_num" value="${postinfo.post_num}">
+	           	 <input type="hidden" name="post_num" value="${postinfo.post_num}">
+	             <div class="row">
+	               <div class="col-md-12">
+	                 <div class="form-group">
+	                   <textarea style="font-size: 0.95em; width:100%;" name="comm_contents" id="comm_contents" required
+	                   placeholder="댓글입력" ></textarea>
+	                 </div>
+	               </div>
+	               <div class="col-md-12">
+	                 <div class="form-group">
+	                   <input type="submit" value="확인" class="btn btn-primary">
+	                   <div class="submitting"></div>
+	                 </div>
+	               </div>
+	              </div>
+	           </form>
+	        </div>
+	     </c:if>
 
 	</section>
 

@@ -46,38 +46,51 @@
 	
 	<section class="ftco-section bg-light">
 		<div class="container">
-		
-		<c:choose>
-			<c:when test="${empty loginMember}">
-			</c:when>
-			<c:otherwise>
+			<c:if test="${not empty loginMember}">
 				<div class="col-md-12" style="width:1090px; text-align:right; margin-bottom:15px;">
-	<button type="submit" class="btn btn-primary" style="width:100px; font-size:1em;">
-	    <a href="${cpath}/commu_write.do">글쓰기</a></button>
-					     
-					
-					
+					<button type="submit" class="btn btn-primary" style="width:100px; font-size:1em;"
+				 		onclick="location.href='${cpath}/commu_write.do'">글쓰기</button> 
 				</div>
-			</c:otherwise>
-		</c:choose>
+			</c:if>
 		
-			<div class="row d-flex">
-				<c:forEach items="${post}" var="vo" varStatus="status">
-		    		<div class="col-md-4 d-flex justify-content-center ftco-animate">
-						<div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
-							<a href="${cpath}/commu_info.do?post_num=${vo.post_num}" class="block-20 rounded"
-								style="background-image: url('resources/images/image_6.jpg'); "> 
-							</a>
-							<div class="text p-4">
-								<div class="meta mb-2">
-									<div style="font-size: 15px;">${vo.post_num}</div>
-								</div>
-								<h3 class="heading">${vo.post_title}</h3>
-							</div>
-						</div>
-					</div>
-	    		</c:forEach>				
-			</div>
+			<div class="container table-fixed">
+                  <table class="table table-hover">
+                     <thead class="thead-light">
+							<tr>
+								<th scope="col" style="width: 12%; text-align: center;">게시글번호</th>
+	                            <th scope="col" style="width: 20%; text-align: center;">카테고리</th>
+	                            <th scope="col" style="width: 26%; text-align: center;">제목</th>
+	                            <th scope="col" style="width: 22%; text-align: center;">날짜 /시간</th>
+	                            <th scope="col" style="width: 10%; text-align: center;">회원 아이디</th>
+	                            <th scope="col" style="width: 10%; text-align: center;"></th>
+	                        </tr>
+						</thead>
+						<tbody>
+						<% int i=1;%>
+						<c:forEach items="${post}" var="vo" varStatus="status">
+				    		<tr>
+								<th scope="row" style="text-align: center;"><%=i %></th>
+								<td style="text-align: center;">${vo.post_cate_code}</td>
+								<td style="text-align: center;"><a href="${cpath}/commu_info.do?post_num=${vo.post_num}" >${vo.post_title}</a></td>
+								<td style="text-align: center;">${vo.post_datetime}</td>
+								<td style="text-align: center;">${memid[status.index].mem_id}</td>
+								<%i++; %>
+								
+								<td>
+	                              <c:if test="${vo.post_mem_num == loginMember.mem_num}">
+	                              	<form action="${cpath}/post_delete.do" method="post">
+	                              		<input type="hidden" name="post_num" value="${vo.post_num}">
+										<input type="submit" value="삭제" class="btn btn-secondary" style="width:65px; height:32px; font-size:12px;">
+									</form>
+	                              </c:if>
+	                            </td>
+	                             
+							</tr>
+			    		</c:forEach>
+						</tbody>
+					</table>
+				</div>
+		
 			
 			<div class="row mt-5">
 				<div class="col text-center">

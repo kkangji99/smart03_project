@@ -25,13 +25,6 @@
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 
-<style type="text/css">
-section {
-	/* background-image: linear-gradient(to bottom, #ffffff, #f9fbfe, #f0f8fd, #e5f5f8, #ddf2f0,
-		#d4f0ea, #cdeee1, #c9ecd6, #bcebd0, #aeeaca, #9fe9c4, #8fe8bf); */
-}
-</style>
-
 </head>
 <body>
 
@@ -54,35 +47,49 @@ section {
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section">글쓰기</h2>
+					<h2 class="heading-section">게시판 글쓰기</h2>
 				</div>
 			</div>
 			
 			<div class="row justify-content-center">
-				<div class="col-md-12 ftco-animate fadeInUp ftco-animated ">
+				<div class="col-md-12">
 					<div class="wrapper">
-						<div class="row d-flex">
+
+						<div class="row no-gutters">
 							<div class="col-md-12">
 								<div class="contact-wrap w-100 p-md-5 p-4">
-									<form method="POST" id="commu_write" name="commu_write" class="commu_write">
-										<div class="row">
+								
+									<form action="${cpath}/commu_write.do" method="post">
 											<div class="col-md-12 pb-2">
 												<div class="form-group">
+													<input type="hidden" name="post_mem_num" value="${loginMember.mem_num}">
 													<input type="text" class="form-control text-center"
-														name="" id="" placeholder="제목을 입력해주세요.">
+														name="post_title" id="post_title" placeholder="제목을 입력해주세요.">
 												</div>
 											</div>
+																						
+											<div class="col-md-12">
+							                 <div class="form-group">
+							                   <textarea style="font-size: 0.95em; width:100%; height:300px;" name="post_contents" id="post_contents" 
+							                   placeholder="내용을 입력해주세요." ></textarea>
+							                 </div>
+							               </div>
 											
-											
-										<div class="col-md-12 pb-2">
+											<div class="col-md-12">
 												<div class="form-group">
-													<input type="text" class="form-control text-center"
-														name="" id="" placeholder="내용을 입력해주세요.">
+													<select class="custom-select" name="post_cate_code" id="post_cate_code" required>
+														<option>카테고리 코드</option>
+														<option value="post_free">자유 게시판</option>
+														<option value="post_adop">입양 정보</option>
+														<option value="post_review">입양 &재회 후기</option>
+														<option value="grpost_serviceay">봉사활동 정보</option>
+													</select>
+													<div class="valid-feedback"></div>
 												</div>
 											</div>
 											
 											<div class="col-md-6 pb-2">
-											<div class="form-group">
+												<div class="form-group">
 												<input type="file" id="files" placeholder="이미지 선택"
 														class="form-control filesImgs" name="image_file"
 														accept=".jpg, .jpeg, .png" multiple
@@ -90,16 +97,18 @@ section {
 												</div>
 											</div>
 										
-										
 											<div class="row col-md-12 p-md-2 justify-content-center">
 												<div class="form-group">
-													<button type="submit" value="등록" class="btn btn-primary"><a href="${cpath}/commu.do">등록</a></button>
-													<button type="submit" value="취소" class="btn btn-secondary"><a href="${cpath}/commu.do">취소</a></button>
 												
+			                   						<input type="submit" value="등록" class="btn btn-primary" style="width:100px; font-size:1em;">
+													<button type="reset" class="btn btn-primary" style="width:100px; font-size:1em;">
+				 										삭제</button> 
+				 									<button type="button" class="btn btn-primary" style="width:100px; font-size:1em;"
+				 										onclick="location.href='${cpath}/commu.do'">나가기</button>
 												</div>
 											</div>
-										</div>
 									</form>
+									
 								</div>
 							</div>
 						</div>

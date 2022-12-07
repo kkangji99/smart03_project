@@ -64,38 +64,49 @@ public class HomeController {
 
 		return "register";
 	}
-
+	
 	// 커뮤니티 페이지
 	@GetMapping("/commu.do")
-	public String commu(Model model) {
-		List<Post> post = commumapper.allpostselect();
-		model.addAttribute("post", post);
+	public String commu(Model model, Post post) {
+		List<Post> post1 = commumapper.allpostselect();
+		List<Member> memid = commumapper.mempostselect(post);
+		model.addAttribute("post", post1);
+		model.addAttribute("memid", memid);
+		
 		return "commu";
 	}	
 
-	// 유실동물 공고 상세 페이지
-	@GetMapping("/ad_content.do")
-	public String ad_content() {
-
-		return "ad_content";
+	// 커뮤니티 글 등록
+	@PostMapping("/commu_write.do")
+	public String commu_write(Post post, Model model) {
+		
+		commumapper.postinsert(post);
+		List<Post> post1 = commumapper.allpostselect();
+		model.addAttribute("post", post1);
+		
+		return "commu";
 	}
 	
-	@GetMapping("/ad_info.do")
-	public String ad_info(Animal ani, Model model) {
+	// 커뮤니티 글 삭제
+	@PostMapping("/post_delete.do")
+	public String post_delete(Post post, Model model) {
 
-		Animal AniInfo = admapper.selectani(ani);
-		model.addAttribute("AniInfo", AniInfo);
+		commumapper.postcomdelete(post);
+		commumapper.postdelete(post);
+		List<Post> post1 = commumapper.allpostselect();
+		model.addAttribute("post", post1);
 
-		return "ad_content";
+		return "commu";
 	}
-	 
-	// 커뮤니티 상세 페이지
+		 
+	// 커뮤니티 상세 페이지1
 	@GetMapping("/commu_content.do")
 	public String commu_content() {
 
 		return "commu_content";
 	}
 	
+	// 커뮤니티 상세 페이지2
 	@GetMapping("/commu_info.do")
 	public String commu_info(Post post, Model model, HttpServletRequest request) {
 		Post postinfo = commumapper.selectpost(post);
@@ -115,7 +126,7 @@ public class HomeController {
 		return "commu_content";
 	}
 	
-	// 커뮤니티 댓글 등록
+	// 커뮤니티 상세페이지 댓글 등록
 	@PostMapping("/com_submit.do")
 	public String com_submit(Comment com, HttpServletRequest request, Post post, Model model) {
 		
@@ -135,9 +146,50 @@ public class HomeController {
 			session.setAttribute("postinfo", postinfo);
 		}
 		
+		return "commu_content";
+	}
+
+	// 커뮤니티 상세페이지 댓글 삭제
+	@PostMapping("/com_delete.do")
+	public String com_delete(Comment com, HttpServletRequest request, Post post, Model model) {
+		
+		commumapper.comdelete(com);
+
+		Post postinfo = commumapper.selectpost(post);
+		List<Comment> allcomm = commumapper.allcomselect(post);
+		List<Member> memid = commumapper.memselect(post);
+		
+		model.addAttribute("postinfo", postinfo);
+		model.addAttribute("allcomm", allcomm);
+		model.addAttribute("memid", memid);
+
+		if (postinfo != null) {
+
+			HttpSession session = request.getSession();
+			session.setAttribute("postinfo", postinfo);
+		}
 		
 		return "commu_content";
 	}
+
+	
+	
+	// 유실동물 공고 상세 페이지
+	@GetMapping("/ad_content.do")
+	public String ad_content() {
+
+		return "ad_content";
+	}
+	
+	@GetMapping("/ad_info.do")
+	public String ad_info(Animal ani, Model model) {
+
+		Animal AniInfo = admapper.selectani(ani);
+		model.addAttribute("AniInfo", AniInfo);
+
+		return "ad_content";
+	}
+	
 
 	// 반려생활길잡이
 	@GetMapping("/about.do")
@@ -155,24 +207,21 @@ public class HomeController {
 	}
 
 	@PostMapping("/login_submit.do")
-	public String login_submit(Member member, HttpServletRequest request) {
-//		System.out.print("로그인 시도");
-
+	public String login_submit(Member member, HttpServletRequest request, Model model) {
 		Member loginMember = mapper.memberLogin(member);
 		if (loginMember != null) {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", loginMember);
 
-//			System.out.print("로그인성공" +loginMember.getMem_id());
-
 		}else {
+			request.setAttribute("LoginFailMessage", "로그인 실패!!");
 			return "login";
 		}
 
 		return "index";
 	}
-
+	
 	// 로그아웃
 	@GetMapping("/logout.do")
 	public String Logout(HttpSession session)
