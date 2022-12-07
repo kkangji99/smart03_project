@@ -74,19 +74,19 @@ input[type=file]::file-selector-button {
       }, false);
    })();
    
-   function oneGender(checkbox) {
+	function oneGender(checkbox) {
          var checkgender = document.getElementsByName('gender')
          checkgender.forEach((item) => {
            if (item !== checkbox) item.checked = false
          })
        }
 
-       function oneType(checkbox) {
-         var checktype = document.getElementsByName('type')
-         checktype.forEach((item) => {
-           if (item !== checkbox) item.checked = false
-         })
-       }
+	function oneType(checkbox) {
+		var checktype = document.getElementsByName('type')
+			checktype.forEach((item) => {
+				if (item !== checkbox) item.checked = false
+				})
+		}
 
        function oneNeutered(checkbox) {
          var checkneutered = document.getElementsByName('neutered')
@@ -198,8 +198,6 @@ input[type=file]::file-selector-button {
 											<div class="col-md-6 text-center">
 												<div class="form-group">
 													<div id="uploadimages border border-primary">
-														
-															
 														
 													</div>
 													<input type="file" id="files" placeholder="이미지 선택"

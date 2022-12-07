@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+div.blog-entry.align-self-stretch{
+   
+   transition: all 0.2s linear;
+}
+div.blog-entry.align-self-stretch:hover{
+   
+   transform: scale(1.05);
+}

@@ -1,6 +1,5 @@
 package kr.animal.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,20 +8,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.sun.org.apache.regexp.internal.recompile;
 
 import kr.animal.entity.Animal;
+import kr.animal.entity.Comment;
 import kr.animal.entity.Member;
 import kr.animal.entity.Post;
-import kr.animal.entity.Comment;
 import kr.animal.mapper.AdMapper;
 import kr.animal.mapper.AnimalMapper;
 import kr.animal.mapper.CommuMapper;
@@ -51,7 +43,7 @@ public class HomeController {
 		List<Animal> list = admapper.allaniselect();
 		List<Animal> list_dog = admapper.doganiselect();
 		List<Animal> list_cat = admapper.cataniselect();
-		
+
 		model.addAttribute("list", list);
 		model.addAttribute("list_dog", list_dog);
 		model.addAttribute("list_cat", list_cat);
@@ -64,27 +56,27 @@ public class HomeController {
 
 		return "register";
 	}
-	
+
 	// 커뮤니티 페이지
 	@GetMapping("/commu.do")
 	public String commu(Model model) {
 		List<Post> post = commumapper.allpostselect();
 		model.addAttribute("post", post);
-		
+
 		return "commu";
-	}	
+	}
 
 	// 커뮤니티 글 등록
 	@PostMapping("/commu_write.do")
 	public String commu_write(Post post, Model model) {
-		
+
 		commumapper.postinsert(post);
 		List<Post> post1 = commumapper.allpostselect();
 		model.addAttribute("post", post1);
-		
+
 		return "commu";
 	}
-	
+
 	// 커뮤니티 글 삭제
 	@PostMapping("/post_delete.do")
 	public String post_delete(Post post, Model model) {
@@ -96,21 +88,21 @@ public class HomeController {
 
 		return "commu";
 	}
-		 
+
 	// 커뮤니티 상세 페이지1
 	@GetMapping("/commu_content.do")
 	public String commu_content() {
 
 		return "commu_content";
 	}
-	
+
 	// 커뮤니티 상세 페이지2
 	@GetMapping("/commu_info.do")
 	public String commu_info(Post post, Model model, HttpServletRequest request) {
 		Post postinfo = commumapper.selectpost(post);
 		List<Comment> allcomm = commumapper.allcomselect(post);
 		List<Member> memid = commumapper.memselect(post);
-		
+
 		model.addAttribute("postinfo", postinfo);
 		model.addAttribute("allcomm", allcomm);
 		model.addAttribute("memid", memid);
@@ -120,20 +112,20 @@ public class HomeController {
 			HttpSession session = request.getSession();
 			session.setAttribute("postinfo", postinfo);
 		}
-		
+
 		return "commu_content";
 	}
-	
+
 	// 커뮤니티 상세페이지 댓글 등록
 	@PostMapping("/com_submit.do")
 	public String com_submit(Comment com, HttpServletRequest request, Post post, Model model) {
-		
+
 		commumapper.comsubmit(com);
 
 		Post postinfo = commumapper.selectpost(post);
 		List<Comment> allcomm = commumapper.allcomselect(post);
 		List<Member> memid = commumapper.memselect(post);
-		
+
 		model.addAttribute("postinfo", postinfo);
 		model.addAttribute("allcomm", allcomm);
 		model.addAttribute("memid", memid);
@@ -143,20 +135,20 @@ public class HomeController {
 			HttpSession session = request.getSession();
 			session.setAttribute("postinfo", postinfo);
 		}
-		
+
 		return "commu_content";
 	}
 
 	// 커뮤니티 상세페이지 댓글 삭제
 	@PostMapping("/com_delete.do")
 	public String com_delete(Comment com, HttpServletRequest request, Post post, Model model) {
-		
+
 		commumapper.comdelete(com);
 
 		Post postinfo = commumapper.selectpost(post);
 		List<Comment> allcomm = commumapper.allcomselect(post);
 		List<Member> memid = commumapper.memselect(post);
-		
+
 		model.addAttribute("postinfo", postinfo);
 		model.addAttribute("allcomm", allcomm);
 		model.addAttribute("memid", memid);
@@ -166,17 +158,17 @@ public class HomeController {
 			HttpSession session = request.getSession();
 			session.setAttribute("postinfo", postinfo);
 		}
-		
+
 		return "commu_content";
 	}
-	
+
 	// 유실동물 공고 상세 페이지
 	@GetMapping("/ad_content.do")
 	public String ad_content() {
 
 		return "ad_content";
 	}
-	
+
 	@GetMapping("/ad_info.do")
 	public String ad_info(Animal ani, Model model) {
 
@@ -185,39 +177,73 @@ public class HomeController {
 
 		return "ad_content";
 	}
-	
-   @GetMapping("/searchDog.do")
-   public String searchDog(Model model, Animal animal) {
-      System.out.println("검색 시작");
-      
-      // all
-      List<Animal> list = admapper.allaniselect();
-      
-      //search list
-      List<Animal> searchDog =  mapper.searchDog(animal);
-      
-      System.out.println("개 검색 갯수"+searchDog.size());
-      
-      model.addAttribute("list", list);
-      model.addAttribute("searchDog", searchDog);
-      return "ad";
-   }
-   
-   @GetMapping("/searchCat.do")
-   public String searchCat(Model model, Animal animal) {
-      System.out.println("검색 시작");
-      
-      List<Animal> list = admapper.allaniselect();
-      
-      List<Animal> searchCat =  mapper.searchCat(animal);
-      
-      
-      System.out.println("고양이 검색 갯수"+searchCat.size());
-      model.addAttribute("list", list);
-      model.addAttribute("searchCat", searchCat);   
-      return "ad";
-   }
-	
+
+	@GetMapping("/searchDog.do")
+	public String searchDog(Model model, Animal animal) {
+		System.out.println("검색 시작");
+
+		// all
+		List<Animal> list = admapper.allaniselect();
+
+		List<Animal> list_dog = admapper.doganiselect();
+		List<Animal> list_cat = admapper.cataniselect();
+
+		// search list
+		List<Animal> searchDog = mapper.searchDog(animal);
+		List<Animal> searchCat = mapper.searchCat(animal);
+
+		System.out.println("개 검색 갯수" + searchDog.size());
+		System.out.println("고양이 검색 갯수" + searchCat.size());
+
+		model.addAttribute("list", list);
+		model.addAttribute("list_dog", list_dog);
+		model.addAttribute("list_cat", list_cat);
+		model.addAttribute("searchDog", searchDog);
+
+		// 개 검색결과 개수
+		model.addAttribute("searchDogSize", searchDog.size());
+		// 고양 검색결과 개수
+		model.addAttribute("searchCatSize", searchCat.size());
+
+		// 모든 동물 결과 개수
+		model.addAttribute("listSize", list.size());
+		// 모든 개 결과 개수
+		model.addAttribute("listDogSize", list_dog.size());
+		// 모든 고양 결과 개수
+		model.addAttribute("listCatSize", list_cat.size());
+
+		return "ad";
+	}
+
+	@GetMapping("/searchCat.do")
+	public String searchCat(Model model, Animal animal) {
+		System.out.println("검색 시작");
+
+		List<Animal> list = admapper.allaniselect();
+
+		List<Animal> list_dog = admapper.doganiselect();
+		List<Animal> list_cat = admapper.cataniselect();
+
+		List<Animal> searchCat = mapper.searchCat(animal);
+
+		System.out.println("고양이 검색 갯수" + searchCat.size());
+		model.addAttribute("list", list);
+		model.addAttribute("list_dog", list_dog);
+		model.addAttribute("list_cat", list_cat);
+		model.addAttribute("searchCat", searchCat);
+
+		// 검색결과 개수
+		model.addAttribute("searchCatSize", searchCat.size());
+
+		// 모든 동물 결과 개수
+		model.addAttribute("listSize", list.size());
+		// 모든 개 결과 개수
+		model.addAttribute("listDogSize", list_dog.size());
+		// 모든 고양 결과 개수
+		model.addAttribute("listCatSize", list_cat.size());
+
+		return "ad";
+	}
 
 	// 반려생활길잡이
 	@GetMapping("/about.do")
@@ -242,18 +268,17 @@ public class HomeController {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginMember", loginMember);
 
-		}else {
+		} else {
 			request.setAttribute("LoginFailMessage", "로그인 실패!!");
 			return "login";
 		}
 
 		return "index";
 	}
-	
+
 	// 로그아웃
 	@GetMapping("/logout.do")
-	public String Logout(HttpSession session)
-	{
+	public String Logout(HttpSession session) {
 		session.removeAttribute("loginMember");
 		return "index";
 	}
@@ -282,15 +307,12 @@ public class HomeController {
 
 		return "mypage";
 	}
-	
-	//글쓰기 페이지
+
+	// 글쓰기 페이지
 	@GetMapping("/commu_write.do")
 	public String commu_write() {
 
 		return "commu_write";
 	}
-	
-	
-
 
 }

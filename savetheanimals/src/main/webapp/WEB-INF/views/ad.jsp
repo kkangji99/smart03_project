@@ -4,7 +4,9 @@
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}"/>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,6 +28,8 @@
 <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+
+<link rel="stylesheet" href="resources/css/adZoomIn.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
@@ -103,7 +107,19 @@
             </div>         
             
             <div class="row d-flex">   
-               
+                  <!-- 검색결과 개수 표시 -->
+            <c:choose>
+               <c:when test="${list.size()<1000}">
+                    <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                       총  ${list.size()}건
+                    </p>
+               </c:when>
+               <c:otherwise>
+                   <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                        총 <fmt:formatNumber value="${list.size()}" pattern="#,###" />건 
+                   </p>
+               </c:otherwise>
+            </c:choose>
                 <c:forEach items="${list}" var="vo" varStatus="status">
                    <div class="col-md-4 d-flex justify-content-center ftco-animate">
                      <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
@@ -293,7 +309,7 @@
                               <option value="ani_protect">구조신고</option>
                               <option value="ani_witness">목격신고</option>
                         </select> &nbsp&nbsp&nbsp&nbsp
-                        <input type="submit" value="검색" class="btn btn-success" onclick="Search('ani_occur_address_dog','ani_occur_address_sub_dog')" >&nbsp&nbsp&nbsp&nbsp 
+                        <input type="submit" value="검색" class="btn btn-success">&nbsp&nbsp&nbsp&nbsp 
                         <input type="reset" value="다시" class="btn btn-success">
                      </ul>
                      
@@ -344,6 +360,19 @@
             <div class="row d-flex">
             <c:choose>
                   <c:when test="${empty searchDog}">
+                  <!-- 검색결과 개수 표시 -->
+               <c:choose>
+                  <c:when test="${list_dog.size()<1000}">
+                      <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                          총  ${list_dog.size()}건
+                      </p>
+                  </c:when>
+                  <c:otherwise>
+                     <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                            총 <fmt:formatNumber value="${list_dog.size()}" pattern="#,###" />건 
+                     </p>
+                  </c:otherwise>
+               </c:choose>
                      <c:forEach items="${list_dog}" var="lidog" varStatus="status">
                       <div class="col-md-4 d-flex justify-content-center ftco-animate">
                         <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
@@ -362,6 +391,19 @@
                 </c:forEach>
                   </c:when>
                   <c:otherwise>
+                <!-- 검색결과 개수 표시 -->
+                <c:choose>
+                  <c:when test="${searchDog.size()<1000}">
+                       <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                          총  ${searchDog.size()}건
+                       </p>
+                   </c:when>
+                  <c:otherwise>
+                      <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                           총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
+                      </p>
+                  </c:otherwise>
+               </c:choose>
                      <c:forEach items="${searchDog}" var="dog" varStatus="status">
                    <div class="col-md-4 d-flex justify-content-center ftco-animate">
                      <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
@@ -525,7 +567,7 @@
                               <option value="ani_witness">목격신고</option>
                         </select> &nbsp&nbsp&nbsp&nbsp 
                         
-                        <input type="submit" value="검색" class="btn btn-success" onclick="Search('ani_occur_address_dog','ani_occur_address_sub_dog')">&nbsp&nbsp&nbsp&nbsp
+                        <input type="submit" value="검색" class="btn btn-success">&nbsp&nbsp&nbsp&nbsp
                         <input type="reset" value="다시" class="btn btn-success">                        
                      </ul>
                      
@@ -577,6 +619,19 @@
             <div class="row d-flex">   
                <c:choose>
                      <c:when test="${empty searchCat}">
+                <!-- 검색결과 개수 표시 -->
+                   <c:choose>
+                           <c:when test="${list_cat.size()<1000}">
+                              <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                                 총  ${list_cat.size()}건
+                              </p>
+                           </c:when>
+                           <c:otherwise>
+                              <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                                  총 <fmt:formatNumber value="${list_cat.size()}" pattern="#,###" />건 
+                              </p>
+                           </c:otherwise>
+                    </c:choose>
                            <c:forEach items="${list_cat}" var="licat" varStatus="status">
                          <div class="col-md-4 d-flex justify-content-center ftco-animate">
                            <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
@@ -596,6 +651,19 @@
 
                      </c:when> 
                      <c:otherwise>
+                      <!-- 검색결과 개수 표시 -->
+                     <c:choose>
+                        <c:when test="${searchCat.size()<1000}">
+                           <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                              총  ${searchCat.size()}건
+                           </p>
+                        </c:when>
+                        <c:otherwise>
+                           <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                              총 <fmt:formatNumber value="${searchCat.size()}" pattern="#,###" />건
+                           </p>
+                        </c:otherwise>
+                     </c:choose>
                      <c:forEach items="${searchCat}" var="cat" varStatus="status">
                          <div class="col-md-4 d-flex justify-content-center ftco-animate">
                            <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
