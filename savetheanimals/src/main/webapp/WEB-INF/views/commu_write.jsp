@@ -82,7 +82,7 @@
 														<option value="post_free">자유 게시판</option>
 														<option value="post_adop">입양 정보</option>
 														<option value="post_review">입양 &재회 후기</option>
-														<option value="grpost_serviceay">봉사활동 정보</option>
+														<option value="post_service">봉사활동 정보</option>
 													</select>
 													<div class="valid-feedback"></div>
 												</div>

@@ -126,23 +126,31 @@ public class HomeController {
 	
 	// 커뮤니티 글 등록
 	@PostMapping("/commu_write.do")
-	public String commu_write(Post post, Model model) {
+	public String commu_write(Post post, Model model, @ModelAttribute("paging") Paging paging) {
 
 		commumapper.postinsert(post);
-		List<Post> post1 = commumapper.allpostselect();
-		model.addAttribute("post", post1);
-
+		
+		int totalRowCount = commumapper.getTotalRowCount(paging);
+		paging.setTotalRowCount(totalRowCount);
+		paging.pageSetting();
+		List<Post> list = commumapper.allpostselect3(paging);
+		model.addAttribute("list", list);
+		
 		return "commu";
 	}
 
 	// 커뮤니티 글 삭제
 	@PostMapping("/post_delete.do")
-	public String post_delete(Post post, Model model) {
+	public String post_delete(Post post, Model model, @ModelAttribute("paging") Paging paging) {
 
 		commumapper.postcomdelete(post);
 		commumapper.postdelete(post);
-		List<Post> post1 = commumapper.allpostselect();
-		model.addAttribute("post", post1);
+
+		int totalRowCount = commumapper.getTotalRowCount(paging);
+		paging.setTotalRowCount(totalRowCount);
+		paging.pageSetting();
+		List<Post> list = commumapper.allpostselect3(paging);
+		model.addAttribute("list", list);
 
 		return "commu";
 	}

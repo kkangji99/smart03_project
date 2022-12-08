@@ -12,7 +12,6 @@ public class Post {
 	private String post_datetime;
 	private String mem_id;
 
-	
 	// 2. 멤버변수(=프로퍼티(property))
 	public int getPost_num() {
 		return post_num;

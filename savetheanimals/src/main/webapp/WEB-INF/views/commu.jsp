@@ -66,16 +66,25 @@
 	                        </tr>
 						</thead>
 						<tbody>
-						<% int i=1;%>
 						<c:forEach items="${list}" var="vo" varStatus="status">
 				    		<tr>
 								<th scope="row" style="text-align: center;">${status.count + (paging.curPage-1)*10 }</th>
-								<td style="text-align: center;">${vo.post_cate_code}</td>
+								<c:if test="${vo.post_cate_code eq 'post_free'}">
+								<td style="text-align: center;">자유게시판</td>
+								</c:if>
+								<c:if test="${vo.post_cate_code eq 'post_adop'}">
+								<td style="text-align: center;">입양 정보</td>
+								</c:if>
+								<c:if test="${vo.post_cate_code eq 'post_review'}">
+								<td style="text-align: center;">입양/재회 후기</td>
+								</c:if>
+								<c:if test="${vo.post_cate_code eq 'post_service'}">
+								<td style="text-align: center;">봉사활동 정보</td>
+								</c:if>
 								<td style="text-align: center;"><a href="${cpath}/commu_info.do?post_num=${vo.post_num}" >${vo.post_title}</a></td>
 								<td style="text-align: center;">${vo.post_datetime}</td>
 								<td style="text-align: center;">${vo.mem_id}</td>
-								<%i++; %>
-								
+																
 								<td>
 	                              <c:if test="${vo.post_mem_num == loginMember.mem_num}">
 	                              	<form action="${cpath}/post_delete.do" method="post">

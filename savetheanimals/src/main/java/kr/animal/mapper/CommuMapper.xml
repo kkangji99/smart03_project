@@ -50,8 +50,8 @@
    <select id="getTotalRowCount" parameterType="kr.animal.entity.Paging" resultType="int">
       select count(*) from post
   </select>
-  <select id="allpostselect3" resultType="kr.animal.entity.Post" parameterType="kr.animal.entity.Paging">
-    select * from post limit #{firstRow}, #{rowSizePerPage}
+  <select id="allpostselect3"  parameterType="kr.animal.entity.Paging" resultType="kr.animal.entity.Post">
+    select * from post join member on member.mem_num = post.post_mem_num order by post_num desc limit #{firstRow}, #{rowSizePerPage}
   </select>
   
 </mapper>
