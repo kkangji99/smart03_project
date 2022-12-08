@@ -61,7 +61,7 @@
 	                            <th scope="col" style="width: 20%; text-align: center;">카테고리</th>
 	                            <th scope="col" style="width: 26%; text-align: center;">제목</th>
 	                            <th scope="col" style="width: 22%; text-align: center;">날짜 /시간</th>
-	                            <th scope="col" style="width: 10%; text-align: center;">회원 아이디</th>
+	                            <th scope="col" style="width: 10%; text-align: center;">작성자</th>
 	                            <th scope="col" style="width: 10%; text-align: center;"></th>
 	                        </tr>
 						</thead>
@@ -69,7 +69,7 @@
 						<% int i=1;%>
 						<c:forEach items="${post}" var="vo" varStatus="status">
 				    		<tr>
-								<th scope="row" style="text-align: center;"><%=i %></th>
+								<th scope="row" style="text-align: center;">${page}</th>
 								<td style="text-align: center;">${vo.post_cate_code}</td>
 								<td style="text-align: center;"><a href="${cpath}/commu_info.do?post_num=${vo.post_num}" >${vo.post_title}</a></td>
 								<td style="text-align: center;">${vo.post_datetime}</td>
@@ -91,7 +91,19 @@
 					</table>
 				</div>
 		
-			
+			 <%-- <div>
+		    	<c:if test="${ph.showPrev}">
+		    		<a href="${cpath}/commu.do?page=${ph.beginPage-1}&pageSize=${ph.pageSize}">&lt;</a>
+		    	</c:if>
+		    	<c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
+		    		<a href="${cpath}/commu.do?page=${i}&pageSize=${ph.pageSize}">${i}</a>
+		    	</c:forEach>
+		    	<c:if test="${ph.showNext}">
+		    		<a href="<${cpath}/commu.do?page=${ph.endPage+1}&pageSize=${ph.pageSize}">&gt;</a>
+		    	</c:if>
+		    </div> --%>
+		    
+			<!-- 
 			<div class="row mt-5">
 				<div class="col text-center">
 					<div class="block-27">
@@ -106,7 +118,7 @@
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</section>
 
