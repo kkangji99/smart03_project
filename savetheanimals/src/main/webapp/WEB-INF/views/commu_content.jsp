@@ -81,7 +81,7 @@ textarea {
       </div>
    </section>
 
-   <section class="ftco-section ftco-degree-bg p-2">
+   <section class="ftco-section ftco-degree-bg">
       <div class="container">
          <div class="row justify-text-center">
             <div class="col-lg-12 ftco-animate">
@@ -123,14 +123,14 @@ textarea {
                            <h2 style="text-align: center;">${postinfo.post_title}</h2>
                            <div class="content ml-5 mr-5" style="text-align: center;">${postinfo.mem_id}</div>
 
-                           <br>
-
                            <div class="content ml-5 mr-5"
                               style="text-align: center; margin-bottom: 3%;">${postinfo.post_contents}</div>
-                           <div class="comImage justify-content-center">
-                              <img src="resources/images/image_6.jpg" class="center"
-                                 style="width: 600px;">
-                           </div>
+                           <c:if test="${postinfo.pimg_path}">
+	                           <div class="comImage justify-content-center">
+	                              <img src="resources/images/image_6.jpg" class="center"
+	                                 style="width: 600px;">
+	                           </div>
+                           </c:if>
                         </div>
 
                      </c:otherwise>
@@ -141,21 +141,18 @@ textarea {
                <!-- 댓글 -->
                <div class="row">
                   <div class="container pb-3">
-                     <%
-                        int i = 1;
-                     %>
-
                      <c:forEach items="${allcomm}" var="com" varStatus="status">
                         <div class="card pl-2 border border-0 rounded-pill mt-3 mb-3">
 
-                           <div class="card-body" style="padding: 0px 30px 0px 30px">
-                           <div>
-                         <span class="sexy_line" style="margin-bottom: 5px;"></span>
-                     </div>
+                         <div class="card-body" style="padding: 0px 30px 0px 30px">
+	                         <div>
+	                         <span class="sexy_line" style="margin-bottom: 5px;"></span>
+	                     	</div>
                               <div class="row mt-2">
                                  <div class="col-md-6"
-                                    style="text-align: left; height: 20px; width: 20px;">
-                                    <a class="flaticon-pawprint-1">   ${memid[status.index].mem_id} <span class="small text-muted mb-0"> ${com.comm_datetime}</span></a>
+                                    style="text-align: left; height: 20px; width: 20px; font-size:17px;">
+                                    <a class="flaticon-pawprint-1" style="margin-right:5px;"></a>
+                                    ${memid[status.index].mem_id}<span class="small text-muted mb-0" style="font-size:15px; margin-left:5px;"> ${com.comm_datetime}</span>
                                  </div>
                                  <div class="col-md-6" style="text-align: right">
                                     <c:if
@@ -169,33 +166,19 @@ textarea {
                                              value="${postinfo.post_num}"> <input
                                              type="hidden" name="comm_num" value="${com.comm_num}">
                                           <input type="submit" value="삭제" class="btn btn-outline-secondary"
-                                             style="font-size: 12px; border-radius: 40px;">
+                                             style="font-size: 14px; border-radius: 40px;">
                                        </form>
                                     </c:if>
                                  </div>
                               </div>
 
-                              <p style=" color: black;">${com.comm_contents}</p>
+                              <p style="color: black; margin-left:20px; margin-bottom:0px; font-size:18px;">${com.comm_contents}</p>
 
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex flex-row align-items-center">
-                                    <!-- insert icon much better -->
-                                    <p class="small mb-0 ms-2">${memid[status.index].mem_id}</p>
-                                 </div>
-                                 <div class="d-flex flex-row align-items-center">
-                                    <p class="small text-muted mb-0">${com.comm_datetime}</p>
-
-                                    <p class="small text-muted mb-0">3</p>
-                                 </div>
-                              </div>
                            </div>
                         </div>
-
-
                      </c:forEach>
-
                      <c:if test="${not empty loginMember}">
-                        <div class="container" style="margin: 10px 0px 10px 0px;">
+                        <div class="container" style="margin: 10px 0px 10px 0px; height:10px;">
                            <!-- <h5>댓글 입력</h5> -->
                            <form action="${cpath}/com_submit.do" method="post">
                               <input type="hidden" name="comm_mem_num"
@@ -221,11 +204,8 @@ textarea {
                               </div>
                            </form>
                         </div>
-
                      </c:if>
-
                   </div>
-
                </div>
             </div>
          </div>
