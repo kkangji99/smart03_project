@@ -69,7 +69,7 @@
 						<% int i=1;%>
 						<c:forEach items="${post}" var="vo" varStatus="status">
 				    		<tr>
-								<th scope="row" style="text-align: center;">${page}</th>
+								<th scope="row" style="text-align: center;">${status.count + (paging.curPage-1)*10 }</th>
 								<td style="text-align: center;">${vo.post_cate_code}</td>
 								<td style="text-align: center;"><a href="${cpath}/commu_info.do?post_num=${vo.post_num}" >${vo.post_title}</a></td>
 								<td style="text-align: center;">${vo.post_datetime}</td>
@@ -90,7 +90,19 @@
 						</tbody>
 					</table>
 				</div>
-		
+			<!-- 페이징 -->
+	        <a href="${cpath }/commu?curPage=1">&laquo;</a>
+            <a href="${cpath }/comm?curPage=${paging.curPage-1 }">&lt;</a>
+            <c:forEach begin="${paging.firstPage }"  end="${paging.lastPage }" var="i">
+                  <a href="${cpath }/commu?curPage=${i }"  >  
+                     <c:if test="${i eq paging.curPage }">  <span style="color: red">${i} </span> </c:if>
+                     <c:if test="${i ne paging.curPage }">  ${i} </c:if> 
+                  </a>
+            </c:forEach>
+            <a href="${cpath }/commu?curPage=${paging.curPage+1 }">&gt;</a>
+            <a href="${cpath }/commu?curPage=${paging.totalPageCount }">&raquo;</a>
+	            
+            <!-- 페이징 끝-->
 			 <%-- <div>
 		    	<c:if test="${ph.showPrev}">
 		    		<a href="${cpath}/commu.do?page=${ph.beginPage-1}&pageSize=${ph.pageSize}">&lt;</a>

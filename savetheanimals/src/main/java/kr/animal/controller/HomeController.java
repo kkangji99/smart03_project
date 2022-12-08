@@ -26,6 +26,7 @@ import kr.animal.entity.Animal;
 import kr.animal.entity.Comment;
 import kr.animal.entity.Member;
 import kr.animal.entity.PageHandler;
+import kr.animal.entity.Paging;
 import kr.animal.entity.Post;
 import kr.animal.mapper.AdMapper;
 import kr.animal.mapper.AnimalMapper;
@@ -112,7 +113,7 @@ public class HomeController {
 	}
 
 	// 커뮤니티 페이지
-	@GetMapping("/commu.do")
+	/*@GetMapping("/commu.do")
 	public String commu(Model model, Integer page, Integer pageSize, HttpServletRequest request) {
 		List<Post> post = commumapper.allpostselect();
 		model.addAttribute("post", post);
@@ -135,8 +136,23 @@ public class HomeController {
 		System.out.println(page);
 		System.out.println(pageSize);
 		return "commu";
-	}	
-
+	}	*/
+	
+	@GetMapping("/commu.do")
+	public String commu(Model model, Paging paging) {
+		List<Post> post = commumapper.allpostselect();
+		model.addAttribute("post", post);
+		
+		int totalRowCount = commumapper.getTotalRowCount(paging);
+		paging.setTotalRowCount(totalRowCount);
+		paging.pageSetting();
+		List<Post> list = commumapper.allpostselect3(paging);
+		model.addAttribute("list", list);
+		
+		return "commu";
+	}
+	
+	
 	// 커뮤니티 글 등록
 	@PostMapping("/commu_write.do")
 	public String commu_write(Post post, Model model) {

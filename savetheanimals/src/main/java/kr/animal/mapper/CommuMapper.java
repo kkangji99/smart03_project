@@ -10,6 +10,8 @@ import kr.animal.entity.Animal;
 import kr.animal.entity.Comment;
 import kr.animal.entity.Post;
 import kr.animal.entity.Member;
+import kr.animal.entity.Paging;
+import kr.animal.entity.Post_Img;
 import kr.animal.entity.Post_Img;
 
 // 우리가 알고있는 DAO와 같은 일을 하는 것을 알려주는 주석
@@ -28,7 +30,9 @@ public interface CommuMapper {
 	public void postdelete(Post post);
 	public void postcomdelete(Post post);
 
+	//게시판 페이징
 	public int postsize();
 	public List<Post> allpostselect2(int page);
-	
+	public List<Post> allpostselect3(Paging paging);
+	public int getTotalRowCount(Paging paging);
 }
