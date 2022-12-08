@@ -49,7 +49,7 @@
 						<ul class="list-unstyled">
 							<li><a href="${cpath}/index.do" class="py-2 d-block">Home</a></li>
 							<li><a href="${cpath}/ad.do" class="py-2 d-block">공고 보기</a></li>
-							<li><a href="${cpath}/register.do" class="py-2 d-block">등록 하기</a></li>
+							<li><a href="${cpath}/register_page.do" class="py-2 d-block">등록 하기</a></li>
 							<li><a href="${cpath}/about.do" class="py-2 d-block">반려 생활 길잡이</a></li>
 							<li><a href="${cpath}/commu.do" class="py-2 d-block">커뮤니티</a></li>
 						</ul>
