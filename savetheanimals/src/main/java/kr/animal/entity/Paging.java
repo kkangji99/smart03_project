@@ -20,6 +20,9 @@ public class Paging implements Serializable {
 		private int firstPage; 	         // 페이지 리스트에서 시작  페이지 번호 
 		private int lastPage;            // 페이지 리스트에서 마지막 페이지 번호
 		
+		private boolean showPrev; // 이전 페이지로 이동하는 링크를 보여줄 것인지의 여부
+		private boolean showNext;
+		
 		public void pageSetting() {
 			totalPageCount = (totalRowCount-1)/rowSizePerPage+1;
 			firstRow = (curPage-1)*rowSizePerPage;
@@ -34,6 +37,16 @@ public class Paging implements Serializable {
 				lastPage = totalPageCount;
 			}
 			
+			if(curPage != 1)
+				showPrev = true;
+			else
+				showPrev = false;
+			
+			if(curPage != totalPageCount)
+				showNext = true;
+			else
+				showNext = false;
+				
 		}
 		
 		@Override
@@ -42,6 +55,22 @@ public class Paging implements Serializable {
 			return ToStringBuilder.reflectionToString(this,
 					  ToStringStyle.MULTI_LINE_STYLE);
 			
+		}
+
+		public boolean isShowPrev() {
+			return showPrev;
+		}
+
+		public void setShowPrev(boolean showPrev) {
+			this.showPrev = showPrev;
+		}
+
+		public boolean isShowNext() {
+			return showNext;
+		}
+
+		public void setShowNext(boolean showNext) {
+			this.showNext = showNext;
 		}
 		
 		
