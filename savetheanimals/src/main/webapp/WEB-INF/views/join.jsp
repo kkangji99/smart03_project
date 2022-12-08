@@ -29,6 +29,23 @@
 
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<script type="text/javascript">
+function joinHello() {
+	   var id = document.getElementById("mem_id").value;
+	   var email = document.getElementById("mem_email").value;
+	   
+	   if(email.includes("@")&&email.split("@")[1]){
+	      Swal.fire({
+	           title: id+'님 반갑습니다 :-)',
+	           //text: '저희 사이트를 이용해 주셔서 감사합니다',
+	           imageUrl: 'resources/images/joinHelloCat.jpg',
+	           imageWidth: 431.1,
+	           imageHeight: 431.1,
+	           imageAlt: 'image',
+	         })
+	   }
+	}
+</script>
 </head>
 <body>
    <!-- 회원가입 페이지 -->
@@ -85,7 +102,7 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form-group">
-                          <input type="submit" value="확인" class="btn btn-primary">
+                          <input type="submit" value="확인" class="btn btn-primary" onclick="joinHello()">
                           <div class="submitting"></div>
                         </div>
                       </div>
