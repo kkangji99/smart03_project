@@ -51,7 +51,7 @@
 						<ul class="navbar-nav ml-auto">
 
 							<li class="nav-item"><a href="${cpath}/ad.do" class="nav-link">공고 보기</a></li>
-							<li class="nav-item"><a href="${cpath}/register.do" class="nav-link">등록
+							<li class="nav-item"><a href="${cpath}/register_page.do" class="nav-link">등록
 									하기 </a></li>
 							<li class="nav-item"><a href="${cpath}/about.do" class="nav-link">반려
 									생활 길잡이</a></li>

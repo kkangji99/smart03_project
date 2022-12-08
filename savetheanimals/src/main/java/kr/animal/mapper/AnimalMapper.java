@@ -31,5 +31,9 @@ public interface AnimalMapper {
    public List<Animal> searchDog(Animal animal);
 
    public List<Animal> searchCat(Animal animal);
+
+   public void register(Animal vo);
+
+   public int imgnameset(Animal vo);
 	
 }

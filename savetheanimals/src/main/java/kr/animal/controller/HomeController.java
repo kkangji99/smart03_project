@@ -1,5 +1,11 @@
 package kr.animal.controller;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +16,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.animal.entity.Animal;
 import kr.animal.entity.Comment;
@@ -49,13 +58,51 @@ public class HomeController {
 		model.addAttribute("list_cat", list_cat);
 		return "ad";
 	}
-
-	// 유실동물 공고 등록하기
-	@GetMapping("/register.do")
-	public String register() {
-
+	// 등록 페이지로 이동
+	@RequestMapping("/register_page.do")
+	public String register_page() {
 		return "register";
 	}
+	// 유실동물 공고 등록하기
+		@RequestMapping("/register.do")
+		public String register(Animal vo, @RequestParam(value = "aimg_name") MultipartFile file,HttpSession session) {
+			mapper.register(vo);
+			
+		    System.out.println("파일 이름 : " + file.getOriginalFilename());
+		    System.out.println("파일 크기 : " + file.getSize());
+		    try(FileOutputStream fos = new FileOutputStream("c:/Aniaml_IMG/" + file.getOriginalFilename());
+	    	    InputStream is = file.getInputStream();
+	    	    ){int readCount = 0;
+	    	      byte[] buffer = new byte[1024];
+	    	      while((readCount = is.read(buffer)) != -1){
+	    	      fos.write(buffer,0,readCount);
+	    	      session.setAttribute("img_name", file.getOriginalFilename());
+	    	    }
+	    	    }catch(Exception ex){
+	    	      throw new RuntimeException("file Save Error");
+	    	    }
+		    return "redirect:/imgnameset.do";
+		}
+		// 파일 이름 변경
+		@RequestMapping("/imgnameset.do")
+		public String imgnameset(HttpSession session,Animal vo) {
+			int ani_num = mapper.imgnameset(vo);
+			System.out.println(ani_num);
+			String img_name = (String) session.getAttribute("img_name");
+			Path file = Paths.get("C:\\Aniaml_IMG\\"+img_name);
+	        Path newFile = Paths.get("C:\\Aniaml_IMG\\"+ani_num+".jpg");
+	 
+	        try {
+	 
+	            Path newFilePath = Files.move(file, newFile);
+	 
+	            System.out.println(newFilePath);
+	 
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		    return "register";
+		}
 
 	// 커뮤니티 페이지
 	@GetMapping("/commu.do")

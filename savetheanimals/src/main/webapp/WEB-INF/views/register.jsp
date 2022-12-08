@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
+<c:set var="cpath" value="${pageContext.request.contextPath}" />
 <html lang="en">
 
 <head>
@@ -134,21 +135,21 @@ input[type=file]::file-selector-button {
 							<div class="col-md-12">
 								<div class="contact-wrap w-100 p-md-5 p-4">
 									<h3 class="mb-4" style="text-align: left;">정보</h3>
-									<form method="POST" id="contactForm" class="needs-validation"
-										novalidate>
+									<form method="POST" id="contactForm" class="needs-validation" action="${cpath}/register.do"
+										novalidate enctype="multipart/form-data">
 										<div class="row col-md-12">
 											<div class="col-md-6">
 												<div>
 													<div class="col-md-12">
 														<div class="form-group">
-															<select class="custom-select" name="colors" id="colors"
+															<select class="custom-select" name="ani_color" id="colors"
 																required>
 																<option>털색</option>
-																<option value="white">흰색</option>
-																<option value="black">검정</option>
-																<option value="brown">갈색</option>
-																<option value="gray">회색</option>
-																<option value="mix">혼합</option>
+																<option value="흰색">흰색</option>
+																<option value="검정색">검정</option>
+																<option value="갈색">갈색</option>
+																<option value="회색">회색</option>
+																<option value="혼합색">혼합</option>
 															</select>
 															<div class="valid-feedback"></div>
 															<div class="invalid-feedback">털색 선택</div>
@@ -156,7 +157,7 @@ input[type=file]::file-selector-button {
 													</div>
 													<div class="col-md-12">
 														<div class="form-group">
-															<input type="text" class="form-control" name="number"
+															<input type="text" class="form-control" name="ani_phone"
 																id="number" placeholder="연락처" required>
 															<div class="valid-feedback"></div>
 															<div class="invalid-feedback">연락처 입력</div>
@@ -166,12 +167,12 @@ input[type=file]::file-selector-button {
 														<div class="form-group">
 															<div class="custom-checkbox"
 																style="display: flex; justify-content: space-evenly;">
-																목격<input type="checkbox" id="notice" name="situation"
-																	onclick="oneSituation(this)"> 보호<input
-																	type="checkbox" id="shelter" name="neutered"
-																	onclick="oneSituation(this)"> 유실<input
-																	type="checkbox" id="lost" name="neutered"
-																	onclick="oneSituation(this)">
+																목격<input type="checkbox" id="notice" name="ani_cate_code"
+																	onclick="oneSituation(this)" value="ani_witness"> 보호<input
+																	type="checkbox" id="shelter" name="ani_cate_code"
+																	onclick="oneSituation(this)"value="ani_protect"> 유실<input
+																	type="checkbox" id="lost" name="ani_cate_code"
+																	onclick="oneSituation(this)"value="ani_lose">
 															</div>
 														</div>
 													</div>
@@ -179,7 +180,7 @@ input[type=file]::file-selector-button {
 												<div class="col-md-12 mb-3">
 													<div class="form-group">
 														</label> <input onfocus="(this.type = 'date')"
-															class="form-control required" name="date"
+															class="form-control required" name="ani_datetime"
 															placeholder="목격/보호/유실 일자" id="date" required>
 														<div class="valid-feedback"></div>
 														<div class="invalid-feedback">목격/보호/유실 일자 선택</div>
@@ -188,7 +189,7 @@ input[type=file]::file-selector-button {
 
 												<div class="col-md-12">
 													<div class="form-group">
-														<input type="text" class="form-control" name="place"
+														<input type="text" class="form-control" name="ani_occur_address"
 															id="place" placeholder="목격/보호/유실 장소" required>
 														<div class="valid-feedback"></div>
 														<div class="invalid-feedback">장소 입력</div>
@@ -201,8 +202,8 @@ input[type=file]::file-selector-button {
 														
 													</div>
 													<input type="file" id="files" placeholder="이미지 선택"
-														class="form-control filesImgs required" name="image_file"
-														accept=".jpg, .jpeg, .png" multiple
+														class="form-control filesImgs required" name="aimg_name" 
+														accept=".jpg" multiple
 														style="padding-left: 25%; font-size: 14px;" required>
 													<div class="valid-feedback"></div>
 													<div class="invalid-feedback">이미지 선택</div>
@@ -210,11 +211,23 @@ input[type=file]::file-selector-button {
 
 											</div>
 											<div class="col-md-6">
-
 												<div class="col-md-12 mb-3">
 													<div class="form-group">
-														<select class="custom-select" id="age">
+														<select class="custom-select" id="ani_age" name = "ani_age">
 															<option selected>나이</option>
+															<option value="5">0~5</option>
+															<option value="10">5~10</option>
+															<option value="15">10~15</option>
+															<option value="20">15~20</option>
+														</select>
+													</div>
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="col-md-12 mb-3">
+													<div class="form-group">
+														<select class="custom-select" id="ani_kind" name = "ani_kind">
+															<option selected>품종</option>
 															<option value="5">0~5</option>
 															<option value="10">5~10</option>
 															<option value="15">10~15</option>
@@ -226,7 +239,7 @@ input[type=file]::file-selector-button {
 
 											<div class="col-md-6 mb-3">
 												<div class="form-group">
-													<input type="text" class="form-control" name="shelterPlace"
+													<input type="text" class="form-control" name="ani_protect_address"
 														id="shelterPlace" placeholder="보호 장소">
 												</div>
 											</div>
@@ -234,12 +247,12 @@ input[type=file]::file-selector-button {
 												<div class="form-group">
 													<div class="custom-checkbox"
 														style="display: flex; justify-content: space-evenly;">
-														<b>성별</b> 암컷<input type="checkbox" id="male" name="gender"
-															onclick="oneGender(this)"> 수컷<input
+														<b>성별</b> 암컷<input type="checkbox" id="male" name="ani_gender"
+															onclick="oneGender(this)" value='암컷'> 수컷<input
 															type="checkbox" id="female" name="gender"
-															onclick="oneGender(this)"> 미상 <input
+															onclick="oneGender(this)" value='수컷'> 미상 <input
 															type="checkbox" id="unknown" name="gender"
-															onclick="oneGender(this)">
+															onclick="oneGender(this)" value='미상'>
 													</div>
 												</div>
 											</div>
@@ -247,11 +260,11 @@ input[type=file]::file-selector-button {
 												<div class="form-group">
 													<div class="custom-checkbox"
 														style="display: flex; justify-content: space-evenly;">
-														<b>축종</b> 강아지 <input type="checkbox" id="dog" name="type"
-															onclick="oneType(this)"> 고양이<input
-															type="checkbox" id="cat" name="type"
-															onclick="oneType(this)"> 미상<input type="checkbox"
-															id="unknown" name="type" onclick="oneType(this)">
+														<b>축종</b> 강아지 <input type="checkbox" id="dog" name="ani_livestock"
+															onclick="kind('dog')" value='개'> 고양이<input
+															type="checkbox" id="cat" name="ani_livestock"
+															onclick="kind('cat')" value='고양이'> 미상<input type="checkbox"
+															id="unknown" name="ani_livestock" onclick="kind('unknown')" value='미상'>
 													</div>
 												</div>
 											</div>
@@ -260,18 +273,18 @@ input[type=file]::file-selector-button {
 													<div class="custom-checkbox"
 														style="display: flex; justify-content: space-evenly;">
 														<b>중성화여부</b> 예<input type="checkbox" id="neutered"
-															name="neutered" onclick="oneNeutered(this)"> 아니요<input
-															type="checkbox" id="notneutered" name="neutered"
-															onclick="oneNeutered(this)"> 미상<input
-															type="checkbox" id="unknown" name="neutered"
-															onclick="oneNeutered(this)">
+															name="ani_neutered" onclick="oneNeutered(this)" value="예"> 아니요<input
+															type="checkbox" id="notneutered" name="ani_neutered"
+															onclick="oneNeutered(this)" value='아니오'> 미상<input
+															type="checkbox" id="unknown" name="ani_neutered"
+															onclick="oneNeutered(this)" value='미상'>
 													</div>
 												</div>
 											</div>
 
 											<div class="col-md-12 mb-3">
 												<div class="form-group">
-													<textarea name="message" class="form-control" id="message"
+													<textarea name="ani_uniqueness" class="form-control" id="message"
 														cols="30" rows="4" placeholder="특이사항"
 														style="resize: none;"></textarea>
 												</div>
@@ -329,4 +342,48 @@ input[type=file]::file-selector-button {
 
 </body>
 
+<script>
+
+
+function kind(id)
+{       
+    //도시
+    var kind = document.getElementById(id);
+    var kindOption = kind.text;
+    var subkind = document.getElementById("ani_kind");
+    var subOptions = {
+          dog : ["전체","강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구",
+              "도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구",
+              "양천구","영등포구","용산구","은평구","종로구","중구","중랑구"],
+              
+          cat :  ["전체","강서구","금정구","남구","동구","동래구","부산진구","북구","사상구",
+              
+              "사하구","서구","수영구","연제구","영도구","중구","해운대구","기장군"]
+    }
+    
+    switch (kindOption) {
+    case "개":
+      var subOption = subOptions.dog;
+      break;
+   case "고양이":
+      var subOption = subOptions.cat;
+      break;
+   
+   default:
+      break;
+   }
+    //도시 초기화
+    subkind.options.length = 0;
+    
+    for(var i=0; i<subOption.length;i++){
+       var option = document.createElement('option');
+       option.innerText = subOption[i];
+       subkind.append(option);
+    }
+    subOption= subkind.options[subkind.selectedIndex].text;
+    
+    console.log(mainOption);
+    return mainOption;
+}
+</script> 
 </html>
