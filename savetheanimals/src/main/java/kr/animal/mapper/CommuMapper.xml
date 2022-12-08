@@ -8,7 +8,7 @@
 <mapper namespace="kr.animal.mapper.CommuMapper">
  
   <select id="allpostselect" resultType="kr.animal.entity.Post">
-      select * from post
+      select * from post join member on member.mem_num = post.post_mem_num;
   </select>
   
   <select id="selectpost" parameterType="kr.animal.entity.Post"
@@ -46,9 +46,13 @@
       delete from comment where comm_post_num=#{post_num}
   </delete>
   
-  <select id="mempostselect" parameterType="kr.animal.entity.Post"
-      resultType="kr.animal.entity.Member">
-      select * from member,post where post.post_mem_num = member.mem_num and post_num=#{post_num}
+  <select id="postsize" resultType="int">
+      select count(*) from post
+  </select>
+  
+  <select id="allpostselect2" parameterType="int"
+      resultType="kr.animal.entity.Post">
+      select * from post join member on member.mem_num = post.post_mem_num limit #{page},10
   </select>
   
 </mapper>

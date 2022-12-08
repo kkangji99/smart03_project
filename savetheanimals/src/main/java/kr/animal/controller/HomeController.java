@@ -6,7 +6,9 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.animal.entity.Animal;
 import kr.animal.entity.Comment;
 import kr.animal.entity.Member;
+import kr.animal.entity.PageHandler;
 import kr.animal.entity.Post;
 import kr.animal.mapper.AdMapper;
 import kr.animal.mapper.AnimalMapper;
@@ -64,54 +67,72 @@ public class HomeController {
 		return "register";
 	}
 	// 유실동물 공고 등록하기
-		@RequestMapping("/register.do")
-		public String register(Animal vo, @RequestParam(value = "aimg_name") MultipartFile file,HttpSession session) {
-			mapper.register(vo);
-			
-		    System.out.println("파일 이름 : " + file.getOriginalFilename());
-		    System.out.println("파일 크기 : " + file.getSize());
-		    try(FileOutputStream fos = new FileOutputStream("c:/Aniaml_IMG/" + file.getOriginalFilename());
-	    	    InputStream is = file.getInputStream();
-	    	    ){int readCount = 0;
-	    	      byte[] buffer = new byte[1024];
-	    	      while((readCount = is.read(buffer)) != -1){
-	    	      fos.write(buffer,0,readCount);
-	    	      session.setAttribute("img_name", file.getOriginalFilename());
-	    	    }
-	    	    }catch(Exception ex){
-	    	      throw new RuntimeException("file Save Error");
-	    	    }
-		    return "redirect:/imgnameset.do";
-		}
-		// 파일 이름 변경
-		@RequestMapping("/imgnameset.do")
-		public String imgnameset(HttpSession session,Animal vo) {
-			int ani_num = mapper.imgnameset(vo);
-			System.out.println(ani_num);
-			String img_name = (String) session.getAttribute("img_name");
-			Path file = Paths.get("C:\\Aniaml_IMG\\"+img_name);
-	        Path newFile = Paths.get("C:\\Aniaml_IMG\\"+ani_num+".jpg");
-	 
-	        try {
-	 
-	            Path newFilePath = Files.move(file, newFile);
-	 
-	            System.out.println(newFilePath);
-	 
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-		    return "register";
-		}
+	@RequestMapping("/register.do")
+	public String register(Animal vo, @RequestParam(value = "aimg_name") MultipartFile file,HttpSession session) {
+		mapper.register(vo);
+		
+	    System.out.println("파일 이름 : " + file.getOriginalFilename());
+	    System.out.println("파일 크기 : " + file.getSize());
+	    try(FileOutputStream fos = new FileOutputStream("c:/Aniaml_IMG/" + file.getOriginalFilename());
+    	    InputStream is = file.getInputStream();
+    	    ){int readCount = 0;
+    	      byte[] buffer = new byte[1024];
+    	      while((readCount = is.read(buffer)) != -1){
+    	      fos.write(buffer,0,readCount);
+    	      session.setAttribute("img_name", file.getOriginalFilename());
+    	    }
+    	    }catch(Exception ex){
+    	      throw new RuntimeException("file Save Error");
+    	    }
+	    return "redirect:/imgnameset.do";
+	}
+	
+	// 파일 이름 변경
+	@RequestMapping("/imgnameset.do")
+	public String imgnameset(HttpSession session,Animal vo) {
+		int ani_num = mapper.imgnameset(vo);
+		System.out.println(ani_num);
+		String img_name = (String) session.getAttribute("img_name");
+		Path file = Paths.get("C:\\Aniaml_IMG\\"+img_name);
+        Path newFile = Paths.get("C:\\Aniaml_IMG\\"+ani_num+".jpg");
+ 
+        try {
+ 
+            Path newFilePath = Files.move(file, newFile);
+ 
+            System.out.println(newFilePath);
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	    return "register";
+	}
 
 	// 커뮤니티 페이지
 	@GetMapping("/commu.do")
-	public String commu(Model model) {
+	public String commu(Model model, Integer page, Integer pageSize, HttpServletRequest request) {
 		List<Post> post = commumapper.allpostselect();
 		model.addAttribute("post", post);
+		
+		if(page==null) page= 1;
+		if(pageSize==null) pageSize=10;
+		int totalCnt = commumapper.postsize();
+		PageHandler pageHandler = new PageHandler(totalCnt, page, pageSize);
+		
+		Map map = new HashMap();
+		map.put("offset", (page-1)*pageSize);
+		map.put("pageSize", pageSize);
+		
+		List<Post> list = commumapper.allpostselect2((page-1)*pageSize);
+		model.addAttribute("list", list);
+		model.addAttribute("ph",pageHandler);
+		model.addAttribute("page", page);
+		model.addAttribute("pageSize", pageSize);
 
+		System.out.println(page);
+		System.out.println(pageSize);
 		return "commu";
-	}
+	}	
 
 	// 커뮤니티 글 등록
 	@PostMapping("/commu_write.do")
@@ -352,6 +373,20 @@ public class HomeController {
 	@GetMapping("/mypage.do")
 	public String mypage() {
 
+		return "mypage";
+	}
+	
+	// 마이페이지 수정
+	@PostMapping("/mypage_update.do")
+	public String mypage_update(Member member, HttpServletRequest request) {
+
+		mapper.memberUpdate(member);
+
+		Member loginMember = mapper.memberUpLogin(member);
+
+		HttpSession session = request.getSession();
+		session.setAttribute("loginMember", loginMember);
+		
 		return "mypage";
 	}
 

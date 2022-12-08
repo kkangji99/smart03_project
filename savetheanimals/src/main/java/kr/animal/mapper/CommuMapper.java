@@ -27,5 +27,8 @@ public interface CommuMapper {
 	public void postinsert(Post Post);
 	public void postdelete(Post post);
 	public void postcomdelete(Post post);
+
+	public int postsize();
+	public List<Post> allpostselect2(int page);
 	
 }

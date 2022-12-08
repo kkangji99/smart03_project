@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@page import="kr.animal.entity.Post"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<c:set var="cpath" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,13 +12,8 @@
 <title>Save the Animals</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="stylesheet" href="resources/css/animate.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
@@ -24,127 +23,114 @@
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 
-<style type="text/css">
-section {
-	/* background-image: linear-gradient(to bottom, #ffffff, #f9fbfe, #f0f8fd, #e5f5f8, #ddf2f0,
-		#d4f0ea, #cdeee1, #c9ecd6, #bcebd0, #aeeaca, #9fe9c4, #8fe8bf); */
-}
-</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 
 </head>
 <body>
-	<!-- 마이페이지 페이지 -->
-	<%@includefile="header.jsp"%>
+	<!-- 커뮤니티 페이지 -->
+	 <%@includefile="header.jsp"%>
 	<!-- END nav -->
-	<section class="hero-wrap hero-wrap-2"
-		style="background-image: url('resources/images/image_4.jpg');"
+	<section class="hero-wrap hero-wrap-2" style="background-image: url('resources/images/bg_2.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-end">
 				<div class="col-md-9 ftco-animate pb-5">
-					<h1 class="mb-0 bread">My Page</h1>
+					<h1 class="mb-0 bread">커뮤니티</h1>
 				</div>
 			</div>
 		</div>
 	</section>
-
+	
 	<section class="ftco-section bg-light">
-	<c:choose>
-	<c:when test="${empty loginMember}">
-	</c:when>
-	<c:otherwise>
 		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-6 text-center mb-5">
-				<h2 class="heading-section">${loginMember.mem_id}님 의 My Page 입니다.</h2>
+			<c:if test="${not empty loginMember}">
+				<div class="col-md-12" style="width:1090px; text-align:right; margin-bottom:15px;">
+					<button type="submit" class="btn btn-primary" style="width:100px; font-size:1em;"
+				 		onclick="location.href='${cpath}/commu_write.do'">글쓰기</button> 
 				</div>
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-md-8">
-					<div class="contact-wrap w-80 p-md-5 p-4">
-			           <form action="${cpath}/mypage_update.do" method="post">
-								<div class="col-md-12 pb-2">
-									<div class="form-group">
-										<input type="hidden" name="mem_num" id="mem_num" value="${loginMember.mem_num}">
-										아이디<input disabled type="text" class="form-control text-center"
-											name="mem_id" id="mem_id" placeholder="${loginMember.mem_id}">
-									</div>
-								</div>
-								<div class="col-md-12 pb-2">
-									<div class="form-group">
-										이름<input type="text" class="form-control text-center"
-											name="mem_name" id="mem_name" placeholder="${loginMember.mem_name}">
-									</div>
-								</div>
-								<div class="col-md-12 pb-2">
-									<div class="form-group">
-										이메일<input type="email" class="form-control text-center"
-											name="mem_email" id="mem_email" placeholder="${loginMember.mem_email}">
-									</div>
-								</div>
-								<div class="col-md-12 pb-2">
-									<div class="form-group">
-										전화번호<input type="text" class="form-control text-center"
-											name="mem_phone" id="mem_phone" placeholder="${loginMember.mem_phone}">
-									</div>
-								</div>
-								<div class="col-md-12 pb-2">
-									<div class="form-group">
-										비밀번호<input type="password" class="form-control text-center"
-											name="mem_pw" id="mem_pw" placeholder="${loginMember.mem_pw}">
-									</div>
-								</div>
-								<div class="row col-md-12 p-md-2 justify-content-center">
-									<div class="form-group">
-										<input type="submit" value="수정" class="btn btn-primary" style="font-size:15px;">
-										<input type="reset" value="취소" class="btn btn-primary" style="font-size:15px;">
-									</div>
-								</div>
-						</form>
+			</c:if>
+		
+			<div class="container table-fixed">
+                  <table class="table table-hover">
+                     <thead class="thead-light">
+							<tr>
+								<th scope="col" style="width: 12%; text-align: center;">게시글번호</th>
+	                            <th scope="col" style="width: 20%; text-align: center;">카테고리</th>
+	                            <th scope="col" style="width: 26%; text-align: center;">제목</th>
+	                            <th scope="col" style="width: 22%; text-align: center;">날짜 /시간</th>
+	                            <th scope="col" style="width: 10%; text-align: center;">작성자</th>
+	                            <th scope="col" style="width: 10%; text-align: center;"></th>
+	                        </tr>
+						</thead>
+						<tbody>
+						<% int i=1;%>
+						<c:forEach items="${post}" var="vo" varStatus="status">
+				    		<tr>
+								<th scope="row" style="text-align: center;">${page}</th>
+								<td style="text-align: center;">${vo.post_cate_code}</td>
+								<td style="text-align: center;"><a href="${cpath}/commu_info.do?post_num=${vo.post_num}" >${vo.post_title}</a></td>
+								<td style="text-align: center;">${vo.post_datetime}</td>
+								<td style="text-align: center;">${vo.mem_id}</td>
+								<%i++; %>
+								
+								<td>
+	                              <c:if test="${vo.post_mem_num == loginMember.mem_num}">
+	                              	<form action="${cpath}/post_delete.do" method="post">
+	                              		<input type="hidden" name="post_num" value="${vo.post_num}">
+										<input type="submit" value="삭제" class="btn btn-secondary" style="width:65px; height:32px; font-size:12px;">
+									</form>
+	                              </c:if>
+	                            </td>
+	                             
+							</tr>
+			    		</c:forEach>
+						</tbody>
+					</table>
+				</div>
+		
+			 <%-- <div>
+		    	<c:if test="${ph.showPrev}">
+		    		<a href="${cpath}/commu.do?page=${ph.beginPage-1}&pageSize=${ph.pageSize}">&lt;</a>
+		    	</c:if>
+		    	<c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
+		    		<a href="${cpath}/commu.do?page=${i}&pageSize=${ph.pageSize}">${i}</a>
+		    	</c:forEach>
+		    	<c:if test="${ph.showNext}">
+		    		<a href="<${cpath}/commu.do?page=${ph.endPage+1}&pageSize=${ph.pageSize}">&gt;</a>
+		    	</c:if>
+		    </div> --%>
+		    
+			<!-- 
+			<div class="row mt-5">
+				<div class="col text-center">
+					<div class="block-27">
+						<ul>
+							<li><a href="#">&lt;</a></li>
+							<li class="active"><span>1</span></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">&gt;</a></li>
+						</ul>
 					</div>
-						
 				</div>
-			</div>
+			</div> -->
 		</div>
-		</c:otherwise>
-		</c:choose>
 	</section>
 
 	<section>
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-5 mb-2">
-						<h2 class="footer-heading">Save the Animals</h2>
-						<p>A country's greatness and morality can be judged by its
-							attitude toward animals.</p>
-
-					</div>
-
-					<div class="col-md-6 col-lg-7 pl-lg-3 mb-2">
-						<h2 class="footer-heading">Quick Links</h2>
-						<ul class="list-unstyled">
-							<li><a href="index" class="py-2 d-block">Home</a></li>
-							<li><a href="ad" class="py-2 d-block">유실동물 공고</a></li>
-							<li><a href="register" class="py-2 d-block">유실동물 등록</a></li>
-							<li><a href="commu" class="py-2 d-block">커뮤니티</a></li>
-							<li><a href="about" class="py-2 d-block">반려 생활 길잡이</a></li>
-						</ul>
-					</div>
-
-				</div>
-			</div>
-		</footer>
+		<%@includefile="footer.jsp"%>
 	</section>
 
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
-      <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke="#eeeeee" />
-      <circle class="path" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
     </svg>
 	</div>
 
@@ -161,8 +147,7 @@ section {
 	<script src="resources/js/owl.carousel.min.js"></script>
 	<script src="resources/js/jquery.magnific-popup.min.js"></script>
 	<script src="resources/js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+	<script rc="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="resources/js/google-map.js"></script>
 	<script src="resources/js/main.js"></script>
 
