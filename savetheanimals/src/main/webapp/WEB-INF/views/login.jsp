@@ -27,8 +27,17 @@
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <script src="https://code.jquery.com/jquery-latest.js"></script> 
-
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+<script type="text/javascript">
+function errorModal() {
+	  Swal.fire(
+			  '로그인 오류',
+			  '아이디와 비밀번호를 다시 입력하세요.',
+			  'error'
+			)
+}
+</script>
 </head>
 <body>
    <!-- 로그인  페이지 -->
@@ -63,7 +72,7 @@
                               
                               <c:if test="${LoginFailMessage!=null}">
 								<div id="myModal" class="modal">
-							      <div class="modal-content">
+<!-- 							      <div class="modal-content">
 							                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">로그인 오류</span></b></span></p>
 							                <p style="text-align: center; line-height: 1.5;"><br/></p>
 							                <p style="text-align: center; line-height: 1.5;"><span style="font-size: 14pt;">아이디와 비밀번호를 다시 입력하세요.</span></p>
@@ -73,19 +82,17 @@
 							                     		닫기
 							                </span>
 							            </div>
-							      </div>
-							 
+							      </div> -->
 							    </div>
                                   <script type="text/javascript">
-      
-							        jQuery(document).ready(function() {
+                                  errorModal();
+	/* 						        jQuery(document).ready(function() {
 							                $('#myModal').show();
 							        });
 							        //팝업 Close 기능
 							        function close_pop(flag) {
 							             $('#myModal').hide();
-							        };
-							        
+							        }; */
 							      </script>
                                   
                               </c:if>
