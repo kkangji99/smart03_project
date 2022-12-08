@@ -202,3 +202,13 @@ function Cate(ca) {
     
     //console.log(codeValue);
 }
+  function infoModal() {
+	  Swal.fire(
+			  '검색 총 0건',
+			  '',
+			  'info'
+			)
+}
+
+
+

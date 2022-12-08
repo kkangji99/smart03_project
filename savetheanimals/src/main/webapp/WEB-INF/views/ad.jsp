@@ -40,6 +40,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 
 <link rel="stylesheet" href="resources/js/pagination.js">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+
+<script type="text/javascript">
+  function infoModal() {
+	  Swal.fire(
+			  '검색 총 0건',
+			  '',
+			  'info'
+			)
+}
+</script>
+
 </head>
 
 <body>
@@ -384,9 +398,13 @@
                 </c:forEach>
                   </c:when>
                   <c:when test="${checkDog=='없'}">
+
                    <p class="col-12" style="padding-left: 5%; font-weight: bold;">
                            총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
                       </p><br>
+                      <script type="text/javascript">
+                      infoModal();
+                      </script>
                   </c:when>
                   <c:otherwise>
                 <!-- 검색결과 개수 표시 -->
@@ -636,6 +654,9 @@
                    <p class="col-12" style="padding-left: 5%; font-weight: bold;">
                            	총 <fmt:formatNumber value="${searchCat.size()}" pattern="#,###" />건 
                       </p> <br>
+                      <script type="text/javascript">
+                      infoModal();
+                      </script>
                   </c:when>
                      <c:otherwise>
                       <!-- 검색결과 개수 표시 -->
