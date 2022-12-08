@@ -59,6 +59,8 @@ public class HomeController {
 		model.addAttribute("list", list);
 		model.addAttribute("list_dog", list_dog);
 		model.addAttribute("list_cat", list_cat);
+		
+		model.addAttribute("check", "전");
 		return "ad";
 	}
 	// 등록 페이지로 이동
@@ -280,6 +282,15 @@ public class HomeController {
 		// 모든 고양 결과 개수
 		model.addAttribute("listCatSize", list_cat.size());
 
+		if(searchDog.size()==0) {
+			model.addAttribute("check", "없");
+		}
+		else {
+			
+			model.addAttribute("check", "있");
+			
+		}
+		
 		return "ad";
 	}
 
@@ -310,6 +321,15 @@ public class HomeController {
 		// 모든 고양 결과 개수
 		model.addAttribute("listCatSize", list_cat.size());
 
+		if(searchCat.size()==0) {
+			model.addAttribute("check", "없");
+		}
+		else {
+			
+			model.addAttribute("check", "있");
+			
+		}
+		
 		return "ad";
 	}
 
