@@ -74,7 +74,7 @@
       <a class="nav-link" href="${cpath}/ad.do"><img src="resources/images/guide.gif" style="width: 2em; height: 2em;">
                안내</a>
     </li>
-      <li class="nav-item" style="font-weight: bolder; font-size: 1.4em;" >
+      <li class="nav-item" style="font-weight: bolder; font-size: 1.4em; border: 2px solid black;" >
       <a class="nav-link" href="${cpath}/ad1.do"> <img src="resources/images/dog.gif" style="width: 2em; height: 2em; align: center;">강아지</a>
     </li>
     <li class="nav-item " style="font-weight: bolder; font-size: 1.4em;" >

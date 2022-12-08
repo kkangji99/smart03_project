@@ -106,7 +106,7 @@
 						<ul>
 							<c:if test="${paging.showPrev}">
 					        <li><a href="${cpath}/commu.do?curPage=1">&laquo;</a></li>
-				            <li><a href="${cpath}/commu.do?curPage=${paging.curPage-1 }">&lt;</a></li>
+				            <li><a href="${cpath}/commu.do?curPage=${paging.curPage-1}">&lt;</a></li>
 				            </c:if>
 				            <c:forEach begin="${paging.firstPage}"  end="${paging.lastPage}" var="i">
 				                  <li><a href="${cpath }/commu.do?curPage=${i}">  

@@ -82,13 +82,13 @@ textarea {
    </section>
 
    <section class="ftco-section ftco-degree-bg">
-      <div class="container">
+      <div class="container" style="max-width: 1000px;">
          <div class="row justify-text-center">
             <div class="col-lg-12 ftco-animate">
                <!-- 커뮤니티 내용 -->
-               <div class="row" style="display: inline;">
-                  <c:choose>
-                     <c:when test="${empty postinfo}">
+               <div class="information">
+               	<c:choose>
+               		<c:when test="${empty postinfo}">
                         <div class="container-table" style="margin-top: -6%">
                            <table class="table table-hover">
                               <tr>
@@ -98,49 +98,52 @@ textarea {
                         </div>
                      </c:when>
                      <c:otherwise>
-                        <div class="container-table">
-                           <div class="mini-info row">
-                              <c:if test="${postinfo.post_cate_code eq 'post_free'}">
-                                 <div class="content col-md-6"
-                                    style="text-align: left; margin-top: 10%;">자유게시판</div>
+                        <table style="color: black; width: 100%; font-size: 17px;"
+                           class="table table-hover font-weight-normal">
+                           
+                           <tr>
+                              <th style="text-align: center;">제목</th>
+                              <td>${postinfo.post_title}</td>
+                           </tr>
+                           
+                           <tr>
+                              <th style="text-align: center;">작성자</th>
+                              <td>${postinfo.mem_id}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center; width: 40%;">카테고리</th>
+                               <c:if test="${postinfo.post_cate_code eq 'post_free'}">
+                                 <<td>자유게시판</td>
                               </c:if>
                               <c:if test="${postinfo.post_cate_code eq 'post_adop'}">
-                                 <div class="content col-md-6"
-                                    style="text-align: left; margin-top: 10%;">입양 정보</div>                              
+                                 <td>입양 정보</td>                              
                               </c:if>
                               <c:if test="${postinfo.post_cate_code eq 'post_review'}">
-                                 <div class="content col-md-6"
-                                    style="text-align: left; margin-top: 10%;">입양/재회 후기</div>                              
+                                 <td>입양/재회 후기</td>                              
                               </c:if>
                               <c:if test="${postinfo.post_cate_code eq 'post_service'}">
-                                 <div class="content col-md-6"
-                                    style="text-align: left; margin-top: 10%;">봉사활동 정보</div>                              
+                                 <td>봉사활동 정보</td>                              
                               </c:if>
-                              
-                              <div class="content col-md-6"
-                                 style="text-align: right; margin-top: 10%;">${postinfo.post_datetime}</div>
-                           </div>
-                           <h2 style="text-align: center;">${postinfo.post_title}</h2>
-                           <div class="content ml-5 mr-5" style="text-align: center;">${postinfo.mem_id}</div>
-
-                           <div class="content ml-5 mr-5"
-                              style="text-align: center; margin-bottom: 3%;">${postinfo.post_contents}</div>
-                           <c:if test="${postinfo.pimg_path}">
-	                           <div class="comImage justify-content-center">
-	                              <img src="resources/images/image_6.jpg" class="center"
-	                                 style="width: 600px;">
-	                           </div>
-                           </c:if>
-                        </div>
-
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">등록날짜</th>
+                              <td>${postinfo.post_datetime}</td>
+                           </tr>
+                           <tr>
+                           	 <th style="text-align: center;">내용</th>
+                              <td>${postinfo.post_contents}</td>
+                           </tr>
+                           
+                        </table>
                      </c:otherwise>
                   </c:choose>
                </div>
 
-               <br> <br>
+               <br>
                <!-- 댓글 -->
                <div class="row">
                   <div class="container pb-3">
+                  <h5>댓글</h5>
                      <c:forEach items="${allcomm}" var="com" varStatus="status">
                         <div class="card pl-2 border border-0 rounded-pill mt-3 mb-3">
 
