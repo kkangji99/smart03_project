@@ -31,8 +31,6 @@ public interface CommuMapper {
 	public void postcomdelete(Post post);
 
 	//게시판 페이징
-	public int postsize();
-	public List<Post> allpostselect2(int page);
 	public List<Post> allpostselect3(Paging paging);
 	public int getTotalRowCount(Paging paging);
 }

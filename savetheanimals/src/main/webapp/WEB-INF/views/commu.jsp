@@ -67,7 +67,7 @@
 						</thead>
 						<tbody>
 						<% int i=1;%>
-						<c:forEach items="${post}" var="vo" varStatus="status">
+						<c:forEach items="${list}" var="vo" varStatus="status">
 				    		<tr>
 								<th scope="row" style="text-align: center;">${status.count + (paging.curPage-1)*10 }</th>
 								<td style="text-align: center;">${vo.post_cate_code}</td>
@@ -91,30 +91,29 @@
 					</table>
 				</div>
 			<!-- 페이징 -->
-	        <a href="${cpath }/commu?curPage=1">&laquo;</a>
-            <a href="${cpath }/comm?curPage=${paging.curPage-1 }">&lt;</a>
-            <c:forEach begin="${paging.firstPage }"  end="${paging.lastPage }" var="i">
-                  <a href="${cpath }/commu?curPage=${i }"  >  
-                     <c:if test="${i eq paging.curPage }">  <span style="color: red">${i} </span> </c:if>
-                     <c:if test="${i ne paging.curPage }">  ${i} </c:if> 
-                  </a>
-            </c:forEach>
-            <a href="${cpath }/commu?curPage=${paging.curPage+1 }">&gt;</a>
-            <a href="${cpath }/commu?curPage=${paging.totalPageCount }">&raquo;</a>
-	            
-            <!-- 페이징 끝-->
-			 <%-- <div>
-		    	<c:if test="${ph.showPrev}">
-		    		<a href="${cpath}/commu.do?page=${ph.beginPage-1}&pageSize=${ph.pageSize}">&lt;</a>
-		    	</c:if>
-		    	<c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
-		    		<a href="${cpath}/commu.do?page=${i}&pageSize=${ph.pageSize}">${i}</a>
-		    	</c:forEach>
-		    	<c:if test="${ph.showNext}">
-		    		<a href="<${cpath}/commu.do?page=${ph.endPage+1}&pageSize=${ph.pageSize}">&gt;</a>
-		    	</c:if>
-		    </div> --%>
-		    
+			<div class="row mt-5">
+				<div class="col text-center">
+					<div class="block-27">
+						<ul>
+							<c:if test="${paging.showPrev}">
+					        <li><a href="${cpath}/commu.do?curPage=1">&laquo;</a></li>
+				            <li><a href="${cpath}/commu.do?curPage=${paging.curPage-1 }">&lt;</a></li>
+				            </c:if>
+				            <c:forEach begin="${paging.firstPage}"  end="${paging.lastPage}" var="i">
+				                  <li><a href="${cpath }/commu.do?curPage=${i}">  
+				                     <c:if test="${i eq paging.curPage }"> <span style="background:green; color:white; border-color:transparent;">${i}</span></c:if>
+				                     <c:if test="${i ne paging.curPage }">${i}</c:if> 
+				                  </a></li>
+				            </c:forEach>
+				            
+							<c:if test="${paging.showNext}">
+				            <li><a href="${cpath}/commu.do?curPage=${paging.curPage+1 }">&gt;</a></li>
+				            <li><a href="${cpath}/commu.do?curPage=${paging.totalPageCount }">&raquo;</a></li>
+				            </c:if>
+				           </ul>
+		    		</div>
+				</div>
+			</div> 
 			<!-- 
 			<div class="row mt-5">
 				<div class="col text-center">

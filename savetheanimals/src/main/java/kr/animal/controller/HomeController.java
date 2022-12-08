@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,6 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.animal.entity.Animal;
 import kr.animal.entity.Comment;
 import kr.animal.entity.Member;
-import kr.animal.entity.PageHandler;
 import kr.animal.entity.Paging;
 import kr.animal.entity.Post;
 import kr.animal.mapper.AdMapper;
@@ -112,36 +112,8 @@ public class HomeController {
 	    return "register";
 	}
 
-	// 커뮤니티 페이지
-	/*@GetMapping("/commu.do")
-	public String commu(Model model, Integer page, Integer pageSize, HttpServletRequest request) {
-		List<Post> post = commumapper.allpostselect();
-		model.addAttribute("post", post);
-		
-		if(page==null) page= 1;
-		if(pageSize==null) pageSize=10;
-		int totalCnt = commumapper.postsize();
-		PageHandler pageHandler = new PageHandler(totalCnt, page, pageSize);
-		
-		Map map = new HashMap();
-		map.put("offset", (page-1)*pageSize);
-		map.put("pageSize", pageSize);
-		
-		List<Post> list = commumapper.allpostselect2((page-1)*pageSize);
-		model.addAttribute("list", list);
-		model.addAttribute("ph",pageHandler);
-		model.addAttribute("page", page);
-		model.addAttribute("pageSize", pageSize);
-
-		System.out.println(page);
-		System.out.println(pageSize);
-		return "commu";
-	}	*/
-	
 	@GetMapping("/commu.do")
-	public String commu(Model model, Paging paging) {
-		List<Post> post = commumapper.allpostselect();
-		model.addAttribute("post", post);
+	public String commu(Model model, @ModelAttribute("paging") Paging paging) {
 		
 		int totalRowCount = commumapper.getTotalRowCount(paging);
 		paging.setTotalRowCount(totalRowCount);
@@ -151,7 +123,6 @@ public class HomeController {
 		
 		return "commu";
 	}
-	
 	
 	// 커뮤니티 글 등록
 	@PostMapping("/commu_write.do")

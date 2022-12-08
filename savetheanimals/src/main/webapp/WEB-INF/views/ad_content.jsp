@@ -31,16 +31,15 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <style type="text/css">
 .info-row {
-   background: #00bd561f;
    border: double;
    border-radius: 25px;
 }
 
-.info-row img {
-   margin-top: 10px;
-   width: 25%;
+img {
+   width: 35%;
    padding: 2px;
-   max-height: 300px;
+   max-height: 450px;
+   margin-bottom: 20px;
 }
 
 td {
@@ -69,94 +68,87 @@ td {
    </section>
 
    <section class="ftco-section ftco-degree-bg">
-      <div class="container">
-         <div class="row justify-text-center">
-            <div class="col-lg-12 ftco-animate">
-               <c:choose>
-                  <c:when test="${empty AniInfo}">
-                     <div class="container-table" style="margin-top: 15px;">
-                        <table class="table table-hover">
-                           <tr>
-                              <th>데이터 불러오기 실패!!!!!!!!!!!</th>
-                           </tr>
-                        </table>
-                     </div>
-                  </c:when>
-                  <c:otherwise>
-                     <div class="row info-row">
-                        <div class="col-md-12"
-                           style="display: flex; justify-content: center;">
-                           <img src="${AniInfo.aimg_path}" class="img-cont">
-                        </div>
+      <div class="container" style="max-width: 1750px;">
+         <c:choose>
+            <c:when test="${empty AniInfo}">
+               <div class="container-table" style="margin-top: 15px;">
+                  <table class="table table-hover">
+                     <tr>
+                        <th>데이터 불러오기 실패!!!!!!!!!!!</th>
+                     </tr>
+                  </table>
+               </div>
+            </c:when>
+            <c:otherwise>
+               <div class="col" style="display: flex; justify-content: center;">
+                  <img src="${AniInfo.aimg_path}" class="img-cont">
+               </div>
 
-                        <div class="col-md-12">
-                           <div class="information">
-                              <table
-                                 style="border: hidden; color: black; width: 100%; margin-top: 10px; margin-bottom: 10px"
-                                 class="info table-hover font-weight-normal">
-                                 <%-- <tr>
+               <div class="info-row">
+                  <div class="col-lg-12">
+                     <div class="information">
+                        <table style="color: black; width: 100%; font-size: 17px;"
+                           class="table table-hover font-weight-normal">
+                           <%-- <tr>
                                     <th style="text-align: center; width: 40%;">공고번호</th>
                                     <td>${AniInfo.ani_num}</td>
                                  </tr> --%>
-                                 <tr>
-                                    <th style="text-align: center;">축종</th>
-                                    <td>${AniInfo.ani_livestock}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">픔종</th>
-                                    <td>${AniInfo.ani_kind}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">털색</th>
-                                    <td>${AniInfo.ani_color}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">성별</th>
-                                    <td>${AniInfo.ani_gender}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">나이</th>
-                                    <td>${AniInfo.ani_age}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">중성화 여부</th>
-                                    <td>${AniInfo.ani_neutered}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center; overflow-wrap: break-word;">특이사항</th>
-                                    <td>${AniInfo.ani_uniqueness}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">목격 / 보호 / 유실 장소 주소</th>
-                                    <td>${AniInfo.ani_occur_address}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">목격 / 보호 / 유실 일자</th>
-                                    <td>${AniInfo.ani_datetime}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">동물 보호 센터명</th>
-                                    <td>${AniInfo.ani_center_name}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">보호 장소</th>
-                                    <td>${AniInfo.ani_protect_address}</td>
-                                 </tr>
-                                 <tr>
-                                    <th style="text-align: center;">연락처</th>
-                                    <td>${AniInfo.ani_phone}</td>
-                                 </tr>
-                              </table>
-                           </div>
-                        </div>
+                           <tr>
+                              <th style="text-align: center; width: 40%;">축종</th>
+                              <td>${AniInfo.ani_livestock}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">픔종</th>
+                              <td>${AniInfo.ani_kind}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">털색</th>
+                              <td>${AniInfo.ani_color}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">성별</th>
+                              <td>${AniInfo.ani_gender}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">나이</th>
+                              <td>${AniInfo.ani_age}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">중성화 여부</th>
+                              <td>${AniInfo.ani_neutered}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center; overflow-wrap: break-word;">특이사항</th>
+                              <td>${AniInfo.ani_uniqueness}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">목격 / 보호 / 유실 장소 주소</th>
+                              <td>${AniInfo.ani_occur_address}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">목격 / 보호 / 유실 일자</th>
+                              <td>${AniInfo.ani_datetime}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">동물 보호 센터명</th>
+                              <td>${AniInfo.ani_center_name}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">보호 장소</th>
+                              <td>${AniInfo.ani_protect_address}</td>
+                           </tr>
+                           <tr>
+                              <th style="text-align: center;">연락처</th>
+                              <td>${AniInfo.ani_phone}</td>
+                           </tr>
+                        </table>
                      </div>
-                  </c:otherwise>
-               </c:choose>
-            </div>
-         </div>
+                  </div>
+               </div>
+            </c:otherwise>
+         </c:choose>
       </div>
    </section>
-   <!-- .section -->
 
    <section>
       <%@includefile="footer.jsp"%>

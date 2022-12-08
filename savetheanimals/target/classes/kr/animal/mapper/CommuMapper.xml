@@ -46,21 +46,12 @@
       delete from comment where comm_post_num=#{post_num}
   </delete>
   
-  <select id="postsize" resultType="int">
-      select count(*) from post
-  </select>
-  
-  <select id="allpostselect2" parameterType="int"
-      resultType="kr.animal.entity.Post">
-      select * from post join member on member.mem_num = post.post_mem_num limit #{page},10
-  </select>
-  
   <!-- 새로추가: 페이징 -->
    <select id="getTotalRowCount" parameterType="kr.animal.entity.Paging" resultType="int">
       select count(*) from post
   </select>
   <select id="allpostselect3" resultType="kr.animal.entity.Post" parameterType="kr.animal.entity.Paging">
-    select * from post order by post_num desc limit #{firstRow}, #{rowSizePerPage}
+    select * from post limit #{firstRow}, #{rowSizePerPage}
   </select>
   
 </mapper>
