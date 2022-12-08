@@ -359,20 +359,13 @@
             
             <div class="row d-flex">
             <c:choose>
-                  <c:when test="${empty searchDog}">
+                  <c:when test="${check=='전'}">
                   <!-- 검색결과 개수 표시 -->
-               <c:choose>
-                  <c:when test="${list_dog.size()<1000}">
-                      <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                          총  ${list_dog.size()}건
-                      </p>
-                  </c:when>
-                  <c:otherwise>
+
                      <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                            총 <fmt:formatNumber value="${list_dog.size()}" pattern="#,###" />건 
+                           	 총 <fmt:formatNumber value="${list_dog.size()}" pattern="#,###" />건 
                      </p>
-                  </c:otherwise>
-               </c:choose>
+
                      <c:forEach items="${list_dog}" var="lidog" varStatus="status">
                       <div class="col-md-4 d-flex justify-content-center ftco-animate">
                         <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
@@ -389,6 +382,11 @@
                         </div>
                      </div>
                 </c:forEach>
+                  </c:when>
+                  <c:when test="${check=='없'}">
+                   <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                           총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
+                      </p>
                   </c:when>
                   <c:otherwise>
                 <!-- 검색결과 개수 표시 -->
@@ -618,20 +616,12 @@
             
             <div class="row d-flex">   
                <c:choose>
-                     <c:when test="${empty searchCat}">
+                     <c:when test="${check=='전'}">
                 <!-- 검색결과 개수 표시 -->
-                   <c:choose>
-                           <c:when test="${list_cat.size()<1000}">
-                              <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                                 총  ${list_cat.size()}건
-                              </p>
-                           </c:when>
-                           <c:otherwise>
                               <p class="col-12" style="padding-left: 5%; font-weight: bold;">
                                   총 <fmt:formatNumber value="${list_cat.size()}" pattern="#,###" />건 
                               </p>
-                           </c:otherwise>
-                    </c:choose>
+
                            <c:forEach items="${list_cat}" var="licat" varStatus="status">
                          <div class="col-md-4 d-flex justify-content-center ftco-animate">
                            <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
@@ -650,6 +640,11 @@
                       </c:forEach>
 
                      </c:when> 
+                      <c:when test="${check=='없'}">
+                   <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                           	총 <fmt:formatNumber value="${searchCat.size()}" pattern="#,###" />건 
+                      </p>
+                  </c:when>
                      <c:otherwise>
                       <!-- 검색결과 개수 표시 -->
                      <c:choose>
