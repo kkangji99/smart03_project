@@ -264,7 +264,7 @@
                   <!-- 검색결과 개수 표시 -->
 
                      <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                               총 <fmt:formatNumber value="${list_dog.size()}" pattern="#,###" />건 
+                               총 <fmt:formatNumber value="${dogAdSelect.size()}" pattern="#,###" />건 
                      </p>
 
                      <c:forEach items="${list_dog}" var="lidog" varStatus="status">
@@ -290,7 +290,7 @@
                            총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
                       </p><br>
                       <script type="text/javascript">
-                      infoModal();
+                      	infoModal();
                       </script>
                   </c:when>
                   <c:otherwise>

@@ -279,7 +279,7 @@
                      <c:when test="${checkCat=='전'}">
                 <!-- 검색결과 개수 표시 -->
                               <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                                  총 <fmt:formatNumber value="${list_cat.size()}" pattern="#,###" />건 
+                                  총 <fmt:formatNumber value="${catAdSelect.size()}" pattern="#,###" />건 
                               </p>
 
                            <c:forEach items="${list_cat}" var="licat" varStatus="status">

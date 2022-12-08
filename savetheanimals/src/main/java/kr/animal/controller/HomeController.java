@@ -61,6 +61,13 @@ public class HomeController {
 		
 		model.addAttribute("list", list);
 		
+		List<Animal> allAdSelect = mapper.allAdSelect();
+		List<Animal> dogAdSelect = mapper.dogAdSelect();
+		List<Animal> catAdSelect = mapper.catAdSelect();
+		model.addAttribute("allAdSelect", allAdSelect);
+		model.addAttribute("dogAdSelect", dogAdSelect);
+		model.addAttribute("catAdSelect", catAdSelect);
+		
 		model.addAttribute("checkDog", "전");
 		model.addAttribute("checkCat", "전");
 		
@@ -78,6 +85,13 @@ public class HomeController {
 		List<Animal> list_dog = admapper.doganiselect(paging);
 		
 		model.addAttribute("list_dog", list_dog);
+		
+		List<Animal> allAdSelect = mapper.allAdSelect();
+		List<Animal> dogAdSelect = mapper.dogAdSelect();
+		List<Animal> catAdSelect = mapper.catAdSelect();
+		model.addAttribute("allAdSelect", allAdSelect);
+		model.addAttribute("dogAdSelect", dogAdSelect);
+		model.addAttribute("catAdSelect", catAdSelect);
 		  
 		model.addAttribute("checkDog", "전");
 		model.addAttribute("checkCat", "전");
@@ -96,6 +110,13 @@ public class HomeController {
   	    List<Animal> list_cat = admapper.cataniselect(paging);
 
         model.addAttribute("list_cat", list_cat);
+        
+		List<Animal> allAdSelect = mapper.allAdSelect();
+		List<Animal> dogAdSelect = mapper.dogAdSelect();
+		List<Animal> catAdSelect = mapper.catAdSelect();
+		model.addAttribute("allAdSelect", allAdSelect);
+		model.addAttribute("dogAdSelect", dogAdSelect);
+		model.addAttribute("catAdSelect", catAdSelect);
       
         model.addAttribute("checkDog", "전");
         model.addAttribute("checkCat", "전");
@@ -315,6 +336,13 @@ public class HomeController {
 		model.addAttribute("listDogSize", list_dog.size());
 		// 모든 고양 결과 개수
 		model.addAttribute("listCatSize", list_cat.size());
+		
+		List<Animal> allAdSelect = mapper.allAdSelect();
+		List<Animal> dogAdSelect = mapper.dogAdSelect();
+		List<Animal> catAdSelect = mapper.catAdSelect();
+		model.addAttribute("allAdSelect", allAdSelect);
+		model.addAttribute("dogAdSelect", dogAdSelect);
+		model.addAttribute("catAdSelect", catAdSelect);
 
 		if(searchDog.size()==0) {
 			model.addAttribute("checkDog", "없");
@@ -327,7 +355,7 @@ public class HomeController {
 			
 		}
 		
-		return "ad";
+		return "ad1";
 	}
 
 	@GetMapping("/searchCat.do")
@@ -356,6 +384,13 @@ public class HomeController {
 		model.addAttribute("listDogSize", list_dog.size());
 		// 모든 고양 결과 개수
 		model.addAttribute("listCatSize", list_cat.size());
+		
+		List<Animal> allAdSelect = mapper.allAdSelect();
+		List<Animal> dogAdSelect = mapper.dogAdSelect();
+		List<Animal> catAdSelect = mapper.catAdSelect();
+		model.addAttribute("allAdSelect", allAdSelect);
+		model.addAttribute("dogAdSelect", dogAdSelect);
+		model.addAttribute("catAdSelect", catAdSelect);
 
 		if(searchCat.size()==0) {
 			model.addAttribute("checkCat", "없");
@@ -368,7 +403,7 @@ public class HomeController {
 			
 		}
 		
-		return "ad";
+		return "ad2";
 	}
 
 	// 반려생활길잡이

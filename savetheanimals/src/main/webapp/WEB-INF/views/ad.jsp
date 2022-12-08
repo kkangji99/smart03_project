@@ -108,7 +108,7 @@
             <div class="row d-flex">   
                   <!-- 검색결과 개수 표시 -->
                    <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                        총 <fmt:formatNumber value="${list.size()}" pattern="#,###" />건 
+                        총 <fmt:formatNumber value="${allAdSelect.size()}" pattern="#,###" />건 
                    </p>
 
                 <c:forEach items="${list}" var="vo" varStatus="status">

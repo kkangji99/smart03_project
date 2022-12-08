@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import kr.animal.entity.Member;
+import kr.animal.entity.Paging;
 import kr.animal.entity.Animal;
 
 // 우리가 알고있는 DAO와 같은 일을 하는 것을 알려주는 주석
@@ -31,6 +32,11 @@ public interface AnimalMapper {
    public List<Animal> searchDog(Animal animal);
 
    public List<Animal> searchCat(Animal animal);
+   
+	public List<Animal> allAdSelect();
+	public List<Animal> dogAdSelect();
+	public List<Animal> catAdSelect();
+   
 
    public void register(Animal vo);
 

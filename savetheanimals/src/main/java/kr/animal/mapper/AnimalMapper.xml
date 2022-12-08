@@ -51,6 +51,22 @@
      and ani_num between 290 and 320
      
  </select>
+ 
+    <select id="allAdSelect" parameterType="kr.animal.entity.Animal"
+     resultType="kr.animal.entity.Animal"> 
+		select * from animal where ani_num between 290 and 320 
+ 	</select>
+  
+    <select id="dogAdSelect" parameterType="kr.animal.entity.Animal"
+     resultType="kr.animal.entity.Animal"> 
+		select * from animal where ani_livestock = "개" and ani_num between 290 and 320  
+ 	</select>
+ 	
+    <select id="catAdSelect" parameterType="kr.animal.entity.Animal"
+     resultType="kr.animal.entity.Animal"> 
+		select * from animal where ani_livestock = "고양이" and ani_num between 290 and 320  
+ 	</select>
+  
     <insert id="register" parameterType="kr.animal.entity.Animal">
       insert into animal (ani_livestock,ani_kind,ani_color,ani_gender,ani_age,ani_neutered,ani_uniqueness,ani_occur_address,ani_datetime,ani_center_name,ani_protect_address,ani_phone,ani_mem_num,ani_cate_code)
       values (#{ani_livestock},#{ani_kind},#{ani_color},#{ani_gender},#{ani_age},#{ani_neutered},#{ani_uniqueness},#{ani_occur_address},#{ani_datetime},#{ani_center_name},#{ani_protect_address},#{ani_phone},#{ani_mem_num},#{ani_cate_code})
