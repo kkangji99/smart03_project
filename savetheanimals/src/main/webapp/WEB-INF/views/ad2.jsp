@@ -310,18 +310,10 @@
                   </c:when>
                      <c:otherwise>
                       <!-- 검색결과 개수 표시 -->
-                     <c:choose>
-                        <c:when test="${searchCat.size()<1000}">
-                           <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                              총  ${searchCat.size()}건
-                           </p>
-                        </c:when>
-                        <c:otherwise>
                            <p class="col-12" style="padding-left: 5%; font-weight: bold;">
                               총 <fmt:formatNumber value="${searchCat.size()}" pattern="#,###" />건
                            </p>
-                        </c:otherwise>
-                     </c:choose>
+    
                      <c:forEach items="${searchCat}" var="cat" varStatus="status">
                          <div class="col-md-4 d-flex justify-content-center ftco-animate">
                            <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">

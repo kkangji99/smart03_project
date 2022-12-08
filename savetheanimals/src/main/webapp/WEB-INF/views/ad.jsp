@@ -107,18 +107,10 @@
             
             <div class="row d-flex">   
                   <!-- 검색결과 개수 표시 -->
-            <c:choose>
-               <c:when test="${list.size()<1000}">
-                    <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                       총  ${list.size()}건
-                    </p>
-               </c:when>
-               <c:otherwise>
                    <p class="col-12" style="padding-left: 5%; font-weight: bold;">
                         총 <fmt:formatNumber value="${list.size()}" pattern="#,###" />건 
                    </p>
-               </c:otherwise>
-            </c:choose>
+
                 <c:forEach items="${list}" var="vo" varStatus="status">
                    <div class="col-md-4 d-flex justify-content-center ftco-animate">
                      <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
