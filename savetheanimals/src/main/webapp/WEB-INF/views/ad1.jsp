@@ -70,14 +70,15 @@
    <br>
     <nav class="navbar navbar-expand-lg justify-content-center">
   <ul class="navbar-nav">
-    <li class="nav-item" style="font-weight: bolder; font-size: 1.4em;" >
+    <li class="nav-item"  id="navbar-item" onclick="myFunction()" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;" >
       <a class="nav-link" href="${cpath}/ad.do"><img src="resources/images/guide.gif" style="width: 2em; height: 2em;">
                안내</a>
     </li>
-      <li class="nav-item" style="font-weight: bolder; font-size: 1.4em;" >
+   
+      <li class="nav-item" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;" >
       <a class="nav-link" href="${cpath}/ad1.do"> <img src="resources/images/dog.gif" style="width: 2em; height: 2em; align: center;">강아지</a>
     </li>
-    <li class="nav-item " style="font-weight: bolder; font-size: 1.4em;" >
+    <li class="nav-item " style="font-weight: bolder;font-size: 2em;  padding-right: 5rem; padding-left: 5rem;">
       <a class="nav-link" href="${cpath}/ad2.do"><img src="resources/images/cat.gif" style="width: 2em; height: 2em;">고양이</a>
     </li>
   </ul>
