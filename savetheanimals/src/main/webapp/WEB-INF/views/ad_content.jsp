@@ -68,7 +68,7 @@ td {
    </section>
 
    <section class="ftco-section ftco-degree-bg">
-      <div class="container" style="max-width: 1750px;">
+      <div class="container" style="max-width: 1500px;">
          <c:choose>
             <c:when test="${empty AniInfo}">
                <div class="container-table" style="margin-top: 15px;">

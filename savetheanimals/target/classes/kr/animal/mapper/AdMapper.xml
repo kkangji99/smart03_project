@@ -7,21 +7,33 @@
    -->
 <mapper namespace="kr.animal.mapper.AdMapper">
  
-  <select id="allaniselect" resultType="kr.animal.entity.Animal">
-      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num between 290 and 320
+  <select id="allaniselect"  parameterType="kr.animal.entity.Paging" resultType="kr.animal.entity.Animal">
+      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num between 290 and 320 limit #{firstRow}, #{rowSizePerPage}
   </select>
   
-  <select id="doganiselect" resultType="kr.animal.entity.Animal">
-      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where (ani_num between 290 and 320) and (ani_livestock='개')
+  <select id="doganiselect"  parameterType="kr.animal.entity.Paging" resultType="kr.animal.entity.Animal">
+      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where (ani_num between 290 and 320) and (ani_livestock='개') limit #{firstRow}, #{rowSizePerPage}
   </select>
   
-  <select id="cataniselect" resultType="kr.animal.entity.Animal">
-      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where (ani_num between 290 and 320) and (ani_livestock='고양이')
+  <select id="cataniselect"  parameterType="kr.animal.entity.Paging" resultType="kr.animal.entity.Animal">
+      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where (ani_num between 290 and 320) and (ani_livestock='고양이') limit #{firstRow}, #{rowSizePerPage}
   </select>
   
   <select id="selectani" parameterType="kr.animal.entity.Animal"
       resultType="kr.animal.entity.Animal">
       select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num=#{ani_num}
+  </select>
+  
+  <select id="getTotal" parameterType="kr.animal.entity.Paging" resultType="int">
+      select count(*) from animal where ani_num between 290 and 320 
+  </select>
+  
+  <select id="getTotaldog" parameterType="kr.animal.entity.Paging" resultType="int">
+      select count(*) from animal where ani_num between 290 and 320 and (ani_livestock='개')
+  </select>
+  
+  <select id="getTotalcat" parameterType="kr.animal.entity.Paging" resultType="int">
+      select count(*) from animal where ani_num between 290 and 320 and (ani_livestock='고양이')
   </select>
   
 </mapper>

@@ -51,20 +51,58 @@ public class HomeController {
 
 	// 유실동물 공고 페이지
 	@GetMapping("/ad.do")
-	public String ad(Model model) {
+	public String ad(Model model, @ModelAttribute("paging") Paging paging) {
 
-		List<Animal> list = admapper.allaniselect();
-		List<Animal> list_dog = admapper.doganiselect();
-		List<Animal> list_cat = admapper.cataniselect();
-
+		// 페이징
+		int totalRowCount = admapper.getTotal(paging);
+		paging.setTotalRowCount(totalRowCount);
+		paging.pageSetting();
+		List<Animal> list = admapper.allaniselect(paging);
+		
 		model.addAttribute("list", list);
-		model.addAttribute("list_dog", list_dog);
-		model.addAttribute("list_cat", list_cat);
 		
 		model.addAttribute("checkDog", "전");
 		model.addAttribute("checkCat", "전");
+		
 		return "ad";
 	}
+	
+	// 강아지 공고
+   @GetMapping("/ad1.do")
+   public String ad1(Model model, @ModelAttribute("paging") Paging paging) {
+
+		// 페이징
+		int totalRowCount = admapper.getTotaldog(paging);
+		paging.setTotalRowCount(totalRowCount);
+		paging.pageSetting();
+		List<Animal> list_dog = admapper.doganiselect(paging);
+		
+		model.addAttribute("list_dog", list_dog);
+		  
+		model.addAttribute("checkDog", "전");
+		model.addAttribute("checkCat", "전");
+		
+		return "ad1";
+   }
+   
+   // 고양이 공고
+   @GetMapping("/ad2.do")
+   public String ad2(Model model, @ModelAttribute("paging") Paging paging) {
+
+		// 페이징
+		int totalRowCount = admapper.getTotalcat(paging);
+		paging.setTotalRowCount(totalRowCount);
+		paging.pageSetting();
+  	    List<Animal> list_cat = admapper.cataniselect(paging);
+
+        model.addAttribute("list_cat", list_cat);
+      
+        model.addAttribute("checkDog", "전");
+        model.addAttribute("checkCat", "전");
+      
+        return "ad2";
+   }
+
 	// 등록 페이지로 이동
 	@RequestMapping("/register_page.do")
 	public String register_page() {
@@ -245,14 +283,14 @@ public class HomeController {
 	}
 
 	@GetMapping("/searchDog.do")
-	public String searchDog(Model model, Animal animal) {
+	public String searchDog(Model model, Animal animal, @ModelAttribute("paging") Paging paging) {
 		System.out.println("검색 시작");
 
 		// all
-		List<Animal> list = admapper.allaniselect();
+		List<Animal> list = admapper.allaniselect(paging);
 
-		List<Animal> list_dog = admapper.doganiselect();
-		List<Animal> list_cat = admapper.cataniselect();
+		List<Animal> list_dog = admapper.doganiselect(paging);
+		List<Animal> list_cat = admapper.cataniselect(paging);
 
 		// search list
 		List<Animal> searchDog = mapper.searchDog(animal);
@@ -293,13 +331,13 @@ public class HomeController {
 	}
 
 	@GetMapping("/searchCat.do")
-	public String searchCat(Model model, Animal animal) {
+	public String searchCat(Model model, Animal animal, @ModelAttribute("paging") Paging paging) {
 		System.out.println("검색 시작");
 
-		List<Animal> list = admapper.allaniselect();
+		List<Animal> list = admapper.allaniselect(paging);
 
-		List<Animal> list_dog = admapper.doganiselect();
-		List<Animal> list_cat = admapper.cataniselect();
+		List<Animal> list_dog = admapper.doganiselect(paging);
+		List<Animal> list_cat = admapper.cataniselect(paging);
 
 		List<Animal> searchCat = mapper.searchCat(animal);
 

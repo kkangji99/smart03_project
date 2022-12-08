@@ -135,8 +135,23 @@ textarea {
 							<c:otherwise>
 								<div class="container-table">
 									<div class="mini-info row">
-										<div class="content col-md-6"
-											style="text-align: left; margin-top: 10%;">${postinfo.post_cate_code}</div>
+										<c:if test="${postinfo.post_cate_code eq 'post_free'}">
+											<div class="content col-md-6"
+												style="text-align: left; margin-top: 10%;">자유게시판</div>
+										</c:if>
+										<c:if test="${postinfo.post_cate_code eq 'post_adop'}">
+											<div class="content col-md-6"
+												style="text-align: left; margin-top: 10%;">입양 정보</div>										
+										</c:if>
+										<c:if test="${postinfo.post_cate_code eq 'post_review'}">
+											<div class="content col-md-6"
+												style="text-align: left; margin-top: 10%;">입양/재회 후기</div>										
+										</c:if>
+										<c:if test="${postinfo.post_cate_code eq 'post_service'}">
+											<div class="content col-md-6"
+												style="text-align: left; margin-top: 10%;">봉사활동 정보</div>										
+										</c:if>
+										
 										<div class="content col-md-6"
 											style="text-align: right; margin-top: 10%;">${postinfo.post_datetime}</div>
 									</div>
