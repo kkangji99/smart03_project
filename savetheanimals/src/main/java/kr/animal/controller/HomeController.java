@@ -60,7 +60,8 @@ public class HomeController {
 		model.addAttribute("list_dog", list_dog);
 		model.addAttribute("list_cat", list_cat);
 		
-		model.addAttribute("check", "전");
+		model.addAttribute("checkDog", "전");
+		model.addAttribute("checkCat", "전");
 		return "ad";
 	}
 	// 등록 페이지로 이동
@@ -283,11 +284,13 @@ public class HomeController {
 		model.addAttribute("listCatSize", list_cat.size());
 
 		if(searchDog.size()==0) {
-			model.addAttribute("check", "없");
+			model.addAttribute("checkDog", "없");
+			model.addAttribute("checkCat", "전");
 		}
 		else {
 			
-			model.addAttribute("check", "있");
+			model.addAttribute("checkDog", "있");
+			model.addAttribute("checkCat", "전");
 			
 		}
 		
@@ -322,11 +325,13 @@ public class HomeController {
 		model.addAttribute("listCatSize", list_cat.size());
 
 		if(searchCat.size()==0) {
-			model.addAttribute("check", "없");
+			model.addAttribute("checkCat", "없");
+			model.addAttribute("checkDog", "전");
 		}
 		else {
 			
-			model.addAttribute("check", "있");
+			model.addAttribute("checkCat", "있");
+			model.addAttribute("checkDog", "전");
 			
 		}
 		
