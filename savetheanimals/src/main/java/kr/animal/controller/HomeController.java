@@ -303,8 +303,8 @@ public class HomeController {
 		return "ad_content";
 	}
 
-	@GetMapping("/searchDog.do")
-	public String searchDog(Model model, Animal animal, @ModelAttribute("paging") Paging paging) {
+	@RequestMapping("/searchDog.do")
+	public String searchDog(Model model,@RequestParam(value = "aimg_name") MultipartFile file, Animal animal, @ModelAttribute("paging") Paging paging) {
 		System.out.println("검색 시작");
 
 		// all
@@ -354,12 +354,25 @@ public class HomeController {
 			model.addAttribute("checkCat", "전");
 			
 		}
-		
+		// 이미지 파일 저장
+	      System.out.println("파일 이름 : " + file.getOriginalFilename());
+	       System.out.println("파일 크기 : " + file.getSize());
+	       try(FileOutputStream fos = new FileOutputStream("c:/A_search_img/" + file.getOriginalFilename());
+	           InputStream is = file.getInputStream();
+	           ){int readCount = 0;
+	             byte[] buffer = new byte[1024];
+	             while((readCount = is.read(buffer)) != -1){
+	             fos.write(buffer,0,readCount);
+	           }
+	           }catch(Exception ex){
+	             throw new RuntimeException("file Save Error");
+	           }
+	      
 		return "ad1";
 	}
 
-	@GetMapping("/searchCat.do")
-	public String searchCat(Model model, Animal animal, @ModelAttribute("paging") Paging paging) {
+	@RequestMapping("/searchCat.do")
+	public String searchCat(Model model,@RequestParam(value = "image_file") MultipartFile file, Animal animal, @ModelAttribute("paging") Paging paging) {
 		System.out.println("검색 시작");
 
 		List<Animal> list = admapper.allaniselect(paging);
@@ -402,7 +415,20 @@ public class HomeController {
 			model.addAttribute("checkDog", "전");
 			
 		}
-		
+		// 이미지 파일 저장
+	      System.out.println("파일 이름 : " + file.getOriginalFilename());
+	       System.out.println("파일 크기 : " + file.getSize());
+	       try(FileOutputStream fos = new FileOutputStream("c:/A_search_img/" + file.getOriginalFilename());
+	           InputStream is = file.getInputStream();
+	           ){int readCount = 0;
+	             byte[] buffer = new byte[1024];
+	             while((readCount = is.read(buffer)) != -1){
+	             fos.write(buffer,0,readCount);
+	           }
+	           }catch(Exception ex){
+	             throw new RuntimeException("file Save Error");
+	           }
+
 		return "ad2";
 	}
 

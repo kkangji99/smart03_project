@@ -70,15 +70,14 @@
    <br>
     <nav class="navbar navbar-expand-lg justify-content-center">
   <ul class="navbar-nav">
-    <li class="nav-item"  id="navbar-item" onclick="myFunction()" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;" >
+    <li class="nav-item" style="font-weight: bolder; font-size: 1.4em;" >
       <a class="nav-link" href="${cpath}/ad.do"><img src="resources/images/guide.gif" style="width: 2em; height: 2em;">
                안내</a>
     </li>
-   
-      <li class="nav-item" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;" >
+      <li class="nav-item" style="font-weight: bolder; font-size: 1.4em;" >
       <a class="nav-link" href="${cpath}/ad1.do"> <img src="resources/images/dog.gif" style="width: 2em; height: 2em; align: center;">강아지</a>
     </li>
-    <li class="nav-item " style="font-weight: bolder;font-size: 2em;  padding-right: 5rem; padding-left: 5rem;">
+    <li class="nav-item " style="font-weight: bolder; font-size: 1.4em;" >
       <a class="nav-link" href="${cpath}/ad2.do"><img src="resources/images/cat.gif" style="width: 2em; height: 2em;">고양이</a>
     </li>
   </ul>
@@ -91,7 +90,7 @@
             <br>
             <fieldset>
                <div class="search-form">
-                  <form name="SearchForm" method="get" action="${cpath}/searchCat.do">
+                  <form name="SearchForm" method="post" action="${cpath}/searchCat.do" enctype="multipart/form-data">
                      <input type="hidden" name="listType" value=""> 
                      <input type="hidden" name="style" value="webzine"> 
                      <input type="hidden" name="code" value="cat">
@@ -234,7 +233,7 @@
                       <div class="col-md-8 mx-auto text-center">
                         <div class="form-group" onclick="this.form.reset">
                            <input type="file" id="files" class="form-control filesImgs" name="image_file"
-                              accept=".jpg, .jpeg, .png" multiple style="padding-left: 25%; font-size: 1em;">
+                              accept=".jpg" multiple style="padding-left: 25%; font-size: 1em;">
                            <label class="label" for="uploadimages">
                               <div id="uploadimages border border-primary">
                                  <div class="list"></div>
