@@ -203,11 +203,6 @@ function SubCity() {
 
    <section class="ftco-section bg-light">
       <div class="container" style="max-width: 1400px;">
-         <div class="row justify-content-center">
-            <div class="col-md-6 text-center mb-5">
-               <h2 class="heading-section">등록</h2>
-            </div>
-         </div>
          <!--          <div class="row justify-content-center">
             <div class="col-md-12"> -->
          <div class="wrapper">
@@ -215,21 +210,20 @@ function SubCity() {
             <div class="row no-gutters">
                <div class="col-md-12">
                   <div class="contact-wrap w-100 p-md-5 p-4">
-                     <h3 class="mb-4" style="text-align: left;"></h3>
+                    
                      <form method="POST" id="contactForm" class="needs-validation"
                         action="${cpath}/register.do" novalidate
                         enctype="multipart/form-data">
-                        <div class="row col-md-12">
+                        <div class="row col-md-12" >
                            <div class="col-md-12 justify-content-center">
 
                               <div class="col-md-12">
-                                 <div class="row">
-
+                                 <div class="row">     
                                     <div class="col-md-4">
                                        <div class="form-group">
                                           <div class="custom-checkbox"
                                              style="display: flex; justify-content: space-evenly;">
-                                             <label class="label" for="any_livestock"><b>축종</b></label>
+                                             <label class="label" for="any_livestock" style="font-size:1.2em;"><b>축종</b></label>
                                              개 <input type="radio" id="dog"
                                                 name="ani_livestock" onclick="kind('dog')" value='개'>
                                              고양이<input type="radio" id="cat" name="ani_livestock"
@@ -244,7 +238,7 @@ function SubCity() {
                                        <div class="form-group">
                                           <select class="custom-select" id="ani_kind"
                                              name="ani_kind" onchange='SubCity()'
-                                             style="height: 50px;">
+                                             style="height: 50px;"> 
                                              <option selected>품종</option>
                                           </select>
                                        </div>
@@ -275,8 +269,8 @@ function SubCity() {
                                     <div class="col-md-4">
                                        <div class="form-group">
                                           <select class="custom-select" name="ani_occur_address"
-                                             id="ani_cate_code" onchange="Cate('ani_cate_code')">
-                                             <option value="">장소</option>
+                                             id="ani_cate_code" onchange="Cate('ani_cate_code')" style="height: 50px;">
+                                             <option value="">목격 / 유실 / 보호 장소</option>
                                              <option value="ani_witness">목격</option>
                                              <option value="ani_lose">유실</option>
                                              <option value="ani_protect">보호</option>
@@ -289,8 +283,8 @@ function SubCity() {
                                        <div class="form-group">
                                           <select class="custom-select" name="ani_occur_address"
                                              id="ani_occur_address"
-                                             onchange="City('ani_occur_address', 'ani_occur_address_sub')">
-                                             <option value="">전체</option>
+                                             onchange="City('ani_occur_address', 'ani_occur_address_sub')" style="height: 50px;">
+                                             <option value="">지역 선택</option>
                                              <option value="서울">서울특별시</option>
                                              <option value="부산">부산광역시</option>
                                              <option value="대구">대구광역시</option>
@@ -318,8 +312,8 @@ function SubCity() {
                                        <div class="form-group">
                                           <select class="custom-select"
                                              id="ani_occur_address_sub_dog"
-                                             onchange="SubCity('ani_occur_address_sub')"
-                                             name="ani_occur_address_sub">
+                                             onchange="SubCity('ani_occur_address_sub_dog')"
+                                             name="ani_occur_address_sub" style="height: 50px;">
                                              <option value="" id="detail_address">전체</option>
                                           </select>
                                        </div>
@@ -333,7 +327,7 @@ function SubCity() {
                                        <div class="form-group">
                                           <div class="custom-checkbox"
                                              style="display: flex; justify-content: space-evenly;">
-                                             <label class="label" for="any_gender"><b>성별</b></label> 
+                                             <label class="label" for="any_gender" style="font-size:1.2em;"><b>성별</b></label> 
                                              암컷<input type="radio" id="male"
                                                 name="ani_gender" onclick="oneGender(this)" value='암컷'>
                                              수컷<input type="radio" id="female" name="gender"
@@ -347,7 +341,7 @@ function SubCity() {
                                        <div class="form-group">
                                           <div class="custom-checkbox"
                                              style="display: flex; justify-content: space-evenly;">
-                                             <label class="label" for="any_neutered"><b>중성화 여부</b></label> 
+                                             <label class="label" for="any_neutered" style="font-size:1.2em;"><b>중성화 여부</b></label> 
                                               예<input type="radio" id="neutered"
                                                 name="ani_neutered" onclick="oneNeutered(this)"
                                                 value="예"> 아니요<input type="radio"
@@ -361,7 +355,7 @@ function SubCity() {
 
                                     <div class="col-md-4">
                                        <div class="form-group">
-                                          <select class="custom-select" id="ani_age" name="ani_age">
+                                          <select class="custom-select" id="ani_age" name="ani_age" style="height: 50px;">
                                              <option selected>나이</option>
                                              <option value="5">0~5</option>
                                              <option value="10">5~10</option>
@@ -379,9 +373,19 @@ function SubCity() {
                                     <div class="col-md-6 ">
                                        <div class="form-group">
                                           <input type="text" class="form-control" name="ani_phone"
-                                             id="number" placeholder="연락처"required>
+                                             id="number" placeholder="연락처"required style="height: 50px;">
                                           <div class="valid-feedback"></div>
                                           <div class="invalid-feedback">연락처 입력</div>
+                                       </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                       <div class="form-group">
+                                          </label> <input onfocus="(this.type = 'date')"
+                                             class="form-control required" name="date"
+                                             placeholder="목격/보호/유실 일자" id="date" required style="height: 50px;">
+                                          <div class="valid-feedback"></div>
+                                          <div class="invalid-feedback">목격/보호/유실 일자 선택</div>
                                        </div>
                                     </div>
                                     
@@ -389,7 +393,7 @@ function SubCity() {
                               <div class="col-md-12 mb-3">
                                  <div class="form-group">
                                     <textarea name="ani_uniqueness" class="form-control"
-                                       id="message" cols="30" rows="4" placeholder="특이사항"
+                                       id="message" cols="30" rows="5" placeholder="특이사항"
                                        style="resize: none;"></textarea>
                                  </div>
                               </div>
@@ -400,20 +404,21 @@ function SubCity() {
                                     <div class="col-md-12">
                                  <div class="row justify-content-center">
                                     
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                        <div class="form-group">
                                           <img src="" alt="" id="img"> <input type="file"
                                              id="files" placeholder="이미지 선택"
                                              class="form-control filesImgs" name="aimg_name"
                                              accept=".jpg"
-                                             style="padding-left:40%; font-size: 1em; margin-top: 0.7em;"
+                                             style="padding-left:45%; font-size: 1em; margin-top: 0.7em; height: 50px;"
                                              onchange="showImage()" required>
                                           <div class="valid-feedback"></div>
                                           <div class="invalid-feedback">이미지 선택</div>
                                        </div>
                                     </div>
-                                    
+                                    </div>
                               
+                              </div>
                               </div>
                               </div>
 
