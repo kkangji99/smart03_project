@@ -1,4 +1,5 @@
 <%@page import="kr.animal.entity.Animal"%>
+<%@page import="kr.animal.entity.Paging"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
@@ -260,30 +261,7 @@
             
             <div class="row d-flex">
             <c:choose>
-                  <c:when test="${checkDog=='전'}">
-                  <!-- 검색결과 개수 표시 -->
-
-                     <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                               총 <fmt:formatNumber value="${dogAdSelect.size()}" pattern="#,###" />건 
-                     </p>
-
-                     <c:forEach items="${list_dog}" var="lidog" varStatus="status">
-                      <div class="col-md-4 d-flex justify-content-center ftco-animate">
-                        <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
-                           <a href="${cpath}/ad_info.do?ani_num=${lidog.ani_num}" class="block-20 rounded"
-                              style="background-image: url('${lidog.aimg_path}'); "> 
-                           </a>
-                           <div class="text p-4">
-                              <div class="meta mb-2">
-                                 <div style="font-size: 15px;">${lidog.ani_kind}</div>
-                                 <div style="font-size: 15px;">${(lidog.ani_datetime).substring(0,10)}</div>
-                              </div>
-                              <h3 class="heading">${lidog.ani_occur_address}</h3>
-                           </div>
-                        </div>
-                     </div>
-                </c:forEach>
-                  </c:when>
+                  
                   <c:when test="${checkDog=='없'}">
 
                    <p class="col-12" style="padding-left: 5%; font-weight: bold;">
@@ -324,33 +302,6 @@
 
          
       </div>
-
-   <!-- 페이징 -->
-   	<div class="row mt-5">
-		<div class="col text-center">
-			<div class="block-27">
-				<ul>
-					<c:if test="${paging.showPrev}">
-			        <li><a href="${cpath}/ad1.do?curPage=1">&laquo;</a></li>
-		            <li><a href="${cpath}/ad1.do?curPage=${paging.curPage-1 }">&lt;</a></li>
-		            </c:if>
-		            <c:forEach begin="${paging.firstPage}"  end="${paging.lastPage}" var="i">
-		                  <li><a href="${cpath }/ad1.do?curPage=${i}">  
-		                     <c:if test="${i eq paging.curPage }"> <span style="background:green; color:white; border-color:transparent;">${i}</span></c:if>
-		                     <c:if test="${i ne paging.curPage }">${i}</c:if> 
-		                  </a></li>
-		            </c:forEach>
-		            
-					<c:if test="${paging.showNext}">
-		            <li><a href="${cpath}/ad1.do?curPage=${paging.curPage+1 }">&gt;</a></li>
-		            <li><a href="${cpath}/ad1.do?curPage=${paging.totalPageCount }">&raquo;</a></li>
-		            </c:if>
-		           </ul>
-    		</div>
-		</div>
-	</div> 
-	
-	
 	
    </div>
 

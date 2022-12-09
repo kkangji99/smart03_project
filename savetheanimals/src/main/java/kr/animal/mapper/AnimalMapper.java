@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
@@ -47,7 +48,8 @@ public interface AnimalMapper {
     // 페이징
 	public int getCountdog(Paging paging);
 	public int getCountcat(Paging paging);
-	List<HashMap<?,?>> selectDog(Animal animal, Paging paging1);
-	
+	//List<HashMap<?,?>> selectDog(Animal animal, Paging paging1);
+	//public List<Animal> selectDog(Map<String, Object> map);
+	public List<Animal> selectDog(@Param("ani")Animal animal, @Param("page")Paging paging);
 	
 }

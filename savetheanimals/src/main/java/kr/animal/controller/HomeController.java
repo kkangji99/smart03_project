@@ -35,6 +35,7 @@ import kr.animal.mapper.CommuMapper;
 @Controller
 public class HomeController {
 
+	List<Animal> ad1 = null;
 	// 의존성 주입
 	@Autowired
 	private AnimalMapper mapper;
@@ -124,54 +125,62 @@ public class HomeController {
         return "ad2";
    }
    
-   @RequestMapping("/searchDog.do")
-	public String searchDog(Model model,@RequestParam(value = "aimg_name") MultipartFile file, Animal animal, @ModelAttribute("paging1") Paging paging1) {
-		System.out.println("검색 시작");
-
-		List<Animal> Dog = mapper.searchDog(animal);
-		// 페이징
-		int totalRowCount = Dog.size();
-		paging1.setTotalRowCount(totalRowCount);
-		paging1.pageSetting();
-		
-		// search list
-		//List<Animal> searchDog = mapper.searchDog(animal);
-		List<HashMap<?, ?>> searchDog = mapper.selectDog(animal,paging1);
-
-		System.out.println("개 검색 갯수" + searchDog.size());
-
-		model.addAttribute("searchDog", searchDog);
-
-		// 개 검색결과 개수
-		model.addAttribute("searchDogSize", searchDog.size());
-
-		List<Animal> dogAdSelect = mapper.dogAdSelect();		
-		model.addAttribute("dogAdSelect", dogAdSelect);
-
-		if(searchDog.size()==0) {
-			model.addAttribute("checkDog", "없");
-		}
-		else {
-			
-			model.addAttribute("checkDog", "있");
-		}
-		// 이미지 파일 저장
-	    System.out.println("파일 이름 : " + file.getOriginalFilename());
-	    System.out.println("파일 크기 : " + file.getSize());
-		try (FileOutputStream fos = new FileOutputStream("c:/A_search_img/" + file.getOriginalFilename());
-				InputStream is = file.getInputStream();) {
-			int readCount = 0;
-			byte[] buffer = new byte[1024];
-			while ((readCount = is.read(buffer)) != -1) {
-				fos.write(buffer, 0, readCount);
-			}
-		} catch (Exception ex) {
-			throw new RuntimeException("file Save Error");
-		}
-
-		return "ad1";
+   @GetMapping("/ad1_search.do")
+	public String ad1_search() {
+	   
+		return "ad1_search";
 	}
+   
+   @GetMapping("/ad2_search.do")
+	public String ad2_search() {
+	   
+		return "ad2_search";
+	}
+   
+   @RequestMapping("/searchDog.do")
+   public String searchDog(Model model,@RequestParam(value = "aimg_name") MultipartFile file, Animal animal) {
+      System.out.println("검색 시작");
 
+      // search list
+      List<Animal> searchDog = mapper.searchDog(animal);
+      ad1= mapper.searchDog(animal);
+      System.out.println("개 검색 갯수" + searchDog.size());
+      model.addAttribute("searchDog", searchDog);
+
+      // 개 검색결과 개수
+      model.addAttribute("searchDogSize", searchDog.size());
+
+      
+      List<Animal> dogAdSelect = mapper.dogAdSelect();
+      model.addAttribute("dogAdSelect", dogAdSelect);
+
+      if(searchDog.size()==0) {
+         model.addAttribute("checkDog", "없");
+      }
+      else {
+         
+         model.addAttribute("checkDog", "있");
+         
+      }
+      
+      // 이미지 파일 저장
+         System.out.println("파일 이름 : " + file.getOriginalFilename());
+          System.out.println("파일 크기 : " + file.getSize());
+          try(FileOutputStream fos = new FileOutputStream("c:/A_search_img/" + file.getOriginalFilename());
+              InputStream is = file.getInputStream();
+              ){int readCount = 0;
+                byte[] buffer = new byte[1024];
+                while((readCount = is.read(buffer)) != -1){
+                fos.write(buffer,0,readCount);
+              }
+              }catch(Exception ex){
+                throw new RuntimeException("file Save Error");
+              }
+         
+      return "ad1_search";
+   }
+   
+   
 	@RequestMapping("/searchCat.do")
 	public String searchCat(Model model,@RequestParam(value = "image_file") MultipartFile file, Animal animal, @ModelAttribute("paging2") Paging paging2) {
 		System.out.println("검색 시작");
@@ -209,7 +218,7 @@ public class HomeController {
 	             throw new RuntimeException("file Save Error");
 	           }
 
-		return "ad2";
+		return "ad2_search";
 	}
 
 	// 등록 페이지로 이동

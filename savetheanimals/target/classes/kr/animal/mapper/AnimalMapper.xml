@@ -99,17 +99,17 @@
      and ani_num between 250 and 350
   </select>
   
-  <select id="selectDog" parameterType="hashmap" resultType="kr.animal.entity.Animal">
+  <select id="selectDog" resultType="kr.animal.entity.Animal">
 	select * from animal 
      join animal_img 
     on animal.ani_num = animal_img.aimg_ani_num 
-     where ani_kind like concat('%',#{0.ani_kind},'%') 
-     and ani_occur_address like concat('%', #{0.ani_occur_address} ,'%') 
-     and ani_occur_address like concat('%', #{0.ani_occur_address_sub} ,'%') 
-     and ani_cate_code like concat('%', #{0.ani_cate_code} ,'%') 
+     where ani_kind like concat('%',#{ani.ani_kind},'%') 
+     and ani_occur_address like concat('%', #{ani.ani_occur_address} ,'%') 
+     and ani_occur_address like concat('%', #{ani.ani_occur_address_sub} ,'%') 
+     and ani_cate_code like concat('%', #{ani.ani_cate_code} ,'%') 
      and ani_livestock = "개" 
      and ani_num between 250 and 350
-     limit #{1.firstRow}, #{1.rowSizePerPage}
+     limit #{page.firstRow}, #{page.rowSizePerPage}
 	</select>
   
 </mapper>
