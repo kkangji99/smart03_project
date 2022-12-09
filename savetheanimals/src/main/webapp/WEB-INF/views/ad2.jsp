@@ -70,18 +70,19 @@
    <br>
     <nav class="navbar navbar-expand-lg justify-content-center">
   <ul class="navbar-nav">
-    <li class="nav-item" style="font-weight: bolder; font-size: 1.4em;" >
+    <li class="nav-item"  id="navbar-item" onclick="myFunction()" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;" >
       <a class="nav-link" href="${cpath}/ad.do"><img src="resources/images/guide.gif" style="width: 2em; height: 2em;">
                안내</a>
     </li>
-      <li class="nav-item" style="font-weight: bolder; font-size: 1.4em;" >
+      <li class="nav-item" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;" >
       <a class="nav-link" href="${cpath}/ad1.do"> <img src="resources/images/dog.gif" style="width: 2em; height: 2em; align: center;">강아지</a>
     </li>
-    <li class="nav-item " style="font-weight: bolder; font-size: 1.4em; border: 2px solid black;" >
+    <li class="nav-item " style="font-weight: bolder;font-size: 2em;  padding-right: 5rem; padding-left: 5rem; border: 2px solid black;">
       <a class="nav-link" href="${cpath}/ad2.do"><img src="resources/images/cat.gif" style="width: 2em; height: 2em;">고양이</a>
     </li>
   </ul>
 </nav>
+
 
    <div class="container">
       
@@ -340,6 +341,8 @@
       </div>
 
    <!-- 페이징 -->
+   <c:choose>
+    <c:when test="${checkDog=='전'}">
    	<div class="row mt-5">
 		<div class="col text-center">
 			<div class="block-27">
@@ -363,6 +366,35 @@
     		</div>
 		</div>
 	</div>
+	</c:when>
+	<c:when test="${checkDog=='없'}">
+    </c:when>
+    <c:otherwise>
+    <div class="row mt-5">
+		<div class="col text-center">
+			<div class="block-27">
+				<ul>
+					<c:if test="${paging2.showPrev}">
+			        <li><a href="${cpath}/ad2.do?curPage=1">&laquo;</a></li>
+		            <li><a href="${cpath}/ad2.do?curPage=${paging2.curPage-1 }">&lt;</a></li>
+		            </c:if>
+		            <c:forEach begin="${paging2.firstPage}"  end="${paging2.lastPage}" var="i">
+		                  <li><a href="${cpath }/ad2.do?curPage=${i}">  
+		                     <c:if test="${i eq paging2.curPage }"> <span style="background:green; color:white; border-color:transparent;">${i}</span></c:if>
+		                     <c:if test="${i ne paging2.curPage }">${i}</c:if> 
+		                  </a></li>
+		            </c:forEach>
+		            
+					<c:if test="${paging2.showNext}">
+		            <li><a href="${cpath}/ad2.do?curPage=${paging2.curPage+1 }">&gt;</a></li>
+		            <li><a href="${cpath}/ad2.do?curPage=${paging2.totalPageCount }">&raquo;</a></li>
+		            </c:if>
+		           </ul>
+    		</div>
+		</div>
+	</div>
+    </c:otherwise>
+	</c:choose>
    </div>
 
    <section>

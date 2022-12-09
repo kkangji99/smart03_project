@@ -128,49 +128,6 @@
                   </div>
 
                 </c:forEach>
-                 <script type="text/javascript">
-                  $(function paging(totalData, currentPage) {
-                     const dataPerPage = 10
-                     const pageCount = 5
-                  
-                     const totalPage = Math.ceil(totalData / dataPerPage)
-                     const pageGroup = Math.ceil(currentPage / pageCount)
-                     
-                     let last = pageGroup * pageCount
-                     
-                     if (last > totalPage)
-                        last = totalPage
-                     let first = last - (pageCount - 1)
-                  
-                     const next = last
-                     const prev = first - 1
-                  
-                     if (totalPage < 1) {
-                        first = last
-                     }
-                     const pages = $("#pages")
-                     pages.empty()
-                     if (first > 5) {
-                        pages.append("<li>" +"<a onclick=\"GetTarget(" + (prev) +
-                              "):\" style='margin-left: 2px'›prev</a></li>")
-                     }
-                     for (let j = first; j <= last;j++){
-                        if (currentPage ==(j)) {
-                           pages.append("<li>"+"<a onclick=\"GetTarget("+(j)+
-                                 ");\" style='margin-left: 2px'›"+(j)+"</a></li>")
-                        }
-                        else if (j > 0) {
-                           pages.append("<li>"+"<a onclick=\"GetTarget("+(j)+
-                                 ");\" style='margin-left: 2px'›"+(j)+"</a></li>")
-                        }
-                     }
-                     
-                     if(next>5 && next<totalPage) {
-                        pages.append("<li>"+"<a onclick=\"GetTarget("+(next)+
-                              ");\" style='margin-left: 2px'›next</a></li>")
-                     }
-                  })   
-               </script>
                 
             </div>
          </div>

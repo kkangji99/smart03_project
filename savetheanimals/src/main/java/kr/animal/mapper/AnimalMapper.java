@@ -1,6 +1,8 @@
 package kr.animal.mapper;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Update;
@@ -41,5 +43,11 @@ public interface AnimalMapper {
    public void register(Animal vo);
 
    public int imgnameset(Animal vo);
+   
+    // 페이징
+	public int getCountdog(Paging paging);
+	public int getCountcat(Paging paging);
+	List<HashMap<?,?>> selectDog(Animal animal, Paging paging1);
+	
 	
 }

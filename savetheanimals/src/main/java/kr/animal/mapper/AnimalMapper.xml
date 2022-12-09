@@ -35,7 +35,7 @@
      and ani_occur_address like concat('%', #{ani_occur_address_sub} ,'%') 
      and ani_cate_code like concat('%', #{ani_cate_code} ,'%') 
      and ani_livestock = "개" 
-     and ani_num between 290 and 320
+     and ani_num between 250 and 350
  </select>
  
   <select id="searchCat" parameterType="kr.animal.entity.Animal"
@@ -48,23 +48,23 @@
      and ani_occur_address like concat('%', #{ani_occur_address_sub} ,'%') 
      and ani_cate_code like concat('%', #{ani_cate_code} ,'%') 
      and ani_livestock = "고양이" 
-     and ani_num between 290 and 320
+     and ani_num between 250 and 350
      
  </select>
  
     <select id="allAdSelect" parameterType="kr.animal.entity.Animal"
      resultType="kr.animal.entity.Animal"> 
-		select * from animal where ani_num between 290 and 320 
+		select * from animal where ani_num between 250 and 350
  	</select>
   
     <select id="dogAdSelect" parameterType="kr.animal.entity.Animal"
      resultType="kr.animal.entity.Animal"> 
-		select * from animal where ani_livestock = "개" and ani_num between 290 and 320  
+		select * from animal where ani_livestock = "개" and ani_num between 250 and 350 
  	</select>
  	
     <select id="catAdSelect" parameterType="kr.animal.entity.Animal"
      resultType="kr.animal.entity.Animal"> 
-		select * from animal where ani_livestock = "고양이" and ani_num between 290 and 320  
+		select * from animal where ani_livestock = "고양이" and ani_num between 250 and 350  
  	</select>
   
     <insert id="register" parameterType="kr.animal.entity.Animal">
@@ -74,4 +74,42 @@
   <select id="imgnameset" resultType="int">
       select max(ani_num) from animal
   </select>
+  
+   <select id="getCountdog" parameterType="kr.animal.entity.Paging" resultType="int">
+     select count(*) from animal 
+     join animal_img 
+    on animal.ani_num = animal_img.aimg_ani_num 
+     where ani_kind like concat('%',#{ani_kind},'%') 
+     and ani_occur_address like concat('%', #{ani_occur_address} ,'%') 
+     and ani_occur_address like concat('%', #{ani_occur_address_sub} ,'%') 
+     and ani_cate_code like concat('%', #{ani_cate_code} ,'%') 
+     and ani_livestock = "개" 
+     and ani_num between 250 and 350
+  </select>
+  
+  <select id="getCountcat" parameterType="kr.animal.entity.Paging" resultType="int">
+     select count(*) from animal 
+     join animal_img 
+    on animal.ani_num = animal_img.aimg_ani_num 
+     where ani_kind like concat('%',#{ani_kind},'%') 
+     and ani_occur_address like concat('%', #{ani_occur_address} ,'%') 
+     and ani_occur_address like concat('%', #{ani_occur_address_sub} ,'%') 
+     and ani_cate_code like concat('%', #{ani_cate_code} ,'%') 
+     and ani_livestock = "고양이" 
+     and ani_num between 250 and 350
+  </select>
+  
+  <select id="selectDog" parameterType="hashmap" resultType="kr.animal.entity.Animal">
+	select * from animal 
+     join animal_img 
+    on animal.ani_num = animal_img.aimg_ani_num 
+     where ani_kind like concat('%',#{0.ani_kind},'%') 
+     and ani_occur_address like concat('%', #{0.ani_occur_address} ,'%') 
+     and ani_occur_address like concat('%', #{0.ani_occur_address_sub} ,'%') 
+     and ani_cate_code like concat('%', #{0.ani_cate_code} ,'%') 
+     and ani_livestock = "개" 
+     and ani_num between 250 and 350
+     limit #{1.firstRow}, #{1.rowSizePerPage}
+	</select>
+  
 </mapper>

@@ -13,7 +13,7 @@
   
   <select id="selectpost" parameterType="kr.animal.entity.Post"
       resultType="kr.animal.entity.Post">
-      select * from post where post_num=#{post_num}
+      select * from post join member on member.mem_num = post.post_mem_num where post_num=#{post_num}
   </select>
   
   <select id="allcomselect" parameterType="kr.animal.entity.Post"

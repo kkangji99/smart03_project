@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
 
-
+<script type="text/javascript" src="resources/js/adSearch.js">/*검색용*/ </script>
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
 
@@ -215,168 +215,216 @@ function SubCity() {
             <div class="row no-gutters">
                <div class="col-md-12">
                   <div class="contact-wrap w-100 p-md-5 p-4">
-                     <h3 class="mb-4" style="text-align: left;">정보</h3>
+                     <h3 class="mb-4" style="text-align: left;"></h3>
                      <form method="POST" id="contactForm" class="needs-validation"
                         action="${cpath}/register.do" novalidate
                         enctype="multipart/form-data">
                         <div class="row col-md-12">
-                           <div class="col-md-6">
-                              <div>
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <div class="custom-checkbox"
-                                          style="display: flex; justify-content: space-evenly;">
-                                          목격<input type="radio" id="notice" name="ani_cate_code"
-                                             onclick="oneSituation(this)" value="ani_witness">
-                                          보호<input type="radio" id="shelter" name="ani_cate_code"
-                                             onclick="oneSituation(this)" value="ani_protect">
-                                          유실<input type="radio" id="lost" name="ani_cate_code"
-                                             onclick="oneSituation(this)" value="ani_lose">
+                           <div class="col-md-12 justify-content-center">
+
+                              <div class="col-md-12">
+                                 <div class="row">
+
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <div class="custom-checkbox"
+                                             style="display: flex; justify-content: space-evenly;">
+                                             <label class="label" for="any_livestock"><b>축종</b></label>
+                                             개 <input type="radio" id="dog"
+                                                name="ani_livestock" onclick="kind('dog')" value='개'>
+                                             고양이<input type="radio" id="cat" name="ani_livestock"
+                                                onclick="kind('cat')" value='고양이'> 미상<input
+                                                type="radio" id="unknown" name="ani_livestock"
+                                                onclick="kind('unknown')" value='미상'>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                       <div class="form-group">
+                                          <select class="custom-select" id="ani_kind"
+                                             name="ani_kind" onchange='SubCity()'
+                                             style="height: 50px;">
+                                             <option selected>품종</option>
+                                          </select>
+                                       </div>
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <select class="custom-select" name="ani_color" id="colors"
+                                             style="height: 50px;" required>
+                                             <option>털색</option>
+                                             <option value="흰색">흰색</option>
+                                             <option value="검정색">검정</option>
+                                             <option value="갈색">갈색</option>
+                                             <option value="회색">회색</option>
+                                             <option value="혼합색">혼합</option>
+                                          </select>
+                                          <div class="valid-feedback"></div>
+                                          <div class="invalid-feedback">털색 선택</div>
                                        </div>
                                     </div>
                                  </div>
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <select class="custom-select" name="ani_color" id="colors"
-                                          style="height: 50px;" required>
-                                          <option>털색</option>
-                                          <option value="흰색">흰색</option>
-                                          <option value="검정색">검정</option>
-                                          <option value="갈색">갈색</option>
-                                          <option value="회색">회색</option>
-                                          <option value="혼합색">혼합</option>
-                                       </select>
-                                       <div class="valid-feedback"></div>
-                                       <div class="invalid-feedback">털색 선택</div>
-                                    </div>
-                                 </div>
-
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <input type="text" class="form-control" name="ani_phone"
-                                          id="number" placeholder="연락처"
-                                          style="height: 50px; margin-bottom: 10px" required>
-                                       <div class="valid-feedback"></div>
-                                       <div class="invalid-feedback">연락처 입력</div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <input type="text" class="form-control"
-                                          name="ani_occur_address" id="place"
-                                          placeholder="목격/보호/유실 장소"
-                                          style="height: 50px; margin-bottom: 10px" required>
-                                       <div class="valid-feedback"></div>
-                                       <div class="invalid-feedback">장소 입력</div>
-                                    </div>
-                                 </div>
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <input type="text" class="form-control"
-                                          name="ani_center_name" id="ani_center_name"
-                                          placeholder="보호 장소명">
-                                    </div>
-                                 </div>
-                                 <div class="col-md-12">
-                                    <div class="form-group">
-                                       <input type="text" class="form-control"
-                                          name="ani_protect_address" id="shelterPlace"
-                                          placeholder="주소">
-                                    </div>
-                                 </div>
                               </div>
 
-                           </div>
-                           <div class="col-md-6 text-center">
-                              <div class="uploadImage form-group">
-                              
-                                 <img src="" alt="" id="img"> 
-                              
-                                 <input type="file" id="files" placeholder="이미지 선택"
-                                    class="form-control filesImgs" name="aimg_name"
-                                    accept=".jpg" style="padding-left: 25%; font-size: 14px;margin-top: 40px;"
-                                    onchange="showImage()" required>
-                                 <div class="valid-feedback"></div>
-                                 <div class="invalid-feedback">이미지 선택</div>
-                              </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="form-group">
-                                 <div class="custom-checkbox"
-                                    style="display: flex; justify-content: space-evenly;">
-                                    <b>성별</b> 암컷<input type="radio" id="male" name="ani_gender"
-                                       onclick="oneGender(this)" value='암컷'> 수컷<input
-                                       type="radio" id="female" name="gender"
-                                       onclick="oneGender(this)" value='수컷'> 미상 <input
-                                       type="radio" id="unknown" name="gender"
-                                       onclick="oneGender(this)" value='미상'>
+
+                              <div class="col-md-12">
+                                 <div class="row">
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <select class="custom-select" name="ani_occur_address"
+                                             id="ani_cate_code" onchange="Cate('ani_cate_code')">
+                                             <option value="">장소</option>
+                                             <option value="ani_witness">목격</option>
+                                             <option value="ani_lose">유실</option>
+                                             <option value="ani_protect">보호</option>
+                                          </select>
+                                       </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <select class="custom-select" name="ani_occur_address"
+                                             id="ani_occur_address"
+                                             onchange="City('ani_occur_address', 'ani_occur_address_sub')">
+                                             <option value="">전체</option>
+                                             <option value="서울">서울특별시</option>
+                                             <option value="부산">부산광역시</option>
+                                             <option value="대구">대구광역시</option>
+                                             <option value="인천">인천광역시</option>
+                                             <option value="광주">광주광역시</option>
+                                             <option value="대전">대전광역시</option>
+                                             <option value="울산">울산광역시</option>
+                                             <option value="경기">경기도</option>
+                                             <option value="강원">강원도</option>
+                                             <option value="충청북도">충청북도</option>
+                                             <option value="충청남도">충청남도</option>
+                                             <option value="전라북도">전라북도</option>
+                                             <option value="전라남도">전라남도</option>
+                                             <option value="경상북도">경상북도</option>
+                                             <option value="경상남도">경상남도</option>
+                                             <option value="세종">세종특별자치시</option>
+                                             <option value="제주">제주특별자치도</option>
+                                          </select>
+
+                                       </div>
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <select class="custom-select"
+                                             id="ani_occur_address_sub_dog"
+                                             onchange="SubCity('ani_occur_address_sub')"
+                                             name="ani_occur_address_sub">
+                                             <option value="" id="detail_address">전체</option>
+                                          </select>
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="form-group">
-                                 <div class="custom-checkbox"
-                                    style="display: flex; justify-content: space-evenly;">
-                                    <b>중성화여부</b> 예<input type="radio" id="neutered"
-                                       name="ani_neutered" onclick="oneNeutered(this)" value="예">
-                                    아니요<input type="radio" id="notneutered" name="ani_neutered"
-                                       onclick="oneNeutered(this)" value='아니오'> 미상<input
-                                       type="radio" id="unknown" name="ani_neutered"
-                                       onclick="oneNeutered(this)" value='미상'>
+
+                              <div class="col-md-12">
+                                 <div class="row">
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <div class="custom-checkbox"
+                                             style="display: flex; justify-content: space-evenly;">
+                                             <label class="label" for="any_gender"><b>성별</b></label> 
+                                             암컷<input type="radio" id="male"
+                                                name="ani_gender" onclick="oneGender(this)" value='암컷'>
+                                             수컷<input type="radio" id="female" name="gender"
+                                                onclick="oneGender(this)" value='수컷'> 미상 <input
+                                                type="radio" id="unknown" name="gender"
+                                                onclick="oneGender(this)" value='미상'>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <div class="custom-checkbox"
+                                             style="display: flex; justify-content: space-evenly;">
+                                             <label class="label" for="any_neutered"><b>중성화 여부</b></label> 
+                                              예<input type="radio" id="neutered"
+                                                name="ani_neutered" onclick="oneNeutered(this)"
+                                                value="예"> 아니요<input type="radio"
+                                                id="notneutered" name="ani_neutered"
+                                                onclick="oneNeutered(this)" value='아니오'> 미상<input
+                                                type="radio" id="unknown" name="ani_neutered"
+                                                onclick="oneNeutered(this)" value='미상'>
+                                          </div>
+                                       </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                       <div class="form-group">
+                                          <select class="custom-select" id="ani_age" name="ani_age">
+                                             <option selected>나이</option>
+                                             <option value="5">0~5</option>
+                                             <option value="10">5~10</option>
+                                             <option value="15">10~15</option>
+                                             <option value="20">15~20</option>
+                                          </select>
+                                       </div>
+                                    </div>
                                  </div>
                               </div>
-                           </div>
-                           <div class="col-md-4">
-                              <div class="form-group">
-                                 <div class="custom-checkbox"
-                                    style="display: flex; justify-content: space-evenly;">
-                                    <b>축종</b> 개 <input type="radio" id="dog"
-                                       name="ani_livestock" onclick="kind('dog')" value='개'>
-                                    고양이<input type="radio" id="cat" name="ani_livestock"
-                                       onclick="kind('cat')" value='고양이'> 미상<input
-                                       type="radio" id="unknown" name="ani_livestock"
-                                       onclick="kind('unknown')" value='미상'>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="col-md-6">
+
+                              <div class="col-md-12">
+                                 <div class="row justify-content-center">
+                                 
+                                    <div class="col-md-6 ">
+                                       <div class="form-group">
+                                          <input type="text" class="form-control" name="ani_phone"
+                                             id="number" placeholder="연락처"required>
+                                          <div class="valid-feedback"></div>
+                                          <div class="invalid-feedback">연락처 입력</div>
+                                       </div>
+                                    </div>
+                                    
+                                    
                               <div class="col-md-12 mb-3">
                                  <div class="form-group">
-                                    <select class="custom-select" id="ani_kind" name="ani_kind"
-                                       onchange='SubCity()' style="height: 50px;">
-                                       <option selected>품종</option>
-                                    </select>
+                                    <textarea name="ani_uniqueness" class="form-control"
+                                       id="message" cols="30" rows="4" placeholder="특이사항"
+                                       style="resize: none;"></textarea>
                                  </div>
                               </div>
-                           </div>
-                           <div class="col-md-6">
-                              <div class="form-group">
-                                 <select class="custom-select" id="ani_age" name="ani_age" style="height: 50px; width: 595px; margin-left: -18px;">
-                                    <option selected>나이</option>
-                                    <option value="5">0~5</option>
-                                    <option value="10">5~10</option>
-                                    <option value="15">10~15</option>
-                                    <option value="20">15~20</option>
-                                 </select>
+                                    
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="col-md-12">
+                                 <div class="row justify-content-center">
+                                    
+                                    <div class="col-md-6">
+                                       <div class="form-group">
+                                          <img src="" alt="" id="img"> <input type="file"
+                                             id="files" placeholder="이미지 선택"
+                                             class="form-control filesImgs" name="aimg_name"
+                                             accept=".jpg"
+                                             style="padding-left:40%; font-size: 1em; margin-top: 0.7em;"
+                                             onchange="showImage()" required>
+                                          <div class="valid-feedback"></div>
+                                          <div class="invalid-feedback">이미지 선택</div>
+                                       </div>
+                                    </div>
+                                    
+                              
                               </div>
-                           </div>
+                              </div>
 
-                           <div class="col-md-12 mb-3">
-                              <div class="form-group">
-                                 <textarea name="ani_uniqueness" class="form-control"
-                                    id="message" cols="30" rows="4" placeholder="특이사항"
-                                    style="resize: none;"></textarea>
+                              <div class="col-md-12">
+                                 <div class="form-group" style="text-align: center;">
+                                    <div class="submitting">
+                                       <input type="submit" class="btn btn-primary submit"
+                                          value="확인" id="submit" />
+                                    </div>
+                                 </div>
                               </div>
-                           </div>
-                        </div>
-                        <div class="col-md-12">
-                           <div class="form-group" style="text-align: center;">
-                              <div class="submitting">
-                                 <input type="submit" class="btn btn-primary submit"
-                                    value="확인" id="submit" />
-                              </div>
-                           </div>
-                        </div>
                      </form>
                   </div>
                </div>

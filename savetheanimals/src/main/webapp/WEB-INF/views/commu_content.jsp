@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -98,43 +99,40 @@ textarea {
                         </div>
                      </c:when>
                      <c:otherwise>
-                        <table style="color: black; width: 100%; font-size: 17px;"
-                           class="table table-hover font-weight-normal">
-                           
-                           <tr>
-                              <th style="text-align: center;">제목</th>
-                              <td>${postinfo.post_title}</td>
-                           </tr>
-                           
-                           <tr>
-                              <th style="text-align: center;">작성자</th>
-                              <td>${postinfo.mem_id}</td>
-                           </tr>
-                           <tr>
-                              <th style="text-align: center; width: 40%;">카테고리</th>
-                               <c:if test="${postinfo.post_cate_code eq 'post_free'}">
-                                 <<td>자유게시판</td>
+                     <div class="container-table">
+                           <div>
+                              <c:if test="${postinfo.post_cate_code eq 'post_free'}">
+                                 <div class="content col-md-6"
+                                    style="text-align: left; font-size:18px;">자유게시판</div>
                               </c:if>
                               <c:if test="${postinfo.post_cate_code eq 'post_adop'}">
-                                 <td>입양 정보</td>                              
+                                 <div class="content col-md-6"
+                                    style="text-align: left; font-size:18px;">입양 정보</div>                              
                               </c:if>
                               <c:if test="${postinfo.post_cate_code eq 'post_review'}">
-                                 <td>입양/재회 후기</td>                              
+                                 <div class="content col-md-6"
+                                    style="text-align: left; font-size:18px;">입양/재회 후기</div>                              
                               </c:if>
                               <c:if test="${postinfo.post_cate_code eq 'post_service'}">
-                                 <td>봉사활동 정보</td>                              
+                                 <div class="content col-md-6"
+                                    style="text-align: left; font-size:18px;">봉사활동 정보</div>                              
                               </c:if>
-                           </tr>
-                           <tr>
-                              <th style="text-align: center;">등록날짜</th>
-                              <td>${postinfo.post_datetime}</td>
-                           </tr>
-                           <tr>
-                           	 <th style="text-align: center;">내용</th>
-                              <td>${postinfo.post_contents}</td>
-                           </tr>
-                           
-                        </table>
+                           </div>
+                           <h3 style="margin-left:15px;">${postinfo.post_title}</h3>
+                       		<div class="col-md-12">
+                                <a class="flaticon-pawprint-1" style="margin-right:5px;"></a>
+                                <span style="font-size:18px">${postinfo.mem_id}</span>
+                                <span style="font-size:18px">${postinfo.post_datetime}</span>
+                                <span class="sexy_line" style="margin-bottom: 5px;"></span>
+                                <div style="font-size:22px; margin-bottom: 3%;">${postinfo.post_contents}</div>
+                                <c:if test="${postinfo.pimg_path}">
+		                           <div class="comImage justify-content-center">
+		                              <img src="${postinfo.aimg_path}" class="center" style="width: 400px;">
+		                           </div>
+		                       </c:if>
+                            </div>
+                       </div>
+                     
                      </c:otherwise>
                   </c:choose>
                </div>
@@ -143,19 +141,22 @@ textarea {
                <!-- 댓글 -->
                <div class="row">
                   <div class="container pb-3">
-                  <h5>댓글</h5>
+                   <p class="col-12" style="font-weight: bold;">
+                       	 댓글  <fmt:formatNumber value="${allcomm.size()}" pattern="#,###" />
+                   </p>
                      <c:forEach items="${allcomm}" var="com" varStatus="status">
                         <div class="card pl-2 border border-0 rounded-pill mt-3 mb-3">
 
-                         <div class="card-body" style="padding: 0px 30px 0px 30px">
+                         <div class="card-body" style="padding: 0px 0px 0px 0px">
 	                         <div>
 	                         <span class="sexy_line" style="margin-bottom: 5px;"></span>
 	                     	</div>
                               <div class="row mt-2">
                                  <div class="col-md-6"
-                                    style="text-align: left; height: 20px; width: 20px; font-size:17px;">
+                                    style="text-align: left; height: 20px; width: 20px;">
                                     <a class="flaticon-pawprint-1" style="margin-right:5px;"></a>
-                                    ${memid[status.index].mem_id}<span class="small text-muted mb-0" style="font-size:15px; margin-left:5px;"> ${com.comm_datetime}</span>
+                                    <span style="font-weight: bold; font-size:16px;">${memid[status.index].mem_id}</span>
+                                    <span class="small text-muted mb-0" style="font-size:16px; margin-left:5px;"> ${com.comm_datetime}</span>
                                  </div>
                                  <div class="col-md-6" style="text-align: right">
                                     <c:if
