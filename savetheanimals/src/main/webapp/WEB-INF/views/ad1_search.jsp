@@ -258,25 +258,8 @@
                   </form>
                </div>
             </fieldset>
-            
             <div class="row d-flex">
-            <c:choose>
-                  
-                  <c:when test="${checkDog=='없'}">
-
-                   <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                           총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
-                      </p><br>
-                      <script type="text/javascript">
-                      	infoModal();
-                      </script>
-                  </c:when>
-                  <c:otherwise>
-                <!-- 검색결과 개수 표시 -->
-                      <p class="col-12" style="padding-left: 5%; font-weight: bold;">
-                              총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
-                      </p>
-                      <ul class="col-12">
+            <p class="col-12" style="padding-left: 5%; font-weight: bold;">비슷한 동물</p>
     				<c:forEach items="${searchDog}" var="dog" varStatus="status">
     					<c:forEach items="${data}" var="data2" varStatus="status">
                          <c:if test="${dog.ani_num eq data2 }">
@@ -297,7 +280,25 @@
                         </c:if>
                         </c:forEach>
                       </c:forEach>
-                      </ul>
+                      </div>
+            <div class="row d-flex">
+            <c:choose>
+                  
+                  <c:when test="${checkDog=='없'}">
+
+                   <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                           총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
+                      </p><br>
+                      <script type="text/javascript">
+                      	infoModal();
+                      </script>
+                  </c:when>
+                  <c:otherwise>
+                <!-- 검색결과 개수 표시 -->
+                      <p class="col-12" style="padding-left: 5%; font-weight: bold;">
+                              총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
+                      </p>
+                      
 
                      <c:forEach items="${searchDog}" var="dog" varStatus="status">
                    <div class="col-md-4 d-flex justify-content-center ftco-animate">
