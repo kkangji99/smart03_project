@@ -218,7 +218,7 @@
                      <div class="col-md-8 mx-auto text-center">
                         <div class="form-group" onclick="this.form.reset">
                             <input type="file" id="files" class="form-control filesImgs" name="aimg_name" 
-                              accept=".jpg" style="padding-left: 40%; font-size: 1em;" required>
+                              accept=".jpg" style="padding-left: 40%; font-size: 1em;" >
                            <label class="label" for="uploadimages">
                               <div id="uploadimages border border-primary">
                                  <div class="list"></div>
