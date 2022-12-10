@@ -44,7 +44,6 @@ import kr.animal.mapper.CommuMapper;
 
 @Controller
 public class HomeController {
-
 	List<Animal> ad1 = null;
 	// 의존성 주입
 	@Autowired
