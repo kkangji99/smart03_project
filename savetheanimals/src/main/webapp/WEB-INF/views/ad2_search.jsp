@@ -290,6 +290,29 @@
                            <p class="col-12" style="padding-left: 5%; font-weight: bold;">
                               총 <fmt:formatNumber value="${searchCat.size()}" pattern="#,###" />건
                            </p>
+                           
+                           <ul class="col-12">
+    				<c:forEach items="${searchCat}" var="cat" varStatus="status">
+    					<c:forEach items="${data}" var="data2" varStatus="status">
+                         <c:if test="${cat.ani_num eq data2 }">
+                         <div class="col-md-4 d-flex justify-content-center ftco-animate">
+                           <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
+                              <a href="${cpath}/ad_info.do?ani_num=${cat.ani_num}" class="block-20 rounded"
+                                 style="background-image: url('${cat.aimg_path}'); "> 
+                              </a>
+                              <div class="text p-4">
+                                 <div class="meta mb-2">
+                                    <div style="font-size: 15px;">${cat.ani_kind}</div>
+                                    <div style="font-size: 15px;">${(cat.ani_datetime).substring(0,10)}</div>
+                                 </div>
+                                 <h3 class="heading">${cat.ani_occur_address}</h3>
+                              </div>
+                           </div>
+                        </div>
+                        </c:if>
+                        </c:forEach>
+                      </c:forEach>
+                      </ul>
     
                      <c:forEach items="${searchCat}" var="cat" varStatus="status">
                          <div class="col-md-4 d-flex justify-content-center ftco-animate">

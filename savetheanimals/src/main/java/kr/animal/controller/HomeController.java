@@ -1,14 +1,24 @@
 package kr.animal.controller;
 
+import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -138,7 +148,7 @@ public class HomeController {
 	}
    
    @RequestMapping("/searchDog.do")
-   public String searchDog(Model model,@RequestParam(value = "aimg_name") MultipartFile file, Animal animal) {
+   public String searchDog(Model model,HttpServletRequest request, @RequestParam(value = "aimg_name") MultipartFile file, Animal animal) {
       System.out.println("검색 시작");
 
       // search list
@@ -177,13 +187,44 @@ public class HomeController {
               }catch(Exception ex){
                 throw new RuntimeException("file Save Error");
               }
+       // 이미지 검색
+       			String a= "";
+       			for(int i = 0; i<searchDog.size();i++) {
+       				if(i!=searchDog.size()-1) {
+       					a+=searchDog.get(i).getAni_num();
+       					a+=",";
+       				}
+       				else if(i==searchDog.size()-1){
+       					a+=searchDog.get(i).getAni_num();
+       				}
+       			}
+       			HashMap<String,String> pList = new HashMap<String,String>();
+       			pList.put("a",a);
+       			
+       			HttpSession session = request.getSession();
+       			String data = postRequest(pList);
+       			System.out.println("data : "+data);
+       			String[] data2 = data.split(",");
+       			System.out.println(data2);
+       			ArrayList<Integer> data3 = new ArrayList<Integer>();
+       			for(int i=0; i<data2.length;i++) {
+       				System.out.println(data2[i]);
+       				data2[i] = data2[i].replace("[","");
+       				data2[i] = data2[i].replace("]","");
+       				data2[i] = data2[i].replace("\n","");
+
+       				System.out.println(data2[i]);
+       				data3.add(Integer.parseInt(data2[i]));
+       			}
+       			model.addAttribute("data", data3);
+       			System.out.println(data3);
       }
       return "ad1_search";
    }
    
    
 	@RequestMapping("/searchCat.do")
-	public String searchCat(Model model,@RequestParam(value = "image_file") MultipartFile file, Animal animal, @ModelAttribute("paging2") Paging paging2) {
+	public String searchCat(Model model,HttpServletRequest request, @RequestParam(value = "image_file") MultipartFile file, Animal animal, @ModelAttribute("paging2") Paging paging2) {
 		System.out.println("검색 시작");
 		
 		List<Animal> searchCat = mapper.searchCat(animal);
@@ -219,6 +260,37 @@ public class HomeController {
 	           }catch(Exception ex){
 	             throw new RuntimeException("file Save Error");
 	           }
+	    // 이미지 검색
+			String a= "";
+			for(int i = 0; i<searchCat.size();i++) {
+				if(i!=searchCat.size()-1) {
+					a+=searchCat.get(i).getAni_num();
+					a+=",";
+				}
+				else if(i==searchCat.size()-1){
+					a+=searchCat.get(i).getAni_num();
+				}
+			}
+			HashMap<String,String> pList = new HashMap<String,String>();
+			pList.put("a",a);
+			
+			HttpSession session = request.getSession();
+			String data = postRequest(pList);
+			System.out.println("data : "+data);
+			String[] data2 = data.split(",");
+			System.out.println(data2);
+			ArrayList<Integer> data3 = new ArrayList<Integer>();
+			for(int i=0; i<data2.length;i++) {
+				System.out.println(data2[i]);
+				data2[i] = data2[i].replace("[","");
+				data2[i] = data2[i].replace("]","");
+				data2[i] = data2[i].replace("\n","");
+
+				System.out.println(data2[i]);
+				data3.add(Integer.parseInt(data2[i]));
+			}
+			model.addAttribute("data", data3);
+			System.out.println(data3);
 		}
 		return "ad2_search";
 	}
@@ -488,5 +560,81 @@ public class HomeController {
 
 		return "commu_write";
 	}
+	// 서버 통신용
+		public static String postRequest(HashMap <String, String> pList) {
 
+	        String myResult = "";
+	        String url = "http://127.0.0.1:5000/tospring";
+	        try {
+	            //   URL 설정하고 접속하기 
+	            
+	        	HttpURLConnection http = (HttpURLConnection) new URL(url).openConnection(); // 접속 
+	            //-------------------------- 
+	            //   전송 모드 설정 - 기본적인 설정 
+	            //-------------------------- 
+	            http.setDefaultUseCaches(false);
+	            http.setDoInput(true); // 서버에서 읽기 모드 지정 
+	            http.setDoOutput(true); // 서버로 쓰기 모드 지정  
+	            http.setRequestMethod("POST"); // 전송 방식은 POST
+
+
+
+	            //--------------------------
+	            // 헤더 세팅
+	            //--------------------------
+	            // 서버에게 웹에서 <Form>으로 값이 넘어온 것과 같은 방식으로 처리하라는 걸 알려준다 
+	            http.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+
+
+	            //-------------------------- 
+	            //   서버로 값 전송 
+	            //-------------------------- 
+	            StringBuffer buffer = new StringBuffer();
+
+	            //HashMap으로 전달받은 파라미터가 null이 아닌경우 버퍼에 넣어준다
+	            if (pList != null) {
+
+	                Set key = pList.keySet();
+
+	                for (Iterator iterator = key.iterator(); iterator.hasNext();) {
+	                    String keyName = (String) iterator.next();
+	                    String valueName = pList.get(keyName);
+	                    buffer.append(keyName).append("=").append(valueName);
+	                }
+	            }
+
+	            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
+	            PrintWriter writer = new PrintWriter(outStream);
+	            System.out.println(buffer.toString());
+	            writer.write(buffer.toString());
+	            writer.flush();
+	            
+
+	            //--------------------------
+	            //   Response Code
+	            //--------------------------
+	            //http.getResponseCode();
+
+
+	            //-------------------------- 
+	            //   서버에서 전송받기 
+	            //-------------------------- 
+	            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "UTF-8");
+	            BufferedReader reader = new BufferedReader(tmp);
+	            StringBuilder builder = new StringBuilder();
+	            String str;
+	            while ((str = reader.readLine()) != null) {
+	                builder.append(str + "\n");
+	            }
+	            myResult = builder.toString();
+	            return myResult;
+
+	        } catch (MalformedURLException e) {
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+	        System.out.println("myResult : "+myResult);
+	        return myResult;
+	    }
 }

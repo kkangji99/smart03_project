@@ -276,6 +276,28 @@
                       <p class="col-12" style="padding-left: 5%; font-weight: bold;">
                               총 <fmt:formatNumber value="${searchDog.size()}" pattern="#,###" />건 
                       </p>
+                      <ul class="col-12">
+    				<c:forEach items="${searchDog}" var="dog" varStatus="status">
+    					<c:forEach items="${data}" var="data2" varStatus="status">
+                         <c:if test="${dog.ani_num eq data2 }">
+                         <div class="col-md-4 d-flex justify-content-center ftco-animate">
+                           <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
+                              <a href="${cpath}/ad_info.do?ani_num=${dog.ani_num}" class="block-20 rounded"
+                                 style="background-image: url('${dog.aimg_path}'); "> 
+                              </a>
+                              <div class="text p-4">
+                                 <div class="meta mb-2">
+                                    <div style="font-size: 15px;">${dog.ani_kind}</div>
+                                    <div style="font-size: 15px;">${(dog.ani_datetime).substring(0,10)}</div>
+                                 </div>
+                                 <h3 class="heading">${dog.ani_occur_address}</h3>
+                              </div>
+                           </div>
+                        </div>
+                        </c:if>
+                        </c:forEach>
+                      </c:forEach>
+                      </ul>
 
                      <c:forEach items="${searchDog}" var="dog" varStatus="status">
                    <div class="col-md-4 d-flex justify-content-center ftco-animate">
