@@ -302,7 +302,7 @@ public class HomeController {
 	}
 
 	// 등록 페이지로 이동
-	@RequestMapping("/register_page.do")
+	@GetMapping("/register_page.do")
 	public String register_page() {
 		return "register";
 	}
@@ -330,7 +330,7 @@ public class HomeController {
 	
 	// 파일 이름 변경
 	@RequestMapping("/imgnameset.do")
-	public String imgnameset(HttpSession session,Animal vo) {
+	public String imgnameset(HttpSession session,Animal vo, Model model) {
 		int ani_num = mapper.imgnameset(vo);
 		System.out.println(ani_num);
 		String img_name = (String) session.getAttribute("img_name");
@@ -351,6 +351,8 @@ public class HomeController {
         String str = "image/"+num+".jpg";
         
         mapper.register_img(str,ani_num);     
+        
+        model.addAttribute("check", "ok");
         
 	    return "register";
 	}

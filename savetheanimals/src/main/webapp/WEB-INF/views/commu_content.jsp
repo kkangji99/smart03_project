@@ -83,7 +83,7 @@ textarea {
 	</section>
 
 	<section class="ftco-section ftco-degree-bg">
-		<div class="container" style="max-width: 100vw;">
+      <div class="container" style="max-width: 1000px;">
 			<div class="row justify-text-center">
 				<div class="col-lg-12 ftco-animate">
 					<!-- 커뮤니티 내용 -->
@@ -125,12 +125,13 @@ textarea {
 											style="font-size: 18px">${postinfo.post_datetime}</span> <span
 											class="sexy_line" style="margin-bottom: 5px;"></span>
 										<div style="font-size: 17px; margin-bottom: 3%;">${postinfo.post_contents}</div>
-
+										<c:if test="${not empty postinfo.post_img_path}">
 										<div>
 											<img src="<spring:url value='${postinfo.post_img_path}'/>"
 												class="center"
-												style="width: 35vw; padding: 0.5em;  margin-bottom: 1em; border-radius: 10%; border-style: outset;">
+												style="width: 23vw; padding: 0.5em;  margin-bottom: 1em; border-radius: 10%; border-style: outset;">
 										</div>
+										</c:if>
 
 									</div>
 								</div>
