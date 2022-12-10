@@ -23,13 +23,12 @@
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
 
-<script type="text/javascript" src="resources/js/adSearch.js">/*검색용*/ </script>
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
 
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
-
+<script type="text/javascript" src="resources/js/adSearch.js">/*검색용*/ </script>
 <style>
 input[type=file]::file-selector-button {
    border: 2px solid white;
@@ -79,7 +78,19 @@ input[type=file]::file-selector-button {
   
 </script>
 <script>
-
+function parCity(){
+   var c = document.getElementById("ani_occur_address");
+    var sc = document.getElementById("ani_occur_address_sub");
+    var tmp ="";
+    console.log("c : "+ c.options[c.selectedIndex].value);
+    console.log("sc : "+sc.options[sc.selectedIndex].value);
+    
+    if(!c.options[c.selectedIndex].value.includes(sc.options[sc.selectedIndex].value)){
+       c.options[c.selectedIndex].value = c.options[c.selectedIndex].value+" "+sc.options[sc.selectedIndex].value;
+    }
+    
+   console.log("value : "+ c.options[c.selectedIndex].value);
+}
 
 function kind(id)
 {       
@@ -290,8 +301,7 @@ function SubCity() {
                                     <div class="col-md-4">
                                        <div class="form-group">
                                           <select class="custom-select"
-                                             id="ani_occur_address_sub_dog"
-                                             onchange="SubCity('ani_occur_address_sub_dog')"
+                                             id="ani_occur_address_sub"
                                              name="ani_occur_address_sub" style="height: 50px;">
                                              <option value="" id="detail_address">전체</option>
                                           </select>
@@ -307,9 +317,9 @@ function SubCity() {
                                           <div class="custom-checkbox"
                                              style="display: flex; justify-content: space-evenly;">
                                              <label class="label" for="any_gender" style="font-size:1.2em;"><b>성별</b></label> 
-                                             	암컷<input type="radio" id="male"
+                                                암컷<input type="radio" id="male"
                                                 name="ani_gender" value='암컷'>
-                                             	수컷<input type="radio" id="female" name="ani_gender"
+                                                수컷<input type="radio" id="female" name="ani_gender"
                                                 value='수컷'> 미상 <input
                                                 type="radio" id="unknown" name="ani_gender"
                                                 value='미상'>
@@ -405,7 +415,7 @@ function SubCity() {
                                  <div class="form-group" style="text-align: center;">
                                     <div class="submitting">
                                        <input type="submit" class="btn btn-primary submit"
-                                          value="확인" id="submit" />
+                                          value="확인" id="submit" onclick="parCity()"/>
                                     </div>
                                  </div>
                               </div>
