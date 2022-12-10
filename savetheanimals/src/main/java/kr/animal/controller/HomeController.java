@@ -174,6 +174,7 @@ public class HomeController {
       }
       
       // 이미지 파일 저장
+      try {
       if(file.getOriginalFilename().length()>0) {
          System.out.println("파일 이름 : " + file.getOriginalFilename());
           System.out.println("파일 크기 : " + file.getSize());
@@ -219,6 +220,8 @@ public class HomeController {
        			model.addAttribute("data", data3);
        			System.out.println(data3);
       }
+      }catch(Exception e){   // 아무 처리가 없음
+      }
       return "ad1_search";
    }
    
@@ -247,6 +250,7 @@ public class HomeController {
 			
 		}
 		// 이미지 파일 저장
+		try {
 		if(file.getOriginalFilename().length()>0) {
 	      System.out.println("파일 이름 : " + file.getOriginalFilename());
 	       System.out.println("파일 크기 : " + file.getSize());
@@ -291,6 +295,9 @@ public class HomeController {
 			}
 			model.addAttribute("data", data3);
 			System.out.println(data3);
+		}
+		}
+		catch(Exception e) {
 		}
 		return "ad2_search";
 	}
