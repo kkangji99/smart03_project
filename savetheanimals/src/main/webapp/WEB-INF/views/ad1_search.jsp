@@ -75,7 +75,7 @@
       <a class="nav-link" href="${cpath}/ad.do"><img src="resources/images/guide.gif" style="width: 2em; height: 2em;">
                안내</a>
     </li>
-      <li class="nav-item" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;  border: 2px solid black;" >
+      <li class="nav-item" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;  border: 2px solid black;border-radius:30%;border-radius:30%;" >
       <a class="nav-link" href="${cpath}/ad1.do"> <img src="resources/images/dog.gif" style="width: 2em; height: 2em; align: center;">강아지</a>
     </li>
     <li class="nav-item " style="font-weight: bolder;font-size: 2em;  padding-right: 5rem; padding-left: 5rem;">
@@ -219,7 +219,7 @@
                      <div class="col-md-8 mx-auto text-center">
                         <div class="form-group" onclick="this.form.reset">
                             <input type="file" id="files" class="form-control filesImgs" name="aimg_name" 
-                              accept=".jpg" style="padding-left: 40%; font-size: 1em;" required>
+                              accept=".jpg" style="padding-left: 40%; font-size: 1em;">
                            <label class="label" for="uploadimages">
                               <div id="uploadimages border border-primary">
                                  <div class="list"></div>
