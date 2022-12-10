@@ -29,22 +29,37 @@
 <link rel="stylesheet" href="resources/css/jquery.timepicker.css">
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/cursor.css">
 <style type="text/css">
 .info-row {
    border: double;
    border-radius: 25px;
 }
 
-img {
-   width: 35%;
-   padding: 2px;
-   max-height: 450px;
-   margin-bottom: 20px;
+.col img {
+width: 80%;
+    padding: 0.5em;
+    max-height: 45vh;
+    margin-bottom: 1em;
+    border-radius: 20%;
+    border-style: outset;
+}
+
+
+
 }
 
 td {
    text-align: center;
    width: 60%;
+}
+
+#sticky {
+   position: -webkit-sticky; /* Safari */
+   position: sticky;
+   bottom: 0;
+   opacity: 0.5;
+   height: 20vh;
 }
 </style>
 
@@ -68,7 +83,7 @@ td {
    </section>
 
    <section class="ftco-section ftco-degree-bg">
-      <div class="container" style="max-width: 1500px;">
+      <div class="container" style="max-width: 55vw;">
          <c:choose>
             <c:when test="${empty AniInfo}">
                <div class="container-table" style="margin-top: 15px;">
@@ -87,59 +102,69 @@ td {
                <div class="info-row">
                   <div class="col-lg-12">
                      <div class="information">
-                        <table style="color: black; width: 100%; font-size: 17px;"
+                        <table style="color: black; width: 100%; font-size: 1.2em;"
                            class="table table-hover font-weight-normal">
                            <%-- <tr>
                                     <th style="text-align: center; width: 40%;">공고번호</th>
                                     <td>${AniInfo.ani_num}</td>
                                  </tr> --%>
                            <tr>
-                              <th style="text-align: center; width: 40%;">축종</th>
-                              <td>${AniInfo.ani_livestock}</td>
+                              <th style="text-align: center; width: 40%; ">축종</th>
+                              <td style="text-align: center;">${AniInfo.ani_livestock}</td>
                            </tr>
                            <tr>
-                              <th style="text-align: center;">픔종</th>
-                              <td>${AniInfo.ani_kind}</td>
+                              <th style="text-align: center;">품종</th>
+                              <td style="text-align: center;">${AniInfo.ani_kind}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">털색</th>
-                              <td>${AniInfo.ani_color}</td>
+                              <td style="text-align: center;">${AniInfo.ani_color}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">성별</th>
-                              <td>${AniInfo.ani_gender}</td>
+                              <td style="text-align: center;">${AniInfo.ani_gender}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">나이</th>
-                              <td>${AniInfo.ani_age}</td>
+                              <td style="text-align: center;">${AniInfo.ani_age}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">중성화 여부</th>
-                              <td>${AniInfo.ani_neutered}</td>
+                              <td style="text-align: center;">${AniInfo.ani_neutered}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center; overflow-wrap: break-word;">특이사항</th>
-                              <td>${AniInfo.ani_uniqueness}</td>
+                              <td style="text-align: center;">${AniInfo.ani_uniqueness}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">목격 / 보호 / 유실 장소 주소</th>
-                              <td>${AniInfo.ani_occur_address}</td>
+                              <td style="text-align: center;">${AniInfo.ani_occur_address}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">목격 / 보호 / 유실 일자</th>
-                              <td>${AniInfo.ani_datetime}</td>
+                              <td style="text-align: center;">${AniInfo.ani_datetime}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">동물 보호 센터명</th>
-                              <td>${AniInfo.ani_center_name}</td>
+                              <td style="text-align: center;">${AniInfo.ani_center_name}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">보호 장소</th>
-                              <td>${AniInfo.ani_protect_address}</td>
+                              <td style="text-align: center;">${AniInfo.ani_protect_address}</td>
                            </tr>
                            <tr>
                               <th style="text-align: center;">연락처</th>
-                              <td>${AniInfo.ani_phone}</td>
+                              <c:set var="ani_phone" value="${AniInfo.ani_phone}"></c:set>
+                              <c:choose>
+                              
+                              	<c:when test="${fn:contains(ani_phone, 'http')}">
+                              		<td style="text-align: center;"><a href="${AniInfo.ani_phone}">${AniInfo.ani_phone}</a></td>
+                              	</c:when>
+                              	<c:otherwise>
+                              	<td style="text-align: center;">${AniInfo.ani_phone}</td>
+                              	</c:otherwise>
+                              </c:choose>
+                              
                            </tr>
                         </table>
                      </div>
@@ -148,8 +173,11 @@ td {
             </c:otherwise>
          </c:choose>
       </div>
+   <div id="sticky">
+      <div style="float: center"><img src="resources/images/pets_left.png" style="width:20vw; float: left">
+      <img src="resources/images/pets_right.png" style="width: 20vw; float: right"></div>
+   </div>
    </section>
-
    <section>
       <%@includefile="footer.jsp"%>
    </section>
