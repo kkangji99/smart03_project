@@ -19,7 +19,6 @@
    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="resources/css/animate.css">
-<link rel="stylesheet" href="resources/css/cursor.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
