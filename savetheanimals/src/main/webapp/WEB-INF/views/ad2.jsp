@@ -342,7 +342,7 @@
 
    <!-- 페이징 -->
    	<div class="row mt-5">
-		<div class="col text-center">
+		<div class="col text-center" style="margin-bottom:50px;">
 			<div class="block-27">
 				<ul>
 					<c:if test="${paging.showPrev}">

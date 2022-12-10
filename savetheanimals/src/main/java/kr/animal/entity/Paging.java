@@ -49,6 +49,33 @@ public class Paging implements Serializable {
 				
 		}
 		
+		public void pageSetting2() {
+			rowSizePerPage = 12;
+			totalPageCount = (totalRowCount-1)/rowSizePerPage+1;
+			firstRow = (curPage-1)*rowSizePerPage;
+			lastRow = firstRow + rowSizePerPage-1;
+			if(lastRow >= totalRowCount) {
+				lastRow = totalRowCount;
+			}
+			firstPage = ((curPage-1)/pageSize)*pageSize+1;
+			
+			lastPage = firstPage+pageSize-1;
+			if(lastPage > totalPageCount) {
+				lastPage = totalPageCount;
+			}
+			
+			if(curPage != 1)
+				showPrev = true;
+			else
+				showPrev = false;
+			
+			if(curPage != totalPageCount)
+				showNext = true;
+			else
+				showNext = false;
+				
+		}
+		
 		@Override
 		public String toString() {
 			

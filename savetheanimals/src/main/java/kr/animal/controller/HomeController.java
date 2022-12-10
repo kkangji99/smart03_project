@@ -57,7 +57,7 @@ public class HomeController {
 		// 페이징
 		int totalRowCount = admapper.getTotal(paging);
 		paging.setTotalRowCount(totalRowCount);
-		paging.pageSetting();
+		paging.pageSetting2();
 		List<Animal> list = admapper.allaniselect(paging);
 		
 		model.addAttribute("list", list);
@@ -82,7 +82,7 @@ public class HomeController {
 		// 페이징
 		int totalRowCount = admapper.getTotaldog(paging);
 		paging.setTotalRowCount(totalRowCount);
-		paging.pageSetting();
+		paging.pageSetting2();
 		List<Animal> list_dog = admapper.doganiselect(paging);
 		
 		model.addAttribute("list_dog", list_dog);
@@ -107,7 +107,7 @@ public class HomeController {
 		// 페이징
 		int totalRowCount = admapper.getTotalcat(paging);
 		paging.setTotalRowCount(totalRowCount);
-		paging.pageSetting();
+		paging.pageSetting2();
   	    List<Animal> list_cat = admapper.cataniselect(paging);
 
         model.addAttribute("list_cat", list_cat);
