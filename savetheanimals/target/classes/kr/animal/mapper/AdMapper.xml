@@ -21,7 +21,7 @@
   
   <select id="selectani" parameterType="kr.animal.entity.Animal"
       resultType="kr.animal.entity.Animal">
-      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num=#{ani_num} order by post_num desc
+      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num=#{ani_num} order by ani_num desc
   </select>
   
   <select id="getTotal" parameterType="kr.animal.entity.Paging" resultType="int">
