@@ -19,7 +19,7 @@
    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="resources/css/animate.css">
-
+<link rel="stylesheet" href="resources/css/cursor.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
@@ -268,7 +268,7 @@ function SubCity() {
                                  <div class="row">
                                     <div class="col-md-4">
                                        <div class="form-group">
-                                          <select class="custom-select" name="ani_occur_address"
+                                          <select class="custom-select" name="ani_cate_code"
                                              id="ani_cate_code" onchange="Cate('ani_cate_code')" style="height: 50px;">
                                              <option value="">목격 / 유실 / 보호 장소</option>
                                              <option value="ani_witness">목격</option>
@@ -382,7 +382,7 @@ function SubCity() {
                                     <div class="col-md-6">
                                        <div class="form-group">
                                           </label> <input onfocus="(this.type = 'date')"
-                                             class="form-control required" name="date"
+                                             class="form-control required" name="ani_datetime"
                                              placeholder="목격/보호/유실 일자" id="date" required style="height: 50px;">
                                           <div class="valid-feedback"></div>
                                           <div class="invalid-feedback">목격/보호/유실 일자 선택</div>
