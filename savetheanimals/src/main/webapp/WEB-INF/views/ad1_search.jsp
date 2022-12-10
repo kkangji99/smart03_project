@@ -259,6 +259,8 @@
                </div>
             </fieldset>
             <div class="row d-flex">
+            <c:choose>
+			<c:when test="${data.size()>0}">
             <p class="col-12" style="padding-left: 5%; font-weight: bold;">비슷한 동물</p>
     				<c:forEach items="${searchDog}" var="dog" varStatus="status">
     					<c:forEach items="${data}" var="data2" varStatus="status">
@@ -280,6 +282,8 @@
                         </c:if>
                         </c:forEach>
                       </c:forEach>
+                      </c:when>
+			</c:choose>
                       </div>
             <div class="row d-flex">
             <c:choose>
