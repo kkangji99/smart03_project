@@ -8,10 +8,11 @@ public class Post {
 	private String post_contents;
 	private int post_mem_num;
 	private String post_cate_code;
-	private String pimg_path;
 	private String post_datetime;
 	private String mem_id;
-
+	private String post_img_path;
+	private String post_img_name;
+	
 	// 2. 멤버변수(=프로퍼티(property))
 	public int getPost_num() {
 		return post_num;
@@ -43,12 +44,6 @@ public class Post {
 	public void setPost_cate_code(String post_cate_code) {
 		this.post_cate_code = post_cate_code;
 	}
-	public String getPimg_path() {
-		return pimg_path;
-	}
-	public void setPimg_path(String pimg_path) {
-		this.pimg_path = pimg_path;
-	}
 	public String getPost_datetime() {
 		return post_datetime;
 	}
@@ -65,6 +60,18 @@ public class Post {
 		this.mem_id = mem_id;
 	}
 	
+	public String getPost_img_path() {
+		return post_img_path;
+	}
+	public void setPost_img_path(String post_img_path) {
+		this.post_img_path = post_img_path;
+	}
+	public String getPost_img_name() {
+		return post_img_name;
+	}
+	public void setPost_img_name(String post_img_name) {
+		this.post_img_name = post_img_name;
+	}
 	//4. ToString
 	@Override
 	public String toString() {

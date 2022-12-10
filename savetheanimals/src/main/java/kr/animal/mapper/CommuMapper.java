@@ -3,6 +3,7 @@ package kr.animal.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
@@ -27,10 +28,16 @@ public interface CommuMapper {
 	public void comsubmit(Comment com);
 	public void comdelete(Comment com);
 	public void postinsert(Post Post);
+	public void postinsert1(Post Post);
 	public void postdelete(Post post);
 	public void postcomdelete(Post post);
 
 	//게시판 페이징
 	public List<Post> allpostselect3(Paging paging);
 	public int getTotalRowCount(Paging paging);
+	
+
+	public int commuimg(Post post);
+	//public void fileupdate(Post post);
+	public void fileupdate(String str);
 }

@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <c:set var="cpath" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
@@ -124,12 +125,12 @@ textarea {
                                 <span style="font-size:18px">${postinfo.mem_id}</span>
                                 <span style="font-size:18px">${postinfo.post_datetime}</span>
                                 <span class="sexy_line" style="margin-bottom: 5px;"></span>
-                                <div style="font-size:22px; margin-bottom: 3%;">${postinfo.post_contents}</div>
-                                <c:if test="${postinfo.pimg_path}">
-		                           <div class="comImage justify-content-center">
-		                              <img src="${postinfo.aimg_path}" class="center" style="width: 400px;">
-		                           </div>
-		                       </c:if>
+                                <div style="font-size:17px; margin-bottom: 3%;">${postinfo.post_contents}</div>
+                                
+	                           <div>
+	                              <img src="<spring:url value='${postinfo.post_img_path}'/>" class="center" style="width: 400px;" >
+	                           </div>
+	                       
                             </div>
                        </div>
                      

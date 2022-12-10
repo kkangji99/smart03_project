@@ -31,7 +31,13 @@
   </insert>
   
   <insert id="postinsert" parameterType="kr.animal.entity.Post">
-     insert into post(post_title,post_contents,post_mem_num,post_cate_code,post_datetime) values(#{post_title},#{post_contents},#{post_mem_num},#{post_cate_code},now())
+     insert into post(post_title,post_contents,post_mem_num,post_cate_code,post_datetime) 
+     values(#{post_title},#{post_contents},#{post_mem_num},#{post_cate_code},now())
+  </insert>
+  
+  <insert id="postinsert1" parameterType="kr.animal.entity.Post">
+     insert into post(post_title,post_contents,post_mem_num,post_cate_code,post_datetime,post_img_path) 
+     values(#{post_title},#{post_contents},#{post_mem_num},#{post_cate_code},now(),"1")
   </insert>
   
   <delete id="comdelete" parameterType="kr.animal.entity.Comment">
@@ -53,5 +59,13 @@
   <select id="allpostselect3"  parameterType="kr.animal.entity.Paging" resultType="kr.animal.entity.Post">
     select * from post join member on member.mem_num = post.post_mem_num order by post_num desc limit #{firstRow}, #{rowSizePerPage}
   </select>
+  
+  <select id="commuimg" resultType="int">
+      select max(post_num) from post
+  </select>
+  
+  <update id="fileupdate" parameterType="String">
+      update post set post_img_path=#{str} where post_img_path="1"
+  </update>
   
 </mapper>

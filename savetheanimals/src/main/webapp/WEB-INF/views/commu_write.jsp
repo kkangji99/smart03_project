@@ -25,6 +25,37 @@
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 
+
+<style>
+input[type=file]::file-selector-button {
+   border: 2px solid white;
+   padding: .2em .4em;
+   border-radius: .2em;
+   background-color: #00bd56;
+   transition: 1s;
+   color: white;
+   border-radius: 5px;
+}
+
+.uploadImage img {
+   width: 100%;
+   max-width: 300px;
+   border: 1px solid #ccc;
+   box-shadow: 0px 3px 8px #ccc;
+   border-radius: 5px;
+   padding: 4px;
+   display: none;
+}
+
+#shelter {
+   margin-left: 15px;
+}
+
+}
+.custom-select {
+   height: calc(3.14rem + 2px);
+}
+</style>
 </head>
 <body>
 
@@ -57,19 +88,19 @@
                      <div class="col-md-12">
                         <div class="contact-wrap w-100 p-md-5 p-4">
                         
-                           <form action="${cpath}/commu_write.do" method="post">
+                           <form action="${cpath}/commu_write.do" method="post" enctype="multipart/form-data">
                                  <div class="col-md-12 pb-2">
                                     <div class="form-group">
                                        <input type="hidden" name="post_mem_num" value="${loginMember.mem_num}">
                                        <input type="text" class="form-control text-center"
-                                          name="post_title" id="post_title" placeholder="제목을 입력해주세요.">
+                                          name="post_title" id="post_title" placeholder="제목을 입력해주세요." required>
                                     </div>
                                  </div>
                                                                   
                                  <div class="col-md-12">
                                       <div class="form-group">
                                         <textarea style="font-size: 0.95em; width:100%; height:300px; resize: none;" name="post_contents" id="post_contents" 
-                                        placeholder="내용을 입력해주세요." ></textarea>
+                                        placeholder="내용을 입력해주세요." required></textarea>
                                       </div>
                                     </div>
                                  
@@ -85,7 +116,7 @@
                                        <div class="valid-feedback"></div>
                                     </div>
                                  </div>
-                                 
+                                 <!-- 
                                  <div class="col-md-12 pb-2">
                                     <div class="form-group">
                                     <input type="file" id="files" placeholder="이미지 선택"
@@ -93,14 +124,23 @@
                                           accept=".jpg, .jpeg, .png" multiple
                                           style="padding-left: 40%; font-size: 1em;">
                                     </div>
-                                 </div>
+                                 </div> -->
+                                 <div class="col-md-12">
+                                       <div class="form-group">
+                                          <img src="" alt="" id="img"> 
+                                          <input type="file" id="files" placeholder="이미지 선택" class="form-control filesImgs"
+                                           name="pimg_name" accept=".jpg, .jpeg, .png"
+                                           style="padding-left: 40%; font-size: 1em;" onchange="showImage()">
+                                          <div class="invalid-feedback">이미지 선택</div>
+                                       </div>
+                                    </div>
                               
                                  <div class="row col-md-12 p-md-2 justify-content-center">
                                     <div class="form-group">
                                     
                                               <input type="submit" value="등록" class="btn btn-primary" style="width:100px; font-size:1em;">
                                        <button type="reset" class="btn btn-primary" style="width:100px; font-size:1em;">
-                                           삭제</button> 
+                                           		삭제</button> 
                                         <button type="button" class="btn btn-primary" style="width:100px; font-size:1em;"
                                            onclick="location.href='${cpath}/commu.do'">나가기</button>
                                     </div>

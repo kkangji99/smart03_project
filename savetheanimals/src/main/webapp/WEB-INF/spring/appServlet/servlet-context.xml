@@ -29,5 +29,6 @@
 	</beans:bean>
 	<context:component-scan base-package="kr.animal.controller" />
 	
+	<resources mapping="/image/**" location="file:///C:\Aniaml_IMG\"/>
 	
 </beans:beans>

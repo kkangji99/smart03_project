@@ -363,18 +363,69 @@ public class HomeController {
 	}
 	
 	// 커뮤니티 글 등록
-	@PostMapping("/commu_write.do")
-	public String commu_write(Post post, Model model, @ModelAttribute("paging") Paging paging) {
+	@RequestMapping("/commu_write.do")
+	public String commu_write(Post post,@RequestParam(value = "pimg_name") MultipartFile file,
+			HttpSession session,@ModelAttribute("paging") Paging paging, Model model) {
 
-		commumapper.postinsert(post);
+		if(file.isEmpty())
+		{
+			commumapper.postinsert(post);
+			int totalRowCount = commumapper.getTotalRowCount(paging);
+			paging.setTotalRowCount(totalRowCount);
+			paging.pageSetting();
+			List<Post> list = commumapper.allpostselect3(paging);
+			model.addAttribute("list", list);
+			return "commu";
+		}
+		else
+		{
+			commumapper.postinsert1(post);
+			try(FileOutputStream fos = new FileOutputStream("c:/Aniaml_IMG/" + file.getOriginalFilename());
+		    	    InputStream is = file.getInputStream();
+		    	    ){int readCount = 0;
+		    	      byte[] buffer = new byte[1024];
+		    	      while((readCount = is.read(buffer)) != -1){
+		    	      fos.write(buffer,0,readCount);
+		    	      session.setAttribute("img_name", file.getOriginalFilename());
+		    	    }
+		    	    }catch(Exception ex){
+		    	      throw new RuntimeException("file Save Error");
+		    	    }
+			    
+			    return "redirect:/commu_img.do";
+		}
+	    
+	}
+	
+	// 커뮤니티 파일 이름 변경
+	@RequestMapping("/commu_img.do")
+	public String commu_img(Post post, HttpSession session, @ModelAttribute("paging") Paging paging, Model model) {
+		int post_num = commumapper.commuimg(post);
 		
+		String img_name = (String)session.getAttribute("img_name");
+		Path file = Paths.get("C:\\Aniaml_IMG\\"+img_name);
+        Path newFile = Paths.get("C:\\Aniaml_IMG\\"+post_num+".jpg");
+ 
+        try {
+ 
+            Path newFilePath = Files.move(file, newFile);
+ 
+            System.out.println(newFilePath);
+ 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String num = Integer.toString(post_num); 
+        String str = "image/"+num+".jpg";
+        commumapper.fileupdate(str);
+
 		int totalRowCount = commumapper.getTotalRowCount(paging);
 		paging.setTotalRowCount(totalRowCount);
 		paging.pageSetting();
 		List<Post> list = commumapper.allpostselect3(paging);
 		model.addAttribute("list", list);
 		
-		return "commu";
+	    return "commu";
 	}
 
 	// 커뮤니티 글 삭제
@@ -480,9 +531,7 @@ public class HomeController {
 		model.addAttribute("AniInfo", AniInfo);
 
 		return "ad_content";
-	}
-
-	
+	}	
 
 	// 반려생활길잡이
 	@GetMapping("/about.do")
@@ -567,81 +616,83 @@ public class HomeController {
 
 		return "commu_write";
 	}
+	
 	// 서버 통신용
-		public static String postRequest(HashMap <String, String> pList) {
+	public static String postRequest(HashMap <String, String> pList) {
 
-	        String myResult = "";
-	        String url = "http://127.0.0.1:5000/tospring";
-	        try {
-	            //   URL 설정하고 접속하기 
-	            
-	        	HttpURLConnection http = (HttpURLConnection) new URL(url).openConnection(); // 접속 
-	            //-------------------------- 
-	            //   전송 모드 설정 - 기본적인 설정 
-	            //-------------------------- 
-	            http.setDefaultUseCaches(false);
-	            http.setDoInput(true); // 서버에서 읽기 모드 지정 
-	            http.setDoOutput(true); // 서버로 쓰기 모드 지정  
-	            http.setRequestMethod("POST"); // 전송 방식은 POST
-
-
-
-	            //--------------------------
-	            // 헤더 세팅
-	            //--------------------------
-	            // 서버에게 웹에서 <Form>으로 값이 넘어온 것과 같은 방식으로 처리하라는 걸 알려준다 
-	            http.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+        String myResult = "";
+        String url = "http://127.0.0.1:5000/tospring";
+        try {
+            //   URL 설정하고 접속하기 
+            
+        	HttpURLConnection http = (HttpURLConnection) new URL(url).openConnection(); // 접속 
+            //-------------------------- 
+            //   전송 모드 설정 - 기본적인 설정 
+            //-------------------------- 
+            http.setDefaultUseCaches(false);
+            http.setDoInput(true); // 서버에서 읽기 모드 지정 
+            http.setDoOutput(true); // 서버로 쓰기 모드 지정  
+            http.setRequestMethod("POST"); // 전송 방식은 POST
 
 
-	            //-------------------------- 
-	            //   서버로 값 전송 
-	            //-------------------------- 
-	            StringBuffer buffer = new StringBuffer();
 
-	            //HashMap으로 전달받은 파라미터가 null이 아닌경우 버퍼에 넣어준다
-	            if (pList != null) {
-
-	                Set key = pList.keySet();
-
-	                for (Iterator iterator = key.iterator(); iterator.hasNext();) {
-	                    String keyName = (String) iterator.next();
-	                    String valueName = pList.get(keyName);
-	                    buffer.append(keyName).append("=").append(valueName);
-	                }
-	            }
-
-	            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
-	            PrintWriter writer = new PrintWriter(outStream);
-	            System.out.println(buffer.toString());
-	            writer.write(buffer.toString());
-	            writer.flush();
-	            
-
-	            //--------------------------
-	            //   Response Code
-	            //--------------------------
-	            //http.getResponseCode();
+            //--------------------------
+            // 헤더 세팅
+            //--------------------------
+            // 서버에게 웹에서 <Form>으로 값이 넘어온 것과 같은 방식으로 처리하라는 걸 알려준다 
+            http.setRequestProperty("content-type", "application/x-www-form-urlencoded");
 
 
-	            //-------------------------- 
-	            //   서버에서 전송받기 
-	            //-------------------------- 
-	            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "UTF-8");
-	            BufferedReader reader = new BufferedReader(tmp);
-	            StringBuilder builder = new StringBuilder();
-	            String str;
-	            while ((str = reader.readLine()) != null) {
-	                builder.append(str + "\n");
-	            }
-	            myResult = builder.toString();
-	            return myResult;
+            //-------------------------- 
+            //   서버로 값 전송 
+            //-------------------------- 
+            StringBuffer buffer = new StringBuffer();
 
-	        } catch (MalformedURLException e) {
-	            e.printStackTrace();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	        System.out.println("myResult : "+myResult);
-	        return myResult;
-	    }
+            //HashMap으로 전달받은 파라미터가 null이 아닌경우 버퍼에 넣어준다
+            if (pList != null) {
+
+                Set key = pList.keySet();
+
+                for (Iterator iterator = key.iterator(); iterator.hasNext();) {
+                    String keyName = (String) iterator.next();
+                    String valueName = pList.get(keyName);
+                    buffer.append(keyName).append("=").append(valueName);
+                }
+            }
+
+            OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
+            PrintWriter writer = new PrintWriter(outStream);
+            System.out.println(buffer.toString());
+            writer.write(buffer.toString());
+            writer.flush();
+            
+
+            //--------------------------
+            //   Response Code
+            //--------------------------
+            //http.getResponseCode();
+
+
+            //-------------------------- 
+            //   서버에서 전송받기 
+            //-------------------------- 
+            InputStreamReader tmp = new InputStreamReader(http.getInputStream(), "UTF-8");
+            BufferedReader reader = new BufferedReader(tmp);
+            StringBuilder builder = new StringBuilder();
+            String str;
+            while ((str = reader.readLine()) != null) {
+                builder.append(str + "\n");
+            }
+            myResult = builder.toString();
+            return myResult;
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("myResult : "+myResult);
+        return myResult;
+    }
+	
 }
