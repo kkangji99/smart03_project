@@ -71,7 +71,7 @@
    
   <nav class="navbar navbar-expand-lg justify-content-center">
   <ul class="navbar-nav">
-    <li class="nav-item"  id="navbar-item" onclick="myFunction()" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;  border: 2px solid black;" >
+    <li class="nav-item"  id="navbar-item" onclick="myFunction()" style="font-weight: bolder; font-size: 2em;  padding-right: 5rem; padding-left: 5rem;  border: 2px solid black; border-radius:30%;" >
       <a class="nav-link" href="${cpath}/ad.do"><img src="resources/images/guide.gif" style="width: 2em; height: 2em;">
                안내</a>
     </li>

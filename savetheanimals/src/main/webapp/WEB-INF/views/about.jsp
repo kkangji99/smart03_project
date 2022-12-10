@@ -34,6 +34,12 @@
 	background-image: linear-gradient(to bottom, #ecf8f0, #e8f9ee, #e4fbec, #e0fce9, #dcfde7,
 		#d7fde5, #d2fde2, #cdfde0, #c5fcdd, #befbda, #b6f9d7, #adf8d5);
 }
+
+.carousel-inner img {
+
+    border-radius:10%
+  }
+
 </style>
 </head>
 
@@ -82,49 +88,38 @@
 									<div id="home" class="container tab-pane active">
 										<br>
 
-										<div class="card-deck">
-											<div class="card">
-												<img class="card-img-top" src="resources/images/dcimg.png"
-													alt="Card image" style="width: 100%; height: 250px">
-												<div class="card-body text-center">
+										<div id="demo" class="carousel slide" data-ride="carousel">
 
-													<h5 style="font-weight: bolder;">평균 수명 10~15 세</h5>
+											<!-- Indicators -->
+											<ul class="carousel-indicators">
+												<li data-target="#demo" data-slide-to="0" class="active"></li>
+												<li data-target="#demo" data-slide-to="1"></li>
+												<li data-target="#demo" data-slide-to="2"></li>
+											</ul>
 
-
-													<p>충분히 경제적 여유가 있고, 반려 동물을 돌볼 시간이 있는지 잘 생각해봐야 합니다.</p>
+											<!-- The slideshow -->
+											<div class="carousel-inner">
+												<div class="carousel-item active">
+													<img src="resources/images/about1.png" alt="about2" width="1050"
+														height="550">
+												</div>
+												<div class="carousel-item">
+													<img src="resources/images/about2.png" alt="about1" width="1050"
+														height="550">
+												</div>
+												<div class="carousel-item">
+													<img src="resources/images/about3.png"  alt="about3" width="1050" height="550">
 												</div>
 											</div>
 
-											<div class="card">
-												<img class="card-img-top" src="resources/images/alimg.png"
-													alt="Card image" style="width: 100%; height: 250px">
-												<div class="card-body text-center">
-													<h5 style="font-weight: bolder;">알레르기 있는지 확인</h5>
-
-													<p>반려동물로 인해 사람에게 가장 많이 생길 수 있는 질환은 피부, 호흡기 알레르기 질환입니다.</p>
-												</div>
-											</div>
-
-											<div class="card">
-												<img class="card-img-top" src="resources/images/htimg.png"
-													alt="Card image" style="width: 100%; height: 250px">
-												<div class="card-body text-center">
-													<h5 style="font-weight: bolder;">건강관리 필수</h5>
-
-													<p>반려동물 특성에 따른 예방접종을 실시하고, 질병이 발생한 경우 신속하게 수의학적 처치를
-														제공하여야 합니다. 또한 적합한 음식과 깨끗한 물을 공급하여야 합니다.</p>
-												</div>
-											</div>
-											<div class="card">
-												<img class="card-img-top" src="resources/images/mhimg.png"
-													alt="Card image" style="width: 100%; height: 250px">
-												<div class="card-body text-center">
-													<h5 style="font-weight: bolder;">많은 시간, 비용 필요</h5>
-
-													<p>정말 반려동물과 가족이 될 준비가 되어있는지 스스로 충분히 시간을 가지고 생각해본 뒤,
-														신중하게 결정해 주세요.</p>
-												</div>
-											</div>
+											<!-- Left and right controls -->
+											<a class="carousel-control-prev" href="#demo"
+												data-slide="prev"> <span
+												class="carousel-control-prev-icon"></span>
+											</a> <a class="carousel-control-next" href="#demo"
+												data-slide="next"> <span
+												class="carousel-control-next-icon"></span>
+											</a>
 										</div>
 									</div>
 
@@ -149,7 +144,7 @@
 
 									<div id="menu2" class="container tab-pane fade">
 										<br>
-										
+
 										<div class="adand_txt">
 											<p>
 												개는 예방접종을 통해 치명적인 질병을 예방할 수 있습니다. 코로나 장염, 파보 장염을 비롯해 홍역, 간염,
@@ -163,10 +158,9 @@
 												<div class="card">
 													<div class="card-header " id="aboutdog">
 														<h3>
-															<button class="btn"
-																data-toggle="collapse" data-target="#dog"
-																aria-expanded="true" aria-controls="collapseOne">개
-																예방접종 표</button>
+															<button class="btn" data-toggle="collapse"
+																data-target="#dog" aria-expanded="true"
+																aria-controls="collapseOne">개 예방접종 표</button>
 														</h3>
 													</div>
 
@@ -251,10 +245,9 @@
 												<div class="card">
 													<div class="card-header" id="aboutcat">
 														<h5 class="mb-0">
-															<button class="btn collapsed"
-																data-toggle="collapse" data-target="#cat"
-																aria-expanded="false" aria-controls="collapseTwo">
-																고양이 예방접종 표</button>
+															<button class="btn collapsed" data-toggle="collapse"
+																data-target="#cat" aria-expanded="false"
+																aria-controls="collapseTwo">고양이 예방접종 표</button>
 														</h5>
 													</div>
 													<div id="cat" class="collapse" aria-labelledby="aboutcat"
