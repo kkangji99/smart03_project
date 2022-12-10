@@ -76,27 +76,7 @@ input[type=file]::file-selector-button {
          });
       }, false);
    })();
-   
-   function oneGender(checkbox) {
-         var checkgender = document.getElementsByName('gender')
-         checkgender.forEach((item) => {
-           if (item !== checkbox) item.checked = false
-         })
-       }
-
-   function oneType(checkbox) {
-      var checktype = document.getElementsByName('type')
-         checktype.forEach((item) => {
-            if (item !== checkbox) item.checked = false
-            })
-      }
-
-       function oneNeutered(checkbox) {
-         var checkneutered = document.getElementsByName('neutered')
-         checkneutered.forEach((item) => {
-           if (item !== checkbox) item.checked = false
-         })
-       }
+  
 </script>
 <script>
 
@@ -327,12 +307,12 @@ function SubCity() {
                                           <div class="custom-checkbox"
                                              style="display: flex; justify-content: space-evenly;">
                                              <label class="label" for="any_gender" style="font-size:1.2em;"><b>성별</b></label> 
-                                             암컷<input type="radio" id="male"
-                                                name="ani_gender" onclick="oneGender(this)" value='암컷'>
-                                             수컷<input type="radio" id="female" name="gender"
-                                                onclick="oneGender(this)" value='수컷'> 미상 <input
-                                                type="radio" id="unknown" name="gender"
-                                                onclick="oneGender(this)" value='미상'>
+                                             	암컷<input type="radio" id="male"
+                                                name="ani_gender" value='암컷'>
+                                             	수컷<input type="radio" id="female" name="ani_gender"
+                                                value='수컷'> 미상 <input
+                                                type="radio" id="unknown" name="ani_gender"
+                                                value='미상'>
                                           </div>
                                        </div>
                                     </div>
