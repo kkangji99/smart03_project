@@ -164,6 +164,7 @@ public class HomeController {
       }
       
       // 이미지 파일 저장
+      if(file.getOriginalFilename().length()>0) {
          System.out.println("파일 이름 : " + file.getOriginalFilename());
           System.out.println("파일 크기 : " + file.getSize());
           try(FileOutputStream fos = new FileOutputStream("c:/A_search_img/" + file.getOriginalFilename());
@@ -176,7 +177,7 @@ public class HomeController {
               }catch(Exception ex){
                 throw new RuntimeException("file Save Error");
               }
-         
+      }
       return "ad1_search";
    }
    
@@ -205,6 +206,7 @@ public class HomeController {
 			
 		}
 		// 이미지 파일 저장
+		if(file.getOriginalFilename().length()>0) {
 	      System.out.println("파일 이름 : " + file.getOriginalFilename());
 	       System.out.println("파일 크기 : " + file.getSize());
 	       try(FileOutputStream fos = new FileOutputStream("c:/A_search_img/" + file.getOriginalFilename());
@@ -217,7 +219,7 @@ public class HomeController {
 	           }catch(Exception ex){
 	             throw new RuntimeException("file Save Error");
 	           }
-
+		}
 		return "ad2_search";
 	}
 
