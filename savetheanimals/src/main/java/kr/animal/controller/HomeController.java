@@ -347,6 +347,12 @@ public class HomeController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+        String num = Integer.toString(ani_num); 
+        String str = "image/"+num+".jpg";
+        
+        mapper.register_img(str,ani_num);     
+        
 	    return "register";
 	}
 

@@ -42,7 +42,8 @@ public interface AnimalMapper {
    
 
    public void register(Animal vo);
-
+   public void register_img(@Param("str")String str, @Param("num")int num);
+   
    public int imgnameset(Animal vo);
    
     // 페이징

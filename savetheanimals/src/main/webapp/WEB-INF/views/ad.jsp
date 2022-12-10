@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%> 
 <c:set var="cpath" value="${pageContext.request.contextPath}"/>
 
 
@@ -114,6 +115,7 @@
                 <c:forEach items="${list}" var="vo" varStatus="status">
                    <div class="col-md-4 d-flex justify-content-center ftco-animate">
                      <div class="blog-entry align-self-stretch" style="display: inline-block;width: 290px;">
+                       
                         <a href="${cpath}/ad_info.do?ani_num=${vo.ani_num}" class="block-20 rounded"
                            style="background-image: url('${vo.aimg_path}'); "> 
                         </a>

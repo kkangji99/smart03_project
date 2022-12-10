@@ -8,20 +8,20 @@
 <mapper namespace="kr.animal.mapper.AdMapper">
  
   <select id="allaniselect"  parameterType="kr.animal.entity.Paging" resultType="kr.animal.entity.Animal">
-      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num between 250 and 350 limit #{firstRow}, #{rowSizePerPage}
+      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num between 5033 and 6000 order by ani_num desc limit #{firstRow}, #{rowSizePerPage}
   </select>
   
   <select id="doganiselect"  parameterType="kr.animal.entity.Paging" resultType="kr.animal.entity.Animal">
-      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where (ani_num between 250 and 350) and (ani_livestock='개') limit #{firstRow}, #{rowSizePerPage}
+      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where (ani_num between 250 and 350) order by ani_num desc and (ani_livestock='개') limit #{firstRow}, #{rowSizePerPage}
   </select>
   
   <select id="cataniselect"  parameterType="kr.animal.entity.Paging" resultType="kr.animal.entity.Animal">
-      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where (ani_num between 250 and 350) and (ani_livestock='고양이') limit #{firstRow}, #{rowSizePerPage}
+      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where (ani_num between 250 and 350) order by ani_num desc and (ani_livestock='고양이') limit #{firstRow}, #{rowSizePerPage}
   </select>
   
   <select id="selectani" parameterType="kr.animal.entity.Animal"
       resultType="kr.animal.entity.Animal">
-      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num=#{ani_num}
+      select * from animal join animal_img on animal.ani_num = animal_img.aimg_ani_num where ani_num=#{ani_num} order by post_num desc
   </select>
   
   <select id="getTotal" parameterType="kr.animal.entity.Paging" resultType="int">

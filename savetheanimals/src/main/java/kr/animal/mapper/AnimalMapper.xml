@@ -110,4 +110,8 @@
      limit #{page.firstRow}, #{page.rowSizePerPage}
 	</select>
   
+  <insert id="register_img">
+     insert into animal_img(aimg_path,aimg_ani_num) values(#{str},#{num});
+  </insert>
+  
 </mapper>
