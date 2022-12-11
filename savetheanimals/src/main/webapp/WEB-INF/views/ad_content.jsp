@@ -37,7 +37,7 @@
 }
 
 .col img {
-width: 80%;
+width: 50%;
     padding: 0.5em;
     max-height: 45vh;
     margin-bottom: 1em;
@@ -83,7 +83,7 @@ td {
    </section>
 
    <section class="ftco-section ftco-degree-bg">
-      <div class="container" style="max-width: 55vw;">
+      <div class="container" style="max-width: 50vw;">
          <c:choose>
             <c:when test="${empty AniInfo}">
                <div class="container-table" style="margin-top: 15px;">
@@ -102,7 +102,7 @@ td {
                <div class="info-row">
                   <div class="col-lg-12">
                      <div class="information">
-                        <table style="color: black; width: 100%; font-size: 1.2em;"
+                        <table style="color: black; width: 100%; font-size: 1em;"
                            class="table table-hover font-weight-normal">
                            <%-- <tr>
                                     <th style="text-align: center; width: 40%;">공고번호</th>
@@ -137,11 +137,11 @@ td {
                               <td style="text-align: center;">${AniInfo.ani_uniqueness}</td>
                            </tr>
                            <tr>
-                              <th style="text-align: center;">목격 / 보호 / 유실 장소 주소</th>
+                              <th style="text-align: center;">목격 /보호 /유실 장소 주소</th>
                               <td style="text-align: center;">${AniInfo.ani_occur_address}</td>
                            </tr>
                            <tr>
-                              <th style="text-align: center;">목격 / 보호 / 유실 일자</th>
+                              <th style="text-align: center;">목격 /보호 /유실 일자</th>
                               <td style="text-align: center;">${AniInfo.ani_datetime}</td>
                            </tr>
                            <tr>
@@ -157,12 +157,12 @@ td {
                               <c:set var="ani_phone" value="${AniInfo.ani_phone}"></c:set>
                               <c:choose>
                               
-                              	<c:when test="${fn:contains(ani_phone, 'http')}">
-                              		<td style="text-align: center;"><a href="${AniInfo.ani_phone}">${AniInfo.ani_phone}</a></td>
-                              	</c:when>
-                              	<c:otherwise>
-                              	<td style="text-align: center;">${AniInfo.ani_phone}</td>
-                              	</c:otherwise>
+                                 <c:when test="${fn:contains(ani_phone, 'http')}">
+                                    <td style="text-align: center;"><a href="${AniInfo.ani_phone}">${AniInfo.ani_phone}</a></td>
+                                 </c:when>
+                                 <c:otherwise>
+                                 <td style="text-align: center;">${AniInfo.ani_phone}</td>
+                                 </c:otherwise>
                               </c:choose>
                               
                            </tr>
