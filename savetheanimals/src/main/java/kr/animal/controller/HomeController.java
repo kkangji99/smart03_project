@@ -354,7 +354,7 @@ public class HomeController {
         
         model.addAttribute("check", "ok");
         
-	    return "register";
+	    return "redirect:/ad.do";
 	}
 
 	@GetMapping("/commu.do")

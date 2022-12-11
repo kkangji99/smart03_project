@@ -1,4 +1,4 @@
-function infoModal() {
+function okModal() {
 	  Swal.fire(
 			  '등록완료',
 			  '',

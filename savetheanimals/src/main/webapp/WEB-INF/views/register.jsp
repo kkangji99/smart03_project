@@ -30,20 +30,15 @@
 <link rel="stylesheet" href="resources/css/flaticon.css">
 <link rel="stylesheet" href="resources/css/style.css">
 
-<script type="text/javascript" src="resources/js/register_ok.js">/*검색용*/ </script>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 
 <link rel="stylesheet" href="resources/js/pagination.js">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
-<script type="text/javascript" src="resources/js/register_ok.js">/*검색용*/ </script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
-<link rel="stylesheet" href="resources/js/pagination.js">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+<script type="text/javascript" src="resources/js/register_ok.js"></script>
 
+<script type="text/javascript" src="resources/js/adSearch.js">/*검색용*/ </script>
 <style>
 input[type=file]::file-selector-button {
    border: 2px solid white;
@@ -90,30 +85,22 @@ input[type=file]::file-selector-button {
          });
       }, false);
    })();
-   
-   function oneGender(checkbox) {
-         var checkgender = document.getElementsByName('gender')
-         checkgender.forEach((item) => {
-           if (item !== checkbox) item.checked = false
-         })
-       }
-
-   function oneType(checkbox) {
-      var checktype = document.getElementsByName('type')
-         checktype.forEach((item) => {
-            if (item !== checkbox) item.checked = false
-            })
-      }
-
-       function oneNeutered(checkbox) {
-         var checkneutered = document.getElementsByName('neutered')
-         checkneutered.forEach((item) => {
-           if (item !== checkbox) item.checked = false
-         })
-       }
+  
 </script>
 <script>
-
+function parCity(){
+   var c = document.getElementById("ani_occur_address");
+    var sc = document.getElementById("ani_occur_address_sub");
+    var tmp ="";
+    console.log("c : "+ c.options[c.selectedIndex].value);
+    console.log("sc : "+sc.options[sc.selectedIndex].value);
+    
+    if(!c.options[c.selectedIndex].value.includes(sc.options[sc.selectedIndex].value)){
+       c.options[c.selectedIndex].value = c.options[c.selectedIndex].value+" "+sc.options[sc.selectedIndex].value;
+    }
+    
+   console.log("value : "+ c.options[c.selectedIndex].value);
+}
 
 function kind(id)
 {       
@@ -194,19 +181,7 @@ function SubCity() {
 
       return subOption;
    }
-  
 </script>
-<script type="text/javascript">
-
-function checkModal() {
-	  Swal.fire(
-			  '등록',
-			  '완료',
-			  'good'
-			)
-}
-</script>
-
 </head>
 
 <body>
@@ -235,9 +210,9 @@ function checkModal() {
             <div class="row no-gutters">
                <div class="col-md-12">
                   <div class="contact-wrap w-100 p-md-5 p-4">
-                  <c:if test="${check=='ok'}">
+                     <c:if test="${check=='ok'}">
                      <script type="text/javascript">
-                     	infoModal();
+                     okModal();
 			      	</script>
 			      	</c:if>
                      <form method="POST" id="contactForm" class="needs-validation"
@@ -297,7 +272,7 @@ function checkModal() {
                                  <div class="row">
                                     <div class="col-md-4">
                                        <div class="form-group">
-                                          <select class="custom-select" name="ani_occur_address"
+                                          <select class="custom-select" name="ani_cate_code"
                                              id="ani_cate_code" onchange="Cate('ani_cate_code')" style="height: 50px;">
                                              <option value="">목격 / 유실 / 보호 장소</option>
                                              <option value="ani_witness">목격</option>
@@ -340,8 +315,7 @@ function checkModal() {
                                     <div class="col-md-4">
                                        <div class="form-group">
                                           <select class="custom-select"
-                                             id="ani_occur_address_sub_dog"
-                                             onchange="SubCity('ani_occur_address_sub_dog')"
+                                             id="ani_occur_address_sub"
                                              name="ani_occur_address_sub" style="height: 50px;">
                                              <option value="" id="detail_address">전체</option>
                                           </select>
@@ -357,12 +331,12 @@ function checkModal() {
                                           <div class="custom-checkbox"
                                              style="display: flex; justify-content: space-evenly;">
                                              <label class="label" for="any_gender" style="font-size:1.2em;"><b>성별</b></label> 
-                                             암컷<input type="radio" id="male"
-                                                name="ani_gender" onclick="oneGender(this)" value='암컷'>
-                                             수컷<input type="radio" id="female" name="gender"
-                                                onclick="oneGender(this)" value='수컷'> 미상 <input
-                                                type="radio" id="unknown" name="gender"
-                                                onclick="oneGender(this)" value='미상'>
+                                                암컷<input type="radio" id="male"
+                                                name="ani_gender" value='암컷'>
+                                                수컷<input type="radio" id="female" name="ani_gender"
+                                                value='수컷'> 미상 <input
+                                                type="radio" id="unknown" name="ani_gender"
+                                                value='미상'>
                                           </div>
                                        </div>
                                     </div>
@@ -411,7 +385,7 @@ function checkModal() {
                                     <div class="col-md-6">
                                        <div class="form-group">
                                           </label> <input onfocus="(this.type = 'date')"
-                                             class="form-control required" name="date"
+                                             class="form-control required" name="ani_datetime"
                                              placeholder="목격/보호/유실 일자" id="date" required style="height: 50px;">
                                           <div class="valid-feedback"></div>
                                           <div class="invalid-feedback">목격/보호/유실 일자 선택</div>
@@ -453,14 +427,14 @@ function checkModal() {
 
                               <div class="col-md-12">
                                  <div class="form-group" style="text-align: center;">
+                                   
                                     <div class="submitting">
                                        <input type="submit" class="btn btn-primary submit"
-                                          value="확인" id="submit" />
+                                          value="확인" id="submit" onclick="parCity()"/>
                                     </div>
                                  </div>
                               </div>
                      </form>
-                  
                   </div>
                </div>
             </div>
@@ -499,7 +473,6 @@ function checkModal() {
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
    <script src="resources/js/google-map.js"></script>
    <script src="resources/js/main.js"></script>
-   <script src="resources/js/register_jj.js"></script>
 
 </body>
 
