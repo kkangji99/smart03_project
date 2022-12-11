@@ -71,60 +71,16 @@
 							<div class="adandCon">
 								<ul class="nav nav-pills" role="tablist">
 									<li class="nav-item"><a class="nav-link active"
-										data-toggle="pill" href="#home"> 1. 입양 전 고려사항</a></li>
+										data-toggle="pill" href="#home"> 1.사료 급여 방법</a></li>
 									<li class="nav-item"><a class="nav-link"
-										data-toggle="pill" href="#menu1"> 2. 사료 급여 방법</a></li>
+										data-toggle="pill" href="#menu1"> 2. 예방접종과 건강검진</a></li>
 									<li class="nav-item"><a class="nav-link"
-										data-toggle="pill" href="#menu2"> 3. 예방접종과 건강검진</a></li>
-									<li class="nav-item"><a class="nav-link"
-										data-toggle="pill" href="#menu3"> 4. 외출시 필수사항</a></li>
+										data-toggle="pill" href="#menu2"> 3. 외출시 필수사항</a></li>
+									
 								</ul>
 
 								<div class="tab-content">
 									<div id="home" class="container tab-pane active">
-										<br>
-
-										<div id="demo" class="carousel slide" data-ride="carousel">
-
-											<!-- Indicators -->
-											<ul class="carousel-indicators">
-												<li data-target="#demo" data-slide-to="0" class="active"></li>
-												<li data-target="#demo" data-slide-to="1"></li>
-												<li data-target="#demo" data-slide-to="2"></li>
-											</ul>
-
-											<!-- The slideshow -->
-											<div class="carousel-inner">
-												<div class="carousel-item active">
-													<img src="resources/images/about1.png" alt="about2"
-														width="1050" height="550">
-												</div>
-												<div class="carousel-item">
-													<img src="resources/images/about2.png" alt="about1"
-														width="1050" height="550">
-												</div>
-												<div class="carousel-item">
-													<img src="resources/images/about3.png" alt="about3"
-														width="1050" height="550">
-												</div>
-											</div>
-
-											<!-- Left and right controls -->
-											<a class="carousel-control-prev" href="#demo"
-												data-slide="prev"> <span
-												class="carousel-control-prev-icon"></span>
-											</a> <a class="carousel-control-next" href="#demo"
-												data-slide="next"> <span
-												class="carousel-control-next-icon"></span>
-											</a>
-										</div>
-									</div>
-									<br>
-								
-
-
-
-									<div id="menu1" class="container tab-pane fade">
 										<br>
 										<div class="card-deck">
 											<div class="card">
@@ -147,17 +103,11 @@
 											</div>
 											</div>
 										
-											
-											
-
-
-											
-
 							
 
 										</div>
 										<br>
-										<div id="menu2" class="container tab-pane fade" >
+										<div id="menu1" class="container tab-pane fade" >
                               <br>
 
                               <div id="aboutDog">
@@ -176,8 +126,8 @@
                                           종합예방접종과코로나 예방접종을 시작으로 2~3주 간격으로 예방접종을 진행​해야 합니다.
                                        </div>
                                        <div id="dog2" class="collapse">
-                                          <h3>개예방접종 </h3>
-                                          <table class="table table-hover">
+                                         
+                                          <table class="table">
                                                 <thead style="text-align: center;">
                                                    <tr>
                                                       <th style="padding: 0px 0px 0px 0px;">종류</th>
@@ -269,8 +219,8 @@
                                           칼리시 바이러스 등에 대한 예방접종을 해야 합니다
                                        </div>
                                        <div id="cat2" class="collapse">
-                                       <h3>고양이예방접종 </h3>
-                                          <table class="table table-hover">
+                                    
+                                          <table class="table">
 
                                        <thead style="text-align: center;">
                                           <tr>
@@ -376,7 +326,7 @@
                            </div>
 
 										
-										<div id="menu3" class="container tab-pane fade">
+										<div id="menu2" class="container tab-pane fade">
 											<br>
 												<div class="card-deck">
 											<div class="card">
