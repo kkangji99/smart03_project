@@ -109,11 +109,11 @@ td {
                                     <td>${AniInfo.ani_num}</td>
                                  </tr> --%>
                            <tr>
-                              <th style="text-align: center; width: 40%; ">축종</th>
+                              <th style="text-align: center; width: 40%;">축종</th>
                               <td style="text-align: center;">${AniInfo.ani_livestock}</td>
                            </tr>
                            <tr>
-                              <th style="text-align: center;">품종</th>
+                              <th style="text-align: center; width: 40%;">품종</th>
                               <td style="text-align: center;">${AniInfo.ani_kind}</td>
                            </tr>
                            <tr>
