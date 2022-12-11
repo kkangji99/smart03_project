@@ -37,6 +37,8 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
 </style>
 </head>
 
@@ -47,7 +49,7 @@
 		id="ftco-navbar">
 		<div class="container">
 			<a class="navbar-brand" href="${cpath}/index.do"><span
-				class="flaticon-pawprint-1 mr-2"></span>Save the Animals</a>
+				class="flaticon-pawprint-1 mr-2" ></span>Save the Animals</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#ftco-nav" aria-controls="ftco-nav"
 				aria-expanded="false" aria-label="Toggle navigation">
