@@ -38,18 +38,20 @@
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-end">
 				<div class="col-md-9 ftco-animate pb-5">
-					<h1 class="mb-0 bread">커뮤니티</h1>
+					<!-- <h1 class="mb-0 bread">커뮤니티</h1> -->
 				</div>
 			</div>
 		</div>
 	</section>
 	
 	<section class="ftco-section bg-light">
-		<div class="container">
+		<div class="container" style="background-color: white;padding: 10px 10px 10px 10px;border-radius: 20px;width: 1400px;">
+		<h1 style="text-align-last: center; margin-top: 20px;"><img src="resources/images/com.png" style="height: 50px; margin-bottom: 15px;">  커뮤니티</h1>
 			<c:if test="${not empty loginMember}">
 				<div class="col-md-12" style="width:1090px; text-align:right; margin-bottom:15px;">
-					<button type="submit" class="btn btn-primary" style="width:100px; font-size:1em;"
-				 		onclick="location.href='${cpath}/commu_write.do'">글쓰기</button> 
+					<button type="submit" class="btn btn-primary" style="width:120px; font-size:1em;"
+				 		onclick="location.href='${cpath}/commu_write.do'"><img src="resources/images/edit.png" 
+				 		style="height: 25px;"> 글쓰기</button> 
 				</div>
 			</c:if>
 		
@@ -89,7 +91,7 @@
 	                              <c:if test="${vo.post_mem_num == loginMember.mem_num}">
 	                              	<form action="${cpath}/post_delete.do" method="post">
 	                              		<input type="hidden" name="post_num" value="${vo.post_num}">
-										<input type="submit" value="삭제" class="btn btn-secondary" style="width:65px; height:32px; font-size:12px;">
+										<input type="submit" value="삭제" class="btn btn-outline-secondary" style="width:65px; height:32px; font-size:12px;">
 									</form>
 	                              </c:if>
 	                            </td>
