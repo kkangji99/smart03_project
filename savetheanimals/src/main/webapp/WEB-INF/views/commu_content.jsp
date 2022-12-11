@@ -83,145 +83,143 @@ textarea {
 	</section>
 
 	<section class="ftco-section ftco-degree-bg">
-      <div class="container" style="max-width: 1000px;">
-			<div class="row justify-text-center">
-				<div class="col-lg-12 ftco-animate">
-					<!-- 커뮤니티 내용 -->
-					<div class="information">
-						<c:choose>
-							<c:when test="${empty postinfo}">
-								<div class="container-table" style="margin-top: -6%">
-									<table class="table table-hover">
-										<tr>
-											<th>데이터 불러오기 실패!!!!!!!!!!!</th>
-										</tr>
-									</table>
-								</div>
-							</c:when>
-							<c:otherwise>
-								<div class="container-table">
-									<div>
-										<c:if test="${postinfo.post_cate_code eq 'post_free'}">
-											<div class="content col-md-6"
-												style="text-align: left; font-size: 18px;">자유게시판</div>
-										</c:if>
-										<c:if test="${postinfo.post_cate_code eq 'post_adop'}">
-											<div class="content col-md-6"
-												style="text-align: left; font-size: 18px;">입양 정보</div>
-										</c:if>
-										<c:if test="${postinfo.post_cate_code eq 'post_review'}">
-											<div class="content col-md-6"
-												style="text-align: left; font-size: 18px;">입양/재회 후기</div>
-										</c:if>
-										<c:if test="${postinfo.post_cate_code eq 'post_service'}">
-											<div class="content col-md-6"
-												style="text-align: left; font-size: 18px;">봉사활동 정보</div>
-										</c:if>
-									</div>
-									<h3 style="margin-left: 15px;">${postinfo.post_title}</h3>
-									<div class="col-md-12">
-										<a class="flaticon-pawprint-1" style="margin-right: 5px;"></a>
-										<span style="font-size: 18px">${postinfo.mem_id}</span> <span
-											style="font-size: 18px">${postinfo.post_datetime}</span> <span
-											class="sexy_line" style="margin-bottom: 5px;"></span>
-										<div style="font-size: 17px; margin-bottom: 3%;">${postinfo.post_contents}</div>
-										<c:if test="${not empty postinfo.post_img_path}">
-										<div>
-											<img src="<spring:url value='${postinfo.post_img_path}'/>"
-												class="center"
-												style="width: 23vw; padding: 0.5em;  margin-bottom: 1em; border-radius: 10%; border-style: outset;">
-										</div>
-										</c:if>
-
-									</div>
-								</div>
-
-							</c:otherwise>
-						</c:choose>
-					</div>
-
-					<br>
-					<!-- 댓글 -->
-					<div class="row">
-						<div class="container pb-3">
-							<p class="col-12" style="font-weight: bold;">
-								댓글
-								<fmt:formatNumber value="${allcomm.size()}" pattern="#,###" />
-							</p>
-							<c:forEach items="${allcomm}" var="com" varStatus="status">
-								<div class="card pl-2 border border-0 rounded-pill mt-3 mb-3">
-
-									<div class="card-body" style="padding: 0px 0px 0px 0px">
-										<div>
-											<span class="sexy_line" style="margin-bottom: 5px;"></span>
-										</div>
-										<div class="row mt-2">
-											<div class="col-md-6"
-												style="text-align: left; height: 20px; width: 20px;">
-												<a class="flaticon-pawprint-1" style="margin-right: 5px;"></a>
-												<span style="font-weight: bold; font-size: 16px;">${memid[status.index].mem_id}</span>
-												<span class="small text-muted mb-0"
-													style="font-size: 16px; margin-left: 5px;">
-													${com.comm_datetime}</span>
-											</div>
-											<div class="col-md-6" style="text-align: right">
-												<c:if
-													test="${memid[status.index].mem_num == loginMember.mem_num}">
-													<form action="${cpath}/com_delete.do" method="post">
-														<input type="hidden" name="comm_mem_num"
-															value="${loginMember.mem_num}"> <input
-															type="hidden" name="comm_post_num"
-															value="${postinfo.post_num}"> <input
-															type="hidden" name="post_num"
-															value="${postinfo.post_num}"> <input
-															type="hidden" name="comm_num" value="${com.comm_num}">
-														<input type="submit" value="삭제"
-															class="btn btn-outline-secondary"
-															style="font-size: 14px; border-radius: 40px;">
-													</form>
-												</c:if>
-											</div>
-										</div>
-
-										<p
-											style="color: black; margin-left: 20px; margin-bottom: 0px; font-size: 18px;">${com.comm_contents}</p>
-
-									</div>
-								</div>
-							</c:forEach>
-							<c:if test="${not empty loginMember}">
-								<div class="container"
-									style="margin: 10px 0px 10px 0px; height: 10px;">
-									<!-- <h5>댓글 입력</h5> -->
-									<form action="${cpath}/com_submit.do" method="post">
-										<input type="hidden" name="comm_mem_num"
-											value="${loginMember.mem_num}"> <input type="hidden"
-											name="comm_post_num" value="${postinfo.post_num}"> <input
-											type="hidden" name="post_num" value="${postinfo.post_num}">
-										<div class="row border rounded-pill"
-											style="background: white;">
-											<div class="col-md-10">
-												<div class="form-group" style="margin: 15px;">
-													<textarea name="comm_contents" id="comm_contents" cols="30"
-														rows="2" required placeholder="댓글입력" style="resize: none;"></textarea>
-												</div>
-											</div>
-											<div class="col-md-2">
-												<div class="form-group mt-4">
-													<input type="submit" value="확인"
-														class="btn btn-outline-secondary"
-														style="width: 50%; height: 20%; margin-left: 40px;">
-													<div class="submitting"></div>
-												</div>
-											</div>
-										</div>
-									</form>
-								</div>
-							</c:if>
+		<div class="container"
+			style="background-color: whitesmoke; border-radius: 25px;">
+			<!-- <div class="row justify-text-center"> -->
+			<!-- <div class="col-lg-12 ftco-animate"> -->
+			<!-- 커뮤니티 내용 -->
+			<div class="information">
+				<c:choose>
+					<c:when test="${empty postinfo}">
+						<div class="container-table" style="margin-top: -6%">
+							<table class="table table-hover">
+								<tr>
+									<th>데이터 불러오기 실패!!!!!!!!!!!</th>
+								</tr>
+							</table>
 						</div>
-					</div>
+					</c:when>
+					<c:otherwise>
+						<div class="container-table">
+							<div>
+								<c:if test="${postinfo.post_cate_code eq 'post_free'}">
+									<div class="content col-md-6"
+										style="text-align: left; font-size: 18px;padding-top: 20px;">자유게시판</div>
+								</c:if>
+								<c:if test="${postinfo.post_cate_code eq 'post_adop'}">
+									<div class="content col-md-6"
+										style="text-align: left; font-size: 18px;padding-top: 20px;">입양 정보</div>
+								</c:if>
+								<c:if test="${postinfo.post_cate_code eq 'post_review'}">
+									<div class="content col-md-6"
+										style="text-align: left; font-size: 18px;padding-top: 20px;">입양/재회 후기</div>
+								</c:if>
+								<c:if test="${postinfo.post_cate_code eq 'post_service'}">
+									<div class="content col-md-6"
+										style="text-align: left; font-size: 18px;padding-top: 20px;">봉사활동 정보</div>
+								</c:if>
+							</div>
+							<h3 style="margin-left: 15px;">${postinfo.post_title}</h3>
+							<div class="col-md-12">
+								<a class="flaticon-pawprint-1" style="margin-right: 5px;"></a> <span
+									style="font-size: 20px">${postinfo.mem_id}</span> <span
+									style="font-size: 15px">${postinfo.post_datetime}</span> <span
+									class="sexy_line" style="margin-bottom: 5px;"></span>
+								<div style="font-size: 17px; margin-bottom: 3%;">${postinfo.post_contents}</div>
+								<c:if test="${not empty postinfo.post_img_path}">
+									<div>
+										<img src="<spring:url value='${postinfo.post_img_path}'/>"
+											class="center"
+											style="width: 23vw; padding: 0.5em; margin-bottom: 1em; border-radius: 10%; border-style: outset;">
+									</div>
+								</c:if>
+
+							</div>
+						</div>
+
+					</c:otherwise>
+				</c:choose>
+			</div>
+
+			<br>
+			<!-- 댓글 -->
+			<div class="row">
+				<div class="container pb-3">
+					<p class="col-12" style="font-weight: bold;">
+						댓글
+						<fmt:formatNumber value="${allcomm.size()}" pattern="#,###" />
+					</p>
+					<c:forEach items="${allcomm}" var="com" varStatus="status">
+						<div class="card pl-2 border border-0 rounded-pill mt-3 mb-3" style="background-color: whitesmoke;">
+
+							<div class="card-body" style="padding: 0px 0px 0px 0px">
+								<div>
+									<span class="sexy_line" style="margin-bottom: 5px;"></span>
+								</div>
+								<div class="row mt-2">
+									<div class="col-md-6"
+										style="text-align: left; height: 20px; width: 20px;">
+										<a class="flaticon-pawprint-1" style="margin-right: 5px;"></a>
+										<span style="font-weight: bold; font-size: 16px;">${memid[status.index].mem_id}</span>
+										<span class="small text-muted mb-0"
+											style="font-size: 16px; margin-left: 5px;">
+											${com.comm_datetime}</span>
+									</div>
+									<div class="col-md-6" style="text-align: right">
+										<c:if
+											test="${memid[status.index].mem_num == loginMember.mem_num}">
+											<form action="${cpath}/com_delete.do" method="post">
+												<input type="hidden" name="comm_mem_num"
+													value="${loginMember.mem_num}"> <input
+													type="hidden" name="comm_post_num"
+													value="${postinfo.post_num}"> <input type="hidden"
+													name="post_num" value="${postinfo.post_num}"> <input
+													type="hidden" name="comm_num" value="${com.comm_num}">
+												<input type="submit" value="삭제"
+													class="btn btn-outline-secondary"
+													style="font-size: 14px; border-radius: 40px;">
+											</form>
+										</c:if>
+									</div>
+								</div>
+
+								<p
+									style="color: black; margin-left: 20px; margin-bottom: 0px; font-size: 18px;">${com.comm_contents}</p>
+
+							</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
+			<!-- </div> -->
+			<!-- </div> -->
+			<c:if test="${not empty loginMember}">
+				<div class="container" style="padding-bottom: 20px;">
+					<!-- <h5>댓글 입력</h5> -->
+					<form action="${cpath}/com_submit.do" method="post">
+						<input type="hidden" name="comm_mem_num"
+							value="${loginMember.mem_num}"> <input type="hidden"
+							name="comm_post_num" value="${postinfo.post_num}"> <input
+							type="hidden" name="post_num" value="${postinfo.post_num}">
+						<div class="row border rounded-pill">
+							<div class="col-md-10">
+								<div class="form-group" style="margin: 15px;">
+									<textarea name="comm_contents" id="comm_contents" cols="30"
+										rows="2" required placeholder="댓글입력" style="resize: none; background-color: whitesmoke;"></textarea>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-group mt-4">
+									<input type="submit" value="확인"
+										class="btn btn-outline-secondary"
+										style="width: 50%; height: 20%; margin-left: 40px;">
+									<div class="submitting"></div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</c:if>
 		</div>
 	</section>
 
